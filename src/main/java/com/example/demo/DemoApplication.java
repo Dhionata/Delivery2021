@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 @RestController
 public class DemoApplication {
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -23,6 +22,7 @@ public class DemoApplication {
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return String.format("Hello %s!", name);
 	}
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
