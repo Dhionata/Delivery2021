@@ -34,5 +34,4 @@ public class DemoApplication {
 
 		return dataSource;
 	}
-
 }
