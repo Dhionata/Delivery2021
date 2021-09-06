@@ -9,7 +9,7 @@ public interface FornecedorInterface {
     public void removeProduto(Produto produto);
     public void confirmarEntrega(int idPedido);
     public void atualizarStatusPedido(int idPedido);
-    public Fornecedor buscarEmpresa(String nome);
+    public Fornecedor buscarFornecedor(String nome); // alterado para para buscarFornecedor //
     public boolean confirmarEstoque(int quantidadeEmEstoque);
 
 }
