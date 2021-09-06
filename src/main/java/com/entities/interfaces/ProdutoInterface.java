@@ -1,5 +1,7 @@
 package com.entities.interfaces;
 
-public interface ProdutoInterface {
+import com.entities.classes.Produto;
 
+public interface ProdutoInterface {
+    public Produto buscarProduto(String nome);
 }

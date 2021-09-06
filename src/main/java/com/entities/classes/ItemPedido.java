@@ -1,6 +1,8 @@
 
 package com.entities.classes;
 
-public class ItemPedido {
+import com.entities.interfaces.ItemPedidoInterface;
+
+public class ItemPedido implements ItemPedidoInterface {
 
 }

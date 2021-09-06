@@ -1,5 +1,7 @@
 package com.entities.classes;
 
-public class Telefone {
+import com.entities.interfaces.TelefoneInterface;
+
+public class Telefone implements TelefoneInterface{
     
 }

@@ -1,5 +1,6 @@
 package com.entities.classes;
 
-public class Avaliacao{
+import com.entities.interfaces.AvaliacaoInterface;
 
+public class Avaliacao implements AvaliacaoInterface{
 }

@@ -1,5 +1,13 @@
 package com.entities.classes;
 
-public class FormaPagamento {
+import com.entities.interfaces.FormaPagamentoInterface;
+
+public class FormaPagamento implements FormaPagamentoInterface{
+
+    @Override
+    public String formaDePagamento() {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }
