@@ -1,8 +1,21 @@
 package com.entities.classes;
 
+import java.sql.Date;
+
 import com.entities.interfaces.PedidoInterface;
 
 public class Pedido implements PedidoInterface{
+
+    int id;
+    Cliente cliente;
+    FormaPagamento formaPagamento;
+    ItemPedido itemPedido;
+    Float desconto;
+    Float acrescimo;
+    Boolean pago;
+    Boolean entregue;
+    Date data;
+
 
     @Override
     public Float calculaValorTotal() {
