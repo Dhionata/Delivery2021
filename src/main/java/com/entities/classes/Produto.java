@@ -1,6 +1,6 @@
 package com.entities.classes;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.entities.interfaces.ProdutoInterface;
 
