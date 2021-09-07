@@ -35,7 +35,7 @@ public class Fornecedor implements FornecedorInterface{
     }
 
     @Override
-    public Fornecedor buscarEmpresa(String nome) {
+    public Fornecedor buscarFornecedor(String nome) {
         // TODO Auto-generated method stub
         return null;
     }
