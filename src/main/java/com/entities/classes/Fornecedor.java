@@ -1,8 +1,18 @@
 package com.entities.classes;
 
+import java.util.Date;
+
 import com.entities.interfaces.FornecedorInterface;
 
 public class Fornecedor implements FornecedorInterface{
+
+    int id;
+    String nome;
+    String descricao;
+    Endereco endereco;
+    String cnpjCpf;
+    Date data;
+    List<Produto> listaProdutos;
 
     @Override
     public void adicionarProduto(Produto produto) {
