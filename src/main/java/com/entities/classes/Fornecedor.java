@@ -15,7 +15,7 @@ public class Fornecedor implements FornecedorInterface {
     private Date data;
     private List<Produto> listaProdutos;
 
-    private Fornecedor(int id, String nome, String descricao, Endereco endereco, String cnpjCpf) {
+    public Fornecedor(int id, String nome, String descricao, Endereco endereco, String cnpjCpf) {
         setId(id);
         setNome(nome);
         setDescricao(descricao);
