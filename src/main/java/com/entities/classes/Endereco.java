@@ -29,10 +29,12 @@ public class Endereco implements EnderecoInterface {
 
     @Override
     public String toString() {
-        return "\n-- Endereço-- \nBairro: " + bairro + "\nCep: " + cep + "\nCidade: " + cidade + "\nComplemento: "
+        return "\n-- Endereço--\nBairro: " + bairro + "\nCep: " + cep + "\nCidade: " + cidade + "\nComplemento: "
                 + complemento + "\nCoordenada-X:" + coordenadaX + "\nCoordenaxa-Y:" + coordenaxaY + "\nID: " + id
                 + "\nLogradouro: " + logradouro + "\nNumero: " + numero;
     }
+
+    // Getters/Setters
 
     public int getId() {
         return id;

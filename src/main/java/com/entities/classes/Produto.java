@@ -14,7 +14,8 @@ public class Produto implements ProdutoInterface {
     private int quantidadeEmEstoque;
     private Date data;
 
-    public Produto(int id, String nome, Fornecedor idFornecedor, Float preco, Boolean disponivel, int quantidadeEmEstoque) {
+    public Produto(int id, String nome, Fornecedor idFornecedor, Float preco, Boolean disponivel,
+            int quantidadeEmEstoque) {
         setId(id);
         setNome(nome);
         setIdFornecedor(idFornecedor);
@@ -26,10 +27,20 @@ public class Produto implements ProdutoInterface {
 
     @Override
     public String toString() {
-        return "\n--Produto-- \nNome: " + nome + "\nID: " + getId() + "\nData: " + getData() + "\nFornecedor: "
-                + getIdFornecedor().getNome() + "\nPreço: " + preco + "\nQuantidade em estoque: " + getQuantidadeEmEstoque()
-                + "\nStatus: " + getStatus();
+        return "\n--Produto--\nNome: " + nome + "\nID: " + getId() + "\nData: " + getData() + "\nFornecedor: "
+                + getIdFornecedor().getNome() + "\nPreço: " + preco + "\nQuantidade em estoque: "
+                + getQuantidadeEmEstoque() + "\nStatus: " + getStatus();
     }
+
+    // verificar a possibilidade de instanciar fornecedor e buscar da lista de
+    // produtos.
+    @Override
+    public Produto buscarProduto(String nome) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    // Getters/Setters
 
     public int getId() {
         return id;
@@ -85,14 +96,6 @@ public class Produto implements ProdutoInterface {
 
     public void setData(Date data) {
         this.data = data;
-    }
-
-    // verificar a possibilidade de instanciar fornecedor e buscar da lista de
-    // produtos.
-    @Override
-    public Produto buscarProduto(String nome) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.entities.classes;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,15 +13,22 @@ public class Fornecedor implements FornecedorInterface {
     private Endereco endereco;
     private String cnpjCpf;
     private Date data;
-    private List<Produto> listaProdutos = new ArrayList<Produto>();
+    private List<Produto> listaProdutos;
 
-    public Fornecedor(int id, String nome, String descricao, Endereco endereco, String cnpjCpf) {
+    private Fornecedor(int id, String nome, String descricao, Endereco endereco, String cnpjCpf) {
         setId(id);
         setNome(nome);
         setDescricao(descricao);
         setEndereco(endereco);
         setCnpjCpf(cnpjCpf);
         setData(new Date());
+    }
+
+    // Verificar a possibilidade de uma lista de empresas.
+    @Override
+    public Fornecedor buscarFornecedor(String nome) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
@@ -62,18 +68,13 @@ public class Fornecedor implements FornecedorInterface {
 
     }
 
-    // Verificar a possibilidade de uma lista de empresas.
-    @Override
-    public Fornecedor buscarFornecedor(String nome) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     @Override
     public boolean confirmarEstoque(int quantidadeEmEstoque) {
         // TODO Auto-generated method stub
         return false;
     }
+
+    // Getters/Setters
 
     public int getId() {
         return id;
