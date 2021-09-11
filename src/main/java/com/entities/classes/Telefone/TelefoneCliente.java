@@ -6,15 +6,14 @@ public class TelefoneCliente extends Telefone {
 
     Cliente cliente;
 
-    public TelefoneCliente(Cliente cliente) {
-        super();
+    public TelefoneCliente(Cliente cliente, int id, String numero) {
+        super(id, numero);
         setCliente(cliente);
     }
 
     @Override
     public String toString() {
-        return "-- Telefone do cliente\nCliente: " + cliente + "Número: " + super.getNumero() + "\nID: "
-                + super.getId();
+        return "\n-- Telefone do cliente--\nNúmero: " + super.getNumero() + "\nID: " + super.getId();
     }
 
     // Getters/Setters

@@ -3,6 +3,7 @@ package com.entities.classes;
 import java.util.Date;
 import java.util.List;
 
+import com.entities.classes.Telefone.Telefone;
 import com.entities.interfaces.ClienteInterface;
 
 public class Cliente implements ClienteInterface {
@@ -12,6 +13,7 @@ public class Cliente implements ClienteInterface {
     private String email;
     private String senha;
     private Date data;
+    private Telefone telefone;
 
     public Cliente(int id, String nome, String cnpjCpf, String email, String senha) {
         setId(id);
@@ -24,8 +26,8 @@ public class Cliente implements ClienteInterface {
 
     @Override
     public String toString() {
-        return "\n--Cliente--\nCNPJ/CPF: " + cnpjCpf + "\nData: " + data + "\nEmail: " + email + "\nID: " + id
-                + "\nNome: " + nome + "\nSenha: " + senha;
+        return "\n--Cliente--\nCNPJ/CPF: " + getCnpjCpf() + "\nNome: " + getNome() + "\nData: " + getData()
+                + "\nEmail: " + getEmail() + "\nID: " + getId() + "\nSenha: " + getSenha() + getTelefone();
     }
 
     @Override
@@ -53,6 +55,14 @@ public class Cliente implements ClienteInterface {
     }
 
     // Getters/Setters
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
 
     public int getId() {
         return id;

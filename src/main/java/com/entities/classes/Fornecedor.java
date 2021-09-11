@@ -3,6 +3,7 @@ package com.entities.classes;
 import java.util.Date;
 import java.util.List;
 
+import com.entities.classes.Telefone.TelefoneFornecedor;
 import com.entities.interfaces.FornecedorInterface;
 
 public class Fornecedor implements FornecedorInterface {
@@ -14,6 +15,7 @@ public class Fornecedor implements FornecedorInterface {
     private String cnpjCpf;
     private Date data;
     private List<Produto> listaProdutos;
+    private TelefoneFornecedor telefone;
 
     public Fornecedor(int id, String nome, String descricao, Endereco endereco, String cnpjCpf) {
         setId(id);
@@ -33,9 +35,9 @@ public class Fornecedor implements FornecedorInterface {
 
     @Override
     public String toString() {
-        return "\n--Fornecedor--\nNome: " + getNome() + "\nCNPJ/CPF: " + cnpjCpf + "\nData: " + getData()
-                + "\nDescriçao: " + getDescricao() + endereco + "\nID: " + id + "\nLista de produtos: "
-                + getListaProdutos();
+        return "\n--Fornecedor--\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: " + getData()
+                + "\nDescriçao: " + getDescricao() + getEndereco() + "\nID: " + getId() + getTelefone()
+                + "\nLista de produtos: " + getListaProdutos();
     }
 
     @Override
@@ -75,6 +77,14 @@ public class Fornecedor implements FornecedorInterface {
     }
 
     // Getters/Setters
+
+    public TelefoneFornecedor getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(TelefoneFornecedor telefone) {
+        this.telefone = telefone;
+    }
 
     public int getId() {
         return id;

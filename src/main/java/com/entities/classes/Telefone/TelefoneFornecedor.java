@@ -6,15 +6,14 @@ public class TelefoneFornecedor extends Telefone {
 
     Fornecedor fornecedor;
 
-    public TelefoneFornecedor() {
-        super();
+    public TelefoneFornecedor(Fornecedor fornecedor, int id, String numero) {
+        super(id, numero);
         setFornecedor(fornecedor);
     }
 
     @Override
     public String toString() {
-        return "-- Telefone do fornecedor\nFornecedor: " + fornecedor + "Número: " + super.getNumero() + "\nID: "
-                + super.getId();
+        return "\n-- Telefone do fornecedor --\nNúmero: " + super.getNumero() + "\nID: " + super.getId();
     }
 
     public Fornecedor getFornecedor() {
