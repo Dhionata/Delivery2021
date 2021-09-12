@@ -9,9 +9,6 @@ import com.entities.classes.Telefone.TelefoneFornecedor;
 public class testeTelefone {
     public static void main(String[] args) {
 
-        // public Cliente(int id, String nome, String cnpjCpf, String email, String
-        // senha)
-
         Cliente cliente = new Cliente(1, "NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
 
         TelefoneCliente telefoneDoCliente = new TelefoneCliente(cliente, 1, "(xx)yrrrr-rrrr");

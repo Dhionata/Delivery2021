@@ -1,8 +1,6 @@
 package com.entities.classes.Telefone;
 
-import com.entities.interfaces.TelefoneInterface;
-
-public class Telefone implements TelefoneInterface {
+public class Telefone {
 
     private int id;
     private String numero;
@@ -14,7 +12,7 @@ public class Telefone implements TelefoneInterface {
 
     @Override
     public String toString() {
-        return "-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero();
+        return "\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero();
     }
 
     // Getters/Setters

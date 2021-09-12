@@ -6,18 +6,17 @@ public class FormaPagamento implements FormaPagamentoInterface {
 
     private int id;
     private String nomeForma;
-    private Pedido pedido;
 
-    public FormaPagamento(int id, String nomeForma, Pedido pedido) {
+    public FormaPagamento(int id, String nomeForma) {
         setId(id);
         setNomeForma(nomeForma);
-        setPedido(pedido);
+
     }
 
     @Override
     public String toString() {
-        return "\n-- FormaPagamento --\nID: " + id + "\nNome da forma de pagamento: " + nomeForma + "\nPedido: "
-                + pedido;
+        return "\n-- FormaPagamento --\nID: " + getId() + "\nNome da forma de pagamento: " + getNomeForma()
+                + "\nID do Pedido: ";
     }
 
     @Override
@@ -27,14 +26,6 @@ public class FormaPagamento implements FormaPagamentoInterface {
     }
 
     // Getters/Setters
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
 
     public int getId() {
         return id;

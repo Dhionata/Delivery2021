@@ -1,6 +1,8 @@
 package com.entities.classes;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.entities.interfaces.PedidoInterface;
 
@@ -9,29 +11,30 @@ public class Pedido implements PedidoInterface {
     private int id;
     private Cliente cliente;
     private FormaPagamento formaPagamento;
-    private ItemPedido itemPedido;
+    private List<ItemPedido> itensPedido;
     private Float desconto;
+
     private Boolean pago;
     private Boolean entregue;
     private Date data;
 
-    public Pedido(int id, Cliente cliente, FormaPagamento formaPagamento, ItemPedido itemPedido, Float desconto,
-            Boolean pago, Boolean entregue) {
+    public Pedido(int id, Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago,
+            Boolean entregue) {
         setId(id);
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
-        setItemPedido(itemPedido);
         setDesconto(desconto);
         setPago(pago);
         setEntregue(entregue);
+        setItensPedido(new ArrayList<>());
         setData(new Date());
     }
 
     @Override
     public String toString() {
-        return "\n-- Pedido -- \nCliente: " + cliente + "\nData: " + data + "\nDesconto: " + desconto + "\nEntregue: "
-                + entregue + "\nForma de pagamento: " + formaPagamento + "\nID: " + id + "\nItem pedido: " + itemPedido
-                + "\nPago: " + pago;
+        return "\n-- Pedido -- \nID: " + getId() + getCliente() + "\nData: " + getData() + "\nDesconto: "
+                + getDesconto() + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: "
+                + getPago();
     }
 
     @Override
@@ -46,7 +49,23 @@ public class Pedido implements PedidoInterface {
         return false;
     }
 
+    public void addItemPedido(ItemPedido itemPedido) {
+        getItensPedido().add(itemPedido);
+    }
+
+    public void removerItemPedido(ItemPedido itemPedido) {
+        getItensPedido().remove(itemPedido);
+    }
+
     // Getters/Setters
+
+    public List<ItemPedido> getItensPedido() {
+        return itensPedido;
+    }
+
+    public void setItensPedido(List<ItemPedido> itensPedido) {
+        this.itensPedido = itensPedido;
+    }
 
     public int getId() {
         return id;
@@ -70,14 +89,6 @@ public class Pedido implements PedidoInterface {
 
     public void setFormaPagamento(FormaPagamento formaPagamento) {
         this.formaPagamento = formaPagamento;
-    }
-
-    public ItemPedido getItemPedido() {
-        return itemPedido;
-    }
-
-    public void setItemPedido(ItemPedido itemPedido) {
-        this.itemPedido = itemPedido;
     }
 
     public Float getDesconto() {

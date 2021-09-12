@@ -16,7 +16,7 @@ public class testeFornecedor {
         List<Produto> produtos = new ArrayList<Produto>();
 
         for (int i = 0; i <= 10; i++) {
-            Produto p = new Produto(i, "NomeAleatório>" + Math.pow(i, 3), fornecedor, 0.0000042F * i, true, 100 * i);
+            Produto p = new Produto(i, "NomeAleatório>" + Math.pow(i, 3), fornecedor, 0.42F * i, 100 * i);
             produtos.add(p);
         }
 
