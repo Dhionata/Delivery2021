@@ -10,6 +10,11 @@ public class Telefone {
         setNumero(numero);
     }
 
+    public Telefone(Telefone telefone) {
+        setId(telefone.getId());
+        setNumero(telefone.getNumero());
+    }
+
     @Override
     public String toString() {
         return "\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero();

@@ -13,8 +13,8 @@ public class testePedido {
 
         Cliente cliente = new Cliente(54, "NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
 
-        Produto produto = new Produto(67, "Abacate", 12.53F, 3);
-        Produto produto2 = new Produto(70, "Laranja", 10.43F, 5);
+        Produto produto = new Produto(67, "Abacate");
+        Produto produto2 = new Produto(70, "Laranja");
 
         Pedido pedido = new Pedido(98, cliente, formaPagamento, 7.00f, false, false);
 

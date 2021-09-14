@@ -3,6 +3,7 @@ package com.entities.classes;
 import java.util.Date;
 import java.util.List;
 
+import com.entities.classes.Endereco.EnderecoFornecedor;
 import com.entities.classes.Telefone.TelefoneFornecedor;
 import com.entities.interfaces.FornecedorInterface;
 
@@ -11,13 +12,13 @@ public class Fornecedor implements FornecedorInterface {
     private int id;
     private String nome;
     private String descricao;
-    private Endereco endereco;
+    private EnderecoFornecedor endereco;
     private String cnpjCpf;
     private Date data;
-    private List<Produto> listaProdutos;
-    private TelefoneFornecedor telefone;
+    private List<ProdutoFornecedor> listaProdutos;
+    private List<TelefoneFornecedor> listaTelefones;
 
-    public Fornecedor(int id, String nome, String descricao, Endereco endereco, String cnpjCpf) {
+    public Fornecedor(int id, String nome, String descricao, String cnpjCpf) {
         setId(id);
         setNome(nome);
         setDescricao(descricao);
@@ -26,23 +27,22 @@ public class Fornecedor implements FornecedorInterface {
         setData(new Date());
     }
 
-    // Verificar a possibilidade de uma lista de empresas.
-    @Override
-    public Fornecedor buscarFornecedor(String nome) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     @Override
     public String toString() {
         return "\n--Fornecedor--\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: " + getData()
-                + "\nDescriçao: " + getDescricao() + getEndereco() + "\nID: " + getId() + getTelefone()
+                + "\nDescriçao: " + getDescricao() + getEndereco() + "\nID: " + getId() + getListaTelefones()
                 + "\nLista de produtos: " + getListaProdutos();
     }
 
     @Override
-    public void adicionarProduto(Produto produto) {
-        listaProdutos.add(produto);
+    public void adicionarProduto(ProdutoFornecedor produto) {
+        getListaProdutos().add(produto);
+
+    }
+
+    @Override
+    public void adicionarTelefone(TelefoneFornecedor telefone) {
+        getListaTelefones().add(telefone);
 
     }
 
@@ -54,7 +54,7 @@ public class Fornecedor implements FornecedorInterface {
 
     @Override
     public void removeProduto(Produto produto) {
-        listaProdutos.remove(produto);
+        // TODO Auto-generated method stub
 
     }
 
@@ -70,6 +70,13 @@ public class Fornecedor implements FornecedorInterface {
 
     }
 
+    // Verificar a possibilidade de uma lista de fornecedores.
+    @Override
+    public Fornecedor buscarFornecedor(String nome) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
     @Override
     public boolean confirmarEstoque(int quantidadeEmEstoque) {
         // TODO Auto-generated method stub
@@ -78,12 +85,20 @@ public class Fornecedor implements FornecedorInterface {
 
     // Getters/Setters
 
-    public TelefoneFornecedor getTelefone() {
-        return telefone;
+    public List<TelefoneFornecedor> getListaTelefones() {
+        return listaTelefones;
     }
 
-    public void setTelefone(TelefoneFornecedor telefone) {
-        this.telefone = telefone;
+    public void setListaTelefones(List<TelefoneFornecedor> telefone) {
+        this.listaTelefones = telefone;
+    }
+
+    public void setListaProdutos(List<ProdutoFornecedor> listaProdutos) {
+        this.listaProdutos = listaProdutos;
+    }
+
+    public List<ProdutoFornecedor> getListaProdutos() {
+        return listaProdutos;
     }
 
     public int getId() {
@@ -110,11 +125,11 @@ public class Fornecedor implements FornecedorInterface {
         this.descricao = descricao;
     }
 
-    public Endereco getEndereco() {
+    public EnderecoFornecedor getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(EnderecoFornecedor endereco) {
         this.endereco = endereco;
     }
 
@@ -132,14 +147,6 @@ public class Fornecedor implements FornecedorInterface {
 
     public void setData(Date data) {
         this.data = data;
-    }
-
-    public List<Produto> getListaProdutos() {
-        return listaProdutos;
-    }
-
-    public void setListaProdutos(List<Produto> listaProdutos) {
-        this.listaProdutos = listaProdutos;
     }
 
 }

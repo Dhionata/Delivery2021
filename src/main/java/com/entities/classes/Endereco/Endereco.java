@@ -1,4 +1,4 @@
-package com.entities.classes;
+package com.entities.classes.Endereco;
 
 import com.entities.interfaces.EnderecoInterface;
 
@@ -27,11 +27,24 @@ public class Endereco implements EnderecoInterface {
         setCoordenaxaY(coordenaxaY);
     }
 
+    public Endereco(Endereco endereco) {
+        setId(endereco.getId());
+        setLogradouro(endereco.getLogradouro());
+        setCidade(endereco.getCidade());
+        setBairro(endereco.getBairro());
+        setComplemento(endereco.getComplemento());
+        setCep(endereco.getCep());
+        setNumero(endereco.getNumero());
+        setCoordenadaX(endereco.getCoordenadaX());
+        setCoordenaxaY(endereco.getCoordenaxaY());
+    }
+
     @Override
     public String toString() {
-        return "\n-- Endereço--\nBairro: " + bairro + "\nCep: " + cep + "\nCidade: " + cidade + "\nComplemento: "
-                + complemento + "\nCoordenada-X:" + coordenadaX + "\nCoordenaxa-Y:" + coordenaxaY + "\nID: " + id
-                + "\nLogradouro: " + logradouro + "\nNumero: " + numero;
+        return "\n-- Endereço--\nID: " + getId() + "\nBairro: " + getBairro() + "\nCep: " + getCep() + "\nCidade: "
+                + getCidade() + "\nComplemento: " + getComplemento() + "\nCoordenada-X:" + getCoordenadaX()
+                + "\nCoordenaxa-Y:" + getCoordenaxaY() + "\nLogradouro: " + getLogradouro() + "\nNumero: "
+                + getNumero();
     }
 
     // Getters/Setters

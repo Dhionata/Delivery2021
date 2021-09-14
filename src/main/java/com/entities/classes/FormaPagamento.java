@@ -10,13 +10,11 @@ public class FormaPagamento implements FormaPagamentoInterface {
     public FormaPagamento(int id, String nomeForma) {
         setId(id);
         setNomeForma(nomeForma);
-
     }
 
     @Override
     public String toString() {
-        return "\n-- FormaPagamento --\nID: " + getId() + "\nNome da forma de pagamento: " + getNomeForma()
-                + "\nID do Pedido: ";
+        return "\n-- FormaPagamento --\nID: " + getId() + "\nNome da forma de pagamento: " + getNomeForma();
     }
 
     @Override

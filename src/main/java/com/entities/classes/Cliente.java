@@ -1,9 +1,11 @@
 package com.entities.classes;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.entities.classes.Telefone.Telefone;
+import com.entities.classes.Endereco.EnderecoCliente;
+import com.entities.classes.Telefone.TelefoneCliente;
 import com.entities.interfaces.ClienteInterface;
 
 public class Cliente implements ClienteInterface {
@@ -13,7 +15,8 @@ public class Cliente implements ClienteInterface {
     private String email;
     private String senha;
     private Date data;
-    private Telefone telefone;
+    private List<TelefoneCliente> listaTelefone = new ArrayList<TelefoneCliente>();
+    private List<EnderecoCliente> listaEndereco = new ArrayList<EnderecoCliente>();
 
     public Cliente(int id, String nome, String cnpjCpf, String email, String senha) {
         setId(id);
@@ -26,20 +29,20 @@ public class Cliente implements ClienteInterface {
 
     @Override
     public String toString() {
-        return "\n--Cliente--\nCNPJ/CPF: " + getCnpjCpf() + "\nNome: " + getNome() + "\nData: " + getData()
-                + "\nEmail: " + getEmail() + "\nID: " + getId() + "\nSenha: " + getSenha() + getTelefone();
+        return "\n--Cliente--\nID: " + getId() + "\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: "
+                + getData() + "\nEmail: " + getEmail() + "\nSenha: " + getSenha() + "\n-- Lista de telefones --"
+                + getListaTelefone() + "\n-- Lista de Endereços --" + getListaEndereco();
+    }
+
+    // verificar funcionalidade.
+    @Override
+    public void cadastrarEndereco(EnderecoCliente endereco) {
+        getListaEndereco().add(endereco);
     }
 
     @Override
-    public void cadastrarEndereco(Endereco endereco) {
+    public void removeEndereco() {
         // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void removeEndereco(Endereco endereco) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -54,14 +57,27 @@ public class Cliente implements ClienteInterface {
 
     }
 
+    @Override
+    public void adicionarTelefone(TelefoneCliente telefone) {
+        getListaTelefone().add(telefone);
+
+    }
     // Getters/Setters
 
-    public Telefone getTelefone() {
-        return telefone;
+    public List<TelefoneCliente> getListaTelefone() {
+        return listaTelefone;
     }
 
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
+    public void setListaTelefone(List<TelefoneCliente> telefone) {
+        this.listaTelefone = telefone;
+    }
+
+    public List<EnderecoCliente> getListaEndereco() {
+        return listaEndereco;
+    }
+
+    public void setListaEndereco(List<EnderecoCliente> endereco) {
+        this.listaEndereco = endereco;
     }
 
     public int getId() {
