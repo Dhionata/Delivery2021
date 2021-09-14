@@ -14,9 +14,8 @@ public class Endereco implements EnderecoInterface {
     private float coordenadaX;
     private float coordenaxaY;
 
-    public Endereco(int id, String logradouro, String cidade, String bairro, String complemento, String cep,
+    public Endereco(String logradouro, String cidade, String bairro, String complemento, String cep,
             String numero, float coordenadaX, float coordenaxaY) {
-        setId(id);
         setLogradouro(logradouro);
         setCidade(cidade);
         setBairro(bairro);

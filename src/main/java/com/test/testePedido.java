@@ -9,17 +9,17 @@ import com.entities.classes.Produto;
 public class testePedido {
     public static void main(String[] args) {
 
-        FormaPagamento formaPagamento = new FormaPagamento(200, "Débito");
+        FormaPagamento formaPagamento = new FormaPagamento("Débito");
 
-        Cliente cliente = new Cliente(54, "NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
+        Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
 
-        Produto produto = new Produto(67, "Abacate");
-        Produto produto2 = new Produto(70, "Laranja");
+        Produto produto = new Produto("Abacate");
+        Produto produto2 = new Produto("Laranja");
 
-        Pedido pedido = new Pedido(98, cliente, formaPagamento, 7.00f, false, false);
+        Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
 
-        ItemPedido itemPedido = new ItemPedido(17, pedido, produto, 4);
-        ItemPedido itemPedido2 = new ItemPedido(18, pedido, produto2, 8);
+        ItemPedido itemPedido = new ItemPedido(pedido, produto, 4);
+        ItemPedido itemPedido2 = new ItemPedido(pedido, produto2, 8);
 
         pedido.addItemPedido(itemPedido);
         pedido.addItemPedido(itemPedido2);

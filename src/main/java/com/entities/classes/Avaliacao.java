@@ -8,8 +8,7 @@ public class Avaliacao implements AvaliacaoInterface {
     private Pedido pedido;
     private String comentario;
 
-    public Avaliacao(int id, int nota, Pedido pedido, String comentario) {
-        setId(id);
+    public Avaliacao(int nota, Pedido pedido, String comentario) {
         setNota(nota);
         setPedido(pedido);
         setComentario(comentario);
@@ -17,7 +16,8 @@ public class Avaliacao implements AvaliacaoInterface {
 
     @Override
     public String toString() {
-        return "\n--Avaliacao--\nID: " + id + "\nComentário: " + comentario + "\nNota: " + nota + "\nPedido: " + pedido;
+        return "\n--Avaliacao--\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
+                + "\nPedido: " + getPedido();
     }
 
     // Getters/Setters

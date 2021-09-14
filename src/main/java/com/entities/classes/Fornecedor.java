@@ -18,8 +18,7 @@ public class Fornecedor implements FornecedorInterface {
     private List<ProdutoFornecedor> listaProdutos;
     private List<TelefoneFornecedor> listaTelefones;
 
-    public Fornecedor(int id, String nome, String descricao, String cnpjCpf) {
-        setId(id);
+    public Fornecedor(String nome, String descricao, String cnpjCpf) {
         setNome(nome);
         setDescricao(descricao);
         setEndereco(endereco);

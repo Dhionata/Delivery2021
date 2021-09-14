@@ -18,9 +18,7 @@ public class Pedido implements PedidoInterface {
     private Boolean entregue;
     private Date data;
 
-    public Pedido(int id, Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago,
-            Boolean entregue) {
-        setId(id);
+    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
         setDesconto(desconto);

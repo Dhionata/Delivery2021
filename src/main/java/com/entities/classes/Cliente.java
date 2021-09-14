@@ -18,8 +18,7 @@ public class Cliente implements ClienteInterface {
     private List<TelefoneCliente> listaTelefone = new ArrayList<TelefoneCliente>();
     private List<EnderecoCliente> listaEndereco = new ArrayList<EnderecoCliente>();
 
-    public Cliente(int id, String nome, String cnpjCpf, String email, String senha) {
-        setId(id);
+    public Cliente(String nome, String cnpjCpf, String email, String senha) {
         setNome(nome);
         setCnpjCpf(cnpjCpf);
         setEmail(email);

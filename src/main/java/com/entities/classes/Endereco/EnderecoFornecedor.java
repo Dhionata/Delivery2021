@@ -6,10 +6,10 @@ public class EnderecoFornecedor extends Endereco {
 
     private Fornecedor fornecedor;
 
-    public EnderecoFornecedor(int id, Fornecedor fornecedor, String logradouro, String cidade, String bairro,
+    public EnderecoFornecedor(Fornecedor fornecedor, String logradouro, String cidade, String bairro,
             String complemento, String cep, String numero, float coordenadaX, float coordenaxaY) {
 
-        super(id, logradouro, cidade, bairro, complemento, cep, numero, coordenadaX, coordenaxaY);
+        super(logradouro, cidade, bairro, complemento, cep, numero, coordenadaX, coordenaxaY);
         setFornecedor(fornecedor);
     }
 

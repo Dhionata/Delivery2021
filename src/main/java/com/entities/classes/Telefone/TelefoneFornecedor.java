@@ -6,13 +6,8 @@ public class TelefoneFornecedor extends Telefone {
 
     Fornecedor fornecedor;
 
-    public TelefoneFornecedor(Fornecedor fornecedor, int id, String numero) {
-        super(id, numero);
-        setFornecedor(fornecedor);
-    }
-
-    public TelefoneFornecedor(Fornecedor fornecedor, Telefone telefone) {
-        super(telefone);
+    public TelefoneFornecedor(Fornecedor fornecedor, String numero) {
+        super(numero);
         setFornecedor(fornecedor);
     }
 

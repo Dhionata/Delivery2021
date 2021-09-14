@@ -11,8 +11,7 @@ public class Produto implements ProdutoInterface {
     private List<ProdutoFornecedor> listaFornecedores;
     private boolean disponivel;
 
-    public Produto(int id, String nome) {
-        setId(id);
+    public Produto(String nome) {
         setNome(nome);
         setDisponivel(true);
     }

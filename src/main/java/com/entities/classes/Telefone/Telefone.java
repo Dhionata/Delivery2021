@@ -5,8 +5,7 @@ public class Telefone {
     private int id;
     private String numero;
 
-    public Telefone(int id, String numero) {
-        setId(id);
+    public Telefone(String numero) {
         setNumero(numero);
     }
 

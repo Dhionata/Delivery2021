@@ -6,9 +6,9 @@ public class EnderecoCliente extends Endereco {
 
     private Cliente cliente;
 
-    public EnderecoCliente(int id, Cliente cliente, String logradouro, String cidade, String bairro, String complemento,
+    public EnderecoCliente(Cliente cliente, String logradouro, String cidade, String bairro, String complemento,
             String cep, String numero, float coordenadaX, float coordenaxaY) {
-        super(id, logradouro, cidade, bairro, complemento, cep, numero, coordenadaX, coordenaxaY);
+        super(logradouro, cidade, bairro, complemento, cep, numero, coordenadaX, coordenaxaY);
         setCliente(cliente);
     }
 

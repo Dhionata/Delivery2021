@@ -7,8 +7,7 @@ public class FormaPagamento implements FormaPagamentoInterface {
     private int id;
     private String nomeForma;
 
-    public FormaPagamento(int id, String nomeForma) {
-        setId(id);
+    public FormaPagamento(String nomeForma) {
         setNomeForma(nomeForma);
     }
 

@@ -10,8 +10,7 @@ public class ItemPedido implements ItemPedidoInterface {
     private Produto produto;
     private int quantidade;
 
-    public ItemPedido(int id, Pedido pedido, Produto produto, int quantidade) {
-        setId(id);
+    public ItemPedido(Pedido pedido, Produto produto, int quantidade) {
         setPedido(pedido);
         setProduto(produto);
         setQuantidade(quantidade);
