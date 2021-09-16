@@ -1,6 +1,7 @@
 package com.entities.classes;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import com.entities.interfaces.ProdutoInterface;
 
@@ -8,7 +9,7 @@ public class Produto implements ProdutoInterface {
 
     private int id;
     private String nome;
-    private List<ProdutoFornecedor> listaFornecedores;
+    private List<ProdutoFornecedor> listaFornecedores = new ArrayList<ProdutoFornecedor>();
     private boolean disponivel;
 
     public Produto(String nome) {
@@ -18,12 +19,19 @@ public class Produto implements ProdutoInterface {
 
     @Override
     public String toString() {
-        return "\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nFornecedor: " + getNomeDoFornecedor()
-                + "\nDisponibilidade: " + getDisponivel();
+        return "\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
+                + getListaFornecedores().toString() + "\nDisponibilidade: " + getDisponivel();
     }
 
-    private String getNomeDoFornecedor() {
-        return null;
+    /*
+     * public void adicionarProduto(ProdutoFornecedor produtoFornecedor) {
+     * produtoFornecedor.setFornecedor(this);
+     * getListaProdutos().add(produtoFornecedor); }
+     */
+
+    public void adicionarFornecedor(ProdutoFornecedor produtoFornecedor) {
+        produtoFornecedor.setProduto(this);
+        getListaFornecedores().add(produtoFornecedor);
     }
 
     // Getters/Setters

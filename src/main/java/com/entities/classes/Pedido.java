@@ -17,6 +17,7 @@ public class Pedido implements PedidoInterface {
     private Boolean pago;
     private Boolean entregue;
     private Date data;
+    private Avaliacao avaliacao;
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
         setCliente(cliente);
@@ -30,9 +31,9 @@ public class Pedido implements PedidoInterface {
 
     @Override
     public String toString() {
-        return "\n-- Pedido -- \nID: " + getId() + getCliente() + "\nData: " + getData() + "\nDesconto: "
+        return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData()+ "\nDesconto: "
                 + getDesconto() + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: "
-                + getPago();
+                + getPago()  + getCliente() + getAvaliacao();
     }
 
     @Override
@@ -56,6 +57,14 @@ public class Pedido implements PedidoInterface {
     }
 
     // Getters/Setters
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
+    }
 
     public List<ItemPedido> getItensPedido() {
         return itensPedido;

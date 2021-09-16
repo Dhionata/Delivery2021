@@ -9,6 +9,7 @@ public class TelefoneFornecedor extends Telefone {
     public TelefoneFornecedor(Fornecedor fornecedor, String numero) {
         super(numero);
         setFornecedor(fornecedor);
+        fornecedor.adicionarTelefone(this);
     }
 
     @Override

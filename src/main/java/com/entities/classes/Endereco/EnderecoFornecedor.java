@@ -11,6 +11,13 @@ public class EnderecoFornecedor extends Endereco {
 
         super(logradouro, cidade, bairro, complemento, cep, numero, coordenadaX, coordenaxaY);
         setFornecedor(fornecedor);
+        fornecedor.setEndereco(this);
+    }
+
+    public EnderecoFornecedor(Fornecedor fornecedor, Endereco endereco) {
+        super(endereco);
+        setFornecedor(fornecedor);
+        fornecedor.setEndereco(this);
     }
 
     public Fornecedor getFornecedor() {

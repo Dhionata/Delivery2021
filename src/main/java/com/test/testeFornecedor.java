@@ -13,21 +13,8 @@ public class testeFornecedor {
         EnderecoFornecedor enderecoFornecedor = new EnderecoFornecedor(fornecedor, "Anhanguera", "Goiânia", "Cerrado",
                 "Q.0, L.0", "0000000-00", "S/N", 0.000000F, 0.000000F);
 
-        /* List<Produto> produtos = new ArrayList<Produto>(); */
-
-        /*
-         * for (int i = 0; i <= 10; i++) { Produto p = new Produto(i, "NomeAleatório>" +
-         * Math.pow(i, 3), fornecedor, 0.42F * i, 100 * i); produtos.add(p); }
-         */
-
-        /* fornecedor.adicionarProduto(produtos); */
-
-        // (Produto produto, Fornecedor fornecedor, Float preco, int
-        // quantidadeEmEstoque)
         fornecedor.adicionarProduto(new ProdutoFornecedor(new Produto("Mamão"), fornecedor, 0.15f, 3));
         fornecedor.setEndereco(enderecoFornecedor);
         System.out.println(fornecedor.toString());
     }
 }
-// public Produto(int id, String nome, Fornecedor idFornecedor, Float preco,
-// Boolean disponivel, int quantidadeEmEstoque)

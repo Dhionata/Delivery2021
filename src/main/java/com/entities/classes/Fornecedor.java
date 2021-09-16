@@ -1,5 +1,6 @@
 package com.entities.classes;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class Fornecedor implements FornecedorInterface {
     private EnderecoFornecedor endereco;
     private String cnpjCpf;
     private Date data;
-    private List<ProdutoFornecedor> listaProdutos;
-    private List<TelefoneFornecedor> listaTelefones;
+    private List<ProdutoFornecedor> listaProdutos = new ArrayList<ProdutoFornecedor>();
+    private List<TelefoneFornecedor> listaTelefones = new ArrayList<TelefoneFornecedor>();
 
     public Fornecedor(String nome, String descricao, String cnpjCpf) {
         setNome(nome);
@@ -34,15 +35,14 @@ public class Fornecedor implements FornecedorInterface {
     }
 
     @Override
-    public void adicionarProduto(ProdutoFornecedor produto) {
-        getListaProdutos().add(produto);
-
+    public void adicionarProduto(ProdutoFornecedor produtoFornecedor) {
+        produtoFornecedor.setFornecedor(this);
+        getListaProdutos().add(produtoFornecedor);
     }
 
     @Override
     public void adicionarTelefone(TelefoneFornecedor telefone) {
         getListaTelefones().add(telefone);
-
     }
 
     @Override

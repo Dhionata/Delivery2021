@@ -19,13 +19,16 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
         setPreco(preco);
         setQuantidadeEmEstoque(quantidadeEmEstoque);
         setDataCadastro(new Date());
+        fornecedor.adicionarProduto(this);
+        produto.adicionarFornecedor(this);
     }
 
     @Override
     public String toString() {
-        return "\n-- ProdutoFornecedor --\nData de atualização: " + getDataAtualizacao() + "\nData de cadastro: "
-                + getDataCadastro() + "\nFornecedor: " + getFornecedor() + "\nID: " + getId() + "\nPreço: " + getPreco()
-                + "\nProduto: " + getProduto() + "\nQuantidade em estoque: " + getQuantidadeEmEstoque();
+        return "\n-- ProdutoFornecedor --\nID: " + getId() + "\nData de atualização: " + getDataAtualizacao()
+                + "\nData de cadastro: " + getDataCadastro() + "\nFornecedor: " + getFornecedor().getNome()
+                + "\nProduto: " + getProduto().getNome() + "\nQuantidade em estoque: " + getQuantidadeEmEstoque()
+                + "\nPreço: " + getPreco();
     }
 
     @Override

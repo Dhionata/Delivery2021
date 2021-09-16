@@ -10,11 +10,13 @@ public class EnderecoCliente extends Endereco {
             String cep, String numero, float coordenadaX, float coordenaxaY) {
         super(logradouro, cidade, bairro, complemento, cep, numero, coordenadaX, coordenaxaY);
         setCliente(cliente);
+        cliente.cadastrarEndereco(this);
     }
 
     public EnderecoCliente(Endereco endereco, Cliente cliente) {
         super(endereco);
         setCliente(cliente);
+        cliente.cadastrarEndereco(this);
     }
 
     public Cliente getCliente() {

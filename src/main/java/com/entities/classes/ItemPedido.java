@@ -14,6 +14,7 @@ public class ItemPedido implements ItemPedidoInterface {
         setPedido(pedido);
         setProduto(produto);
         setQuantidade(quantidade);
+        pedido.getItensPedido().add(this);
     }
 
     @Override

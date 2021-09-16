@@ -12,12 +12,13 @@ public class Avaliacao implements AvaliacaoInterface {
         setNota(nota);
         setPedido(pedido);
         setComentario(comentario);
+        pedido.setAvaliacao(this);
     }
 
     @Override
     public String toString() {
-        return "\n--Avaliacao--\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
-                + "\nPedido: " + getPedido();
+        return "\n-- Avaliacao --\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
+                + "\nID do Pedido: " + getPedido().getId();
     }
 
     // Getters/Setters
