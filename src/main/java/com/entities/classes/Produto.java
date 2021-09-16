@@ -9,12 +9,13 @@ public class Produto implements ProdutoInterface {
 
     private int id;
     private String nome;
-    private List<ProdutoFornecedor> listaFornecedores = new ArrayList<ProdutoFornecedor>();
+    private List<ProdutoFornecedor> listaFornecedores;
     private boolean disponivel;
 
     public Produto(String nome) {
         setNome(nome);
         setDisponivel(true);
+        setListaFornecedores(new ArrayList<ProdutoFornecedor>());
     }
 
     @Override

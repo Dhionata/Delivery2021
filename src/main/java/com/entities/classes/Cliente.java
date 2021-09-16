@@ -15,8 +15,8 @@ public class Cliente implements ClienteInterface {
     private String email;
     private String senha;
     private Date data;
-    private List<TelefoneCliente> listaTelefone = new ArrayList<TelefoneCliente>();
-    private List<EnderecoCliente> listaEndereco = new ArrayList<EnderecoCliente>();
+    private List<TelefoneCliente> listaTelefone;
+    private List<EnderecoCliente> listaEndereco;
 
     public Cliente(String nome, String cnpjCpf, String email, String senha) {
         setNome(nome);
@@ -24,6 +24,8 @@ public class Cliente implements ClienteInterface {
         setEmail(email);
         setSenha(senha);
         setData(new Date());
+        setListaTelefone(new ArrayList<TelefoneCliente>());
+        setListaEndereco(new ArrayList<EnderecoCliente>());
     }
 
     @Override

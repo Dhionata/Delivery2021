@@ -16,8 +16,8 @@ public class Fornecedor implements FornecedorInterface {
     private EnderecoFornecedor endereco;
     private String cnpjCpf;
     private Date data;
-    private List<ProdutoFornecedor> listaProdutos = new ArrayList<ProdutoFornecedor>();
-    private List<TelefoneFornecedor> listaTelefones = new ArrayList<TelefoneFornecedor>();
+    private List<ProdutoFornecedor> listaProdutos;
+    private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf) {
         setNome(nome);
@@ -25,6 +25,8 @@ public class Fornecedor implements FornecedorInterface {
         setEndereco(endereco);
         setCnpjCpf(cnpjCpf);
         setData(new Date());
+        setListaProdutos(new ArrayList<ProdutoFornecedor>());
+        setListaTelefones(new ArrayList<TelefoneFornecedor>());
     }
 
     @Override
