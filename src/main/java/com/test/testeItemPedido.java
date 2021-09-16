@@ -28,7 +28,7 @@ public class testeItemPedido {
         itensPedido.add(itemPedido);
         itensPedido.add(itemPedido2);
 
-        System.out.println(cliente.toString());
+        System.out.println(itensPedido.toString());
 
     }
 

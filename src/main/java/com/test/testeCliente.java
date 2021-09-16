@@ -9,7 +9,6 @@ public class testeCliente {
         Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
         Endereco endereco = new Endereco("logradouro", "cidade", "bairro", "complemento", "cep", "numero", 0f, 0f);
         EnderecoCliente enderecoCliente = new EnderecoCliente(endereco, cliente);
-        cliente.cadastrarEndereco(enderecoCliente);
 
         System.out.println(cliente.toString());
     }

@@ -21,9 +21,6 @@ public class testePedido {
         ItemPedido itemPedido = new ItemPedido(pedido, produto, 4);
         ItemPedido itemPedido2 = new ItemPedido(pedido, produto2, 8);
 
-        pedido.addItemPedido(itemPedido);
-        pedido.addItemPedido(itemPedido2);
-
         System.out.println(pedido.toString());
 
     }

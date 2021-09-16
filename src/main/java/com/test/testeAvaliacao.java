@@ -13,10 +13,8 @@ public class testeAvaliacao {
         Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
 
         Avaliacao avaliacao = new Avaliacao(5, pedido, "teste de comentário");
-        
+
         System.out.println(avaliacao.toString());
-        
-        pedido.setAvaliacao(avaliacao);
         System.out.println(pedido.toString());
     }
 }

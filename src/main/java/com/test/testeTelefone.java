@@ -14,18 +14,12 @@ public class testeTelefone {
         TelefoneCliente telefoneDoCliente = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
         TelefoneCliente telefoneDoCliente2 = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
 
-        cliente.getListaTelefone().add(telefoneDoCliente);
-        cliente.adicionarTelefone(telefoneDoCliente2);
-
         System.out.println(cliente.toString());
 
         // fornecedor
         Fornecedor fornecedor = new Fornecedor("NomeFornecedorTeste", "O Allan é gay", "123.456.789-12");
         TelefoneFornecedor telefoneFornecedor = new TelefoneFornecedor(fornecedor, "(ii)thhhh-hhhh");
         TelefoneFornecedor telefoneDoFornecedor = new TelefoneFornecedor(fornecedor, "(yy)qaaaa-zzzz");
-
-        fornecedor.adicionarTelefone(telefoneFornecedor);
-        fornecedor.adicionarTelefone(telefoneDoFornecedor);
 
         System.out.println(fornecedor.toString());
     }

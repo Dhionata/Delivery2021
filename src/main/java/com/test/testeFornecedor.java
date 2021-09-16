@@ -14,7 +14,6 @@ public class testeFornecedor {
                 "Q.0, L.0", "0000000-00", "S/N", 0.000000F, 0.000000F);
 
         fornecedor.adicionarProduto(new ProdutoFornecedor(new Produto("Mamão"), fornecedor, 0.15f, 3));
-        fornecedor.setEndereco(enderecoFornecedor);
         System.out.println(fornecedor.toString());
     }
 }
