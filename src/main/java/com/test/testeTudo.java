@@ -19,10 +19,10 @@ public class testeTudo {
         // telefones
         TelefoneCliente telefoneDoCliente = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
         TelefoneCliente telefoneDoCliente2 = new TelefoneCliente(cliente, "(xx)ydddd-dddd");
-
         TelefoneFornecedor telefoneFornecedor = new TelefoneFornecedor(fornecedor, "(ii)thhhh-hhhh");
         TelefoneFornecedor telefoneDoFornecedor = new TelefoneFornecedor(fornecedor, "(yy)qaaaa-zzzz");
 
+        // prdutos
         Produto produto = new Produto("Abacate");
         Produto produto2 = new Produto("Laranja");
 
@@ -36,9 +36,11 @@ public class testeTudo {
         // pedido
         Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
 
+        // itens do pedido
         ItemPedido itemPedido = new ItemPedido(pedido, produto, 5);
         ItemPedido itemPedido2 = new ItemPedido(pedido, produto2, 6);
 
+        // avaliaçao
         Avaliacao avaliacao = new Avaliacao(5, pedido, "teste de comentário");
 
         System.out.println(pedido.toString());
