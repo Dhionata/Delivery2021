@@ -9,13 +9,13 @@ public class TelefoneFornecedor extends Telefone {
     public TelefoneFornecedor(Fornecedor fornecedor, String numero) {
         super(numero);
         setFornecedor(fornecedor);
-        fornecedor.adicionarTelefone(this);
+        getFornecedor().adicionarTelefone(this);
     }
 
     @Override
     public String toString() {
         return "\n-- Telefone do fornecedor --\nNúmero: " + super.getNumero() + "\nID: " + super.getId()
-                + "\nID do fornecedor: " + getFornecedor();
+                + "\nID do fornecedor: " + getFornecedor().getId();
     }
 
     public Fornecedor getFornecedor() {
