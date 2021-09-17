@@ -1,10 +1,20 @@
 package com.entities.classes;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
 import com.entities.interfaces.AvaliacaoInterface;
 
+@Entity
 public class Avaliacao implements AvaliacaoInterface {
+    @Id
+    @GeneratedValue
     private int id;
     private int nota;
+    @JoinColumn(name = "id_pedido")
     private Pedido pedido;
     private String comentario;
 
@@ -12,7 +22,7 @@ public class Avaliacao implements AvaliacaoInterface {
         setNota(nota);
         setPedido(pedido);
         setComentario(comentario);
-        pedido.setAvaliacao(this);
+        getPedido().setAvaliacao(this);
     }
 
     @Override

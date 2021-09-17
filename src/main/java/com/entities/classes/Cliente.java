@@ -4,11 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import com.entities.classes.Endereco.EnderecoCliente;
 import com.entities.classes.Telefone.TelefoneCliente;
 import com.entities.interfaces.ClienteInterface;
 
+@Entity
 public class Cliente implements ClienteInterface {
+    @Id
+    @GeneratedValue
     private int id;
     private String nome;
     private String cnpjCpf;
@@ -42,7 +49,7 @@ public class Cliente implements ClienteInterface {
     }
 
     @Override
-    public void removeEndereco() {
+    public void removeEndereco(EnderecoCliente endereco) {
         // TODO Auto-generated method stub
     }
 
@@ -53,7 +60,7 @@ public class Cliente implements ClienteInterface {
     }
 
     @Override
-    public void listaPedido(List<Pedido> pedidos) {
+    public void listaPedidos(List<Pedido> pedidos) {
         // TODO Auto-generated method stub
 
     }

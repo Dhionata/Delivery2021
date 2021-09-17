@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import com.entities.classes.Endereco.EnderecoFornecedor;
 import com.entities.classes.Telefone.TelefoneFornecedor;
 import com.entities.interfaces.FornecedorInterface;
 
+@Entity
 public class Fornecedor implements FornecedorInterface {
-
+    @Id
+    @GeneratedValue
     private int id;
     private String nome;
     private String descricao;
@@ -54,7 +60,7 @@ public class Fornecedor implements FornecedorInterface {
     }
 
     @Override
-    public void removeProduto(Produto produto) {
+    public void removeProduto(ProdutoFornecedor produto) {
         // TODO Auto-generated method stub
 
     }

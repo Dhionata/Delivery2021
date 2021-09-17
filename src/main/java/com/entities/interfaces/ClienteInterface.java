@@ -11,9 +11,10 @@ public interface ClienteInterface {
 
     public void adicionarTelefone(TelefoneCliente telefone);
 
-    public void removeEndereco();
+    public void removeEndereco(EnderecoCliente endereco);
 
     public boolean realizarPagamento(Float valor);
 
-    public void listaPedido(List<Pedido> pedidos);
+    // verificar!
+    public void listaPedidos(List<Pedido> pedidos);
 }

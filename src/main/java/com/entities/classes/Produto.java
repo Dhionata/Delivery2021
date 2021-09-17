@@ -1,12 +1,19 @@
 package com.entities.classes;
 
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import java.util.ArrayList;
 
 import com.entities.interfaces.ProdutoInterface;
 
+@Entity
 public class Produto implements ProdutoInterface {
-
+    @Id
+    @GeneratedValue
     private int id;
     private String nome;
     private List<ProdutoFornecedor> listaFornecedores;

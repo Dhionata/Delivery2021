@@ -1,12 +1,21 @@
 
 package com.entities.classes;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
 import com.entities.interfaces.ItemPedidoInterface;
 
+@Entity
 public class ItemPedido implements ItemPedidoInterface {
-
+    @Id
+    @GeneratedValue
     private int id;
+    @JoinColumn(name = "id_pedido")
     private Pedido pedido;
+    @JoinColumn(name = "id_produto")
     private Produto produto;
     private int quantidade;
 
@@ -14,7 +23,7 @@ public class ItemPedido implements ItemPedidoInterface {
         setPedido(pedido);
         setProduto(produto);
         setQuantidade(quantidade);
-        pedido.getItensPedido().add(this);
+        getPedido().getItensPedido().add(this);
     }
 
     @Override

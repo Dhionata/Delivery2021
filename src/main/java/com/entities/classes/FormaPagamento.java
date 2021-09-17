@@ -1,9 +1,15 @@
 package com.entities.classes;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import com.entities.interfaces.FormaPagamentoInterface;
 
+@Entity
 public class FormaPagamento implements FormaPagamentoInterface {
-
+    @Id
+    @GeneratedValue
     private int id;
     private String nomeForma;
 

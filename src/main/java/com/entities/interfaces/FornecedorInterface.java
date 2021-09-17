@@ -1,7 +1,6 @@
 package com.entities.interfaces;
 
 import com.entities.classes.Fornecedor;
-import com.entities.classes.Produto;
 import com.entities.classes.ProdutoFornecedor;
 import com.entities.classes.Telefone.TelefoneFornecedor;
 
@@ -12,12 +11,13 @@ public interface FornecedorInterface {
 
     public boolean confirmarPedido(int idPedido);
 
-    public void removeProduto(Produto produto);
+    public void removeProduto(ProdutoFornecedor produto);
 
     public void confirmarEntrega(int idPedido);
 
     public void atualizarStatusPedido(int idPedido);
 
+    // Verificar!
     public Fornecedor buscarFornecedor(String nome);
 
     public boolean confirmarEstoque(int quantidadeEmEstoque);

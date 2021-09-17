@@ -4,19 +4,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
 import com.entities.interfaces.PedidoInterface;
 
+@Entity
 public class Pedido implements PedidoInterface {
-
+    @Id
+    @GeneratedValue
     private int id;
-    private Cliente cliente;
-    private FormaPagamento formaPagamento;
     private List<ItemPedido> itensPedido;
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+    @JoinColumn(name = "id_formaPagamento")
+    private FormaPagamento formaPagamento;
     private Float desconto;
 
     private Boolean pago;
     private Boolean entregue;
     private Date data;
+    @JoinColumn(name = "id_avaliacao")
     private Avaliacao avaliacao;
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
@@ -31,9 +41,9 @@ public class Pedido implements PedidoInterface {
 
     @Override
     public String toString() {
-        return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData()+ "\nDesconto: "
-                + getDesconto() + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: "
-                + getPago()  + getCliente() + getAvaliacao();
+        return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
+                + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: " + getPago()
+                + getCliente() + getAvaliacao();
     }
 
     @Override

@@ -2,11 +2,21 @@ package com.entities.classes;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
 import com.entities.interfaces.ProdutoFornecedorInterface;
 
+@Entity
 public class ProdutoFornecedor implements ProdutoFornecedorInterface {
+    @Id
+    @GeneratedValue
     private int id;
+    @JoinColumn(name = "id_produto")
     private Produto produto;
+    @JoinColumn(name = "id_fornecedor")
     private Fornecedor fornecedor;
     private Float preco;
     private int quantidadeEmEstoque;
@@ -19,8 +29,8 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
         setPreco(preco);
         setQuantidadeEmEstoque(quantidadeEmEstoque);
         setDataCadastro(new Date());
-        fornecedor.adicionarProduto(this);
-        produto.adicionarFornecedor(this);
+        getFornecedor().adicionarProduto(this);
+        getProduto().adicionarFornecedor(this);
     }
 
     @Override
