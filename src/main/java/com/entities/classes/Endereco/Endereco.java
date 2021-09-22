@@ -1,10 +1,19 @@
 package com.entities.classes.Endereco;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import com.entities.interfaces.EnderecoInterface;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Endereco implements EnderecoInterface {
-
-    private int id;
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String logradouro;
     private String cidade;
     private String bairro;
@@ -14,8 +23,8 @@ public class Endereco implements EnderecoInterface {
     private float coordenadaX;
     private float coordenaxaY;
 
-    public Endereco(String logradouro, String cidade, String bairro, String complemento, String cep,
-            String numero, float coordenadaX, float coordenaxaY) {
+    public Endereco(String logradouro, String cidade, String bairro, String complemento, String cep, String numero,
+            float coordenadaX, float coordenaxaY) {
         setLogradouro(logradouro);
         setCidade(cidade);
         setBairro(bairro);

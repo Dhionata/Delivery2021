@@ -1,4 +1,4 @@
-package com.test;
+package com.test.classes;
 
 import com.entities.classes.*;
 import com.entities.classes.Endereco.*;
@@ -22,6 +22,12 @@ public class testeTudo {
         TelefoneFornecedor telefoneFornecedor = new TelefoneFornecedor(fornecedor, "(ii)thhhh-hhhh");
         TelefoneFornecedor telefoneDoFornecedor = new TelefoneFornecedor(fornecedor, "(yy)qaaaa-zzzz");
 
+        // forma de pagamento
+        FormaPagamento formaPagamento = new FormaPagamento("Débito");
+
+        // pedido
+        Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
+
         // prdutos
         Produto produto = new Produto("Abacate");
         Produto produto2 = new Produto("Laranja");
@@ -29,13 +35,6 @@ public class testeTudo {
         // ligação entre Fornecedor e Produto é FornecedorProduto
         ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(produto, fornecedor, 0.15f, 3);
         ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(produto2, fornecedor, 8.76f, 7);
-
-        // forma de pagamento
-        FormaPagamento formaPagamento = new FormaPagamento("Débito");
-
-        // pedido
-        Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
-
         // itens do pedido
         ItemPedido itemPedido = new ItemPedido(pedido, produto, 5);
         ItemPedido itemPedido2 = new ItemPedido(pedido, produto2, 6);

@@ -1,10 +1,18 @@
 package com.entities.classes.Endereco;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
 import com.entities.classes.Cliente;
 
-
+@Entity
+@PrimaryKeyJoinColumn(name = "id_endereco")
 public class EnderecoCliente extends Endereco {
 
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
     public EnderecoCliente(Cliente cliente, String logradouro, String cidade, String bairro, String complemento,

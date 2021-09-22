@@ -1,9 +1,18 @@
 package com.entities.classes.Endereco;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
 import com.entities.classes.Fornecedor;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "id_endereco")
 public class EnderecoFornecedor extends Endereco {
 
+    @ManyToOne
+    @JoinColumn(name = "id_fornecedor")
     private Fornecedor fornecedor;
 
     public EnderecoFornecedor(Fornecedor fornecedor, String logradouro, String cidade, String bairro,

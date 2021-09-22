@@ -10,7 +10,8 @@ import com.entities.interfaces.FormaPagamentoInterface;
 public class FormaPagamento implements FormaPagamentoInterface {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
+    
     private String nomeForma;
 
     public FormaPagamento(String nomeForma) {
@@ -30,11 +31,11 @@ public class FormaPagamento implements FormaPagamentoInterface {
 
     // Getters/Setters
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.entities.interfaces.ItemPedidoInterface;
 
@@ -12,14 +13,19 @@ import com.entities.interfaces.ItemPedidoInterface;
 public class ItemPedido implements ItemPedidoInterface {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
+
+    @ManyToOne
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
+
+    @ManyToOne
     @JoinColumn(name = "id_produto")
     private Produto produto;
-    private int quantidade;
+    
+    private Integer quantidade;
 
-    public ItemPedido(Pedido pedido, Produto produto, int quantidade) {
+    public ItemPedido(Pedido pedido, Produto produto, Integer quantidade) {
         setPedido(pedido);
         setProduto(produto);
         setQuantidade(quantidade);
@@ -34,11 +40,11 @@ public class ItemPedido implements ItemPedidoInterface {
 
     // Getters/Setters
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,4 +1,4 @@
-package com.test;
+package com.test.classes;
 
 import com.entities.classes.Cliente;
 import com.entities.classes.Fornecedor;

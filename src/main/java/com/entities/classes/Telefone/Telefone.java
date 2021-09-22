@@ -1,8 +1,18 @@
 package com.entities.classes.Telefone;
 
-public class Telefone {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-    private int id;
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Telefone {
+    @Id
+    @GeneratedValue
+    private Integer id;
+    
     private String numero;
 
     public Telefone(String numero) {

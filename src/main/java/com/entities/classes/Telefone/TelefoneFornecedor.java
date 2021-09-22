@@ -1,10 +1,19 @@
 package com.entities.classes.Telefone;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
 import com.entities.classes.Fornecedor;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "id_telefone")
 public class TelefoneFornecedor extends Telefone {
 
-    Fornecedor fornecedor;
+    @ManyToOne
+    @JoinColumn(name = "id_fornecedor")
+    private Fornecedor fornecedor;
 
     public TelefoneFornecedor(Fornecedor fornecedor, String numero) {
         super(numero);

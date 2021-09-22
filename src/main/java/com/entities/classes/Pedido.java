@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.entities.interfaces.PedidoInterface;
 
@@ -15,17 +18,25 @@ import com.entities.interfaces.PedidoInterface;
 public class Pedido implements PedidoInterface {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
+
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itensPedido;
+
+    @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
-    @JoinColumn(name = "id_formaPagamento")
-    private FormaPagamento formaPagamento;
-    private Float desconto;
 
+    @ManyToOne
+    @JoinColumn(name = "id_forma_pagamento")
+    private FormaPagamento formaPagamento;
+
+    private Float desconto;
     private Boolean pago;
     private Boolean entregue;
     private Date data;
+
+    @OneToOne
     @JoinColumn(name = "id_avaliacao")
     private Avaliacao avaliacao;
 
@@ -84,11 +95,11 @@ public class Pedido implements PedidoInterface {
         this.itensPedido = itensPedido;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

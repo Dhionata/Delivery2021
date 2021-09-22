@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.entities.classes.Endereco.EnderecoCliente;
 import com.entities.classes.Telefone.TelefoneCliente;
@@ -16,13 +17,18 @@ import com.entities.interfaces.ClienteInterface;
 public class Cliente implements ClienteInterface {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
+
     private String nome;
     private String cnpjCpf;
     private String email;
     private String senha;
     private Date data;
+
+    @OneToMany(mappedBy = "cliente")
     private List<TelefoneCliente> listaTelefone;
+
+    @OneToMany(mappedBy = "cliente")
     private List<EnderecoCliente> listaEndereco;
 
     public Cliente(String nome, String cnpjCpf, String email, String senha) {

@@ -7,6 +7,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.entities.classes.Endereco.EnderecoFornecedor;
 import com.entities.classes.Telefone.TelefoneFornecedor;
@@ -16,13 +19,21 @@ import com.entities.interfaces.FornecedorInterface;
 public class Fornecedor implements FornecedorInterface {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String nome;
     private String descricao;
+
+    @OneToOne
+    @JoinColumn(name = "id_endereco_fornecedor")
     private EnderecoFornecedor endereco;
+    
     private String cnpjCpf;
     private Date data;
+
+    @OneToMany(mappedBy = "fornecedor")
     private List<ProdutoFornecedor> listaProdutos;
+
+    @OneToMany(mappedBy = "fornecedor")
     private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf) {

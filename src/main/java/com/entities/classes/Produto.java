@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import java.util.ArrayList;
 
@@ -14,9 +15,13 @@ import com.entities.interfaces.ProdutoInterface;
 public class Produto implements ProdutoInterface {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
+
     private String nome;
+
+    @OneToMany(mappedBy = "produto")
     private List<ProdutoFornecedor> listaFornecedores;
+    
     private boolean disponivel;
 
     public Produto(String nome) {
@@ -44,7 +49,7 @@ public class Produto implements ProdutoInterface {
 
     // Getters/Setters
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -64,7 +69,7 @@ public class Produto implements ProdutoInterface {
         this.disponivel = disponivel;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

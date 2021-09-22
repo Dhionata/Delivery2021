@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import com.entities.interfaces.AvaliacaoInterface;
 
@@ -11,13 +12,17 @@ import com.entities.interfaces.AvaliacaoInterface;
 public class Avaliacao implements AvaliacaoInterface {
     @Id
     @GeneratedValue
-    private int id;
-    private int nota;
+    private Integer id;
+
+    private Integer nota;
+    
+    @OneToOne
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
+
     private String comentario;
 
-    public Avaliacao(int nota, Pedido pedido, String comentario) {
+    public Avaliacao(Integer nota, Pedido pedido, String comentario) {
         setNota(nota);
         setPedido(pedido);
         setComentario(comentario);
