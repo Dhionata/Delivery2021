@@ -1,4 +1,4 @@
-package com.Main;
+package com.mainApplication;
 
 import com.test.TesteTudoDB;
 

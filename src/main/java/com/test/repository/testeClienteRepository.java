@@ -1,7 +1,6 @@
 package com.test.repository;
 
 import com.repository.ClienteRepository;
-import com.test.TesteTudoDB;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
