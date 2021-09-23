@@ -41,6 +41,10 @@ public class Cliente implements ClienteInterface {
         setListaEndereco(new ArrayList<EnderecoCliente>());
     }
 
+    public Cliente() {
+
+    }
+
     @Override
     public String toString() {
         return "\n--Cliente--\nID: " + getId() + "\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: "

@@ -47,6 +47,9 @@ public class Endereco implements EnderecoInterface {
         setCoordenaxaY(endereco.getCoordenaxaY());
     }
 
+    public Endereco() {
+    }
+
     @Override
     public String toString() {
         return "\n-- Endereço--\nID: " + getId() + "\nBairro: " + getBairro() + "\nCep: " + getCep() + "\nCidade: "

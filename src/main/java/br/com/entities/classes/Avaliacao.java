@@ -15,7 +15,7 @@ public class Avaliacao implements AvaliacaoInterface {
     private Integer id;
 
     private Integer nota;
-    
+
     @OneToOne
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
@@ -27,6 +27,10 @@ public class Avaliacao implements AvaliacaoInterface {
         setPedido(pedido);
         setComentario(comentario);
         getPedido().setAvaliacao(this);
+    }
+
+    public Avaliacao() {
+
     }
 
     @Override

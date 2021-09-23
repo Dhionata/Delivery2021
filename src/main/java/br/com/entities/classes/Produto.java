@@ -21,13 +21,17 @@ public class Produto implements ProdutoInterface {
 
     @OneToMany(mappedBy = "produto")
     private List<ProdutoFornecedor> listaFornecedores;
-    
+
     private boolean disponivel;
 
     public Produto(String nome) {
         setNome(nome);
         setDisponivel(true);
         setListaFornecedores(new ArrayList<ProdutoFornecedor>());
+    }
+
+    public Produto() {
+
     }
 
     @Override

@@ -21,7 +21,7 @@ public class ItemPedido implements ItemPedidoInterface {
     @ManyToOne
     @JoinColumn(name = "id_produto")
     private Produto produto;
-    
+
     private Integer quantidade;
 
     public ItemPedido(Pedido pedido, Produto produto, Integer quantidade) {
@@ -29,6 +29,10 @@ public class ItemPedido implements ItemPedidoInterface {
         setProduto(produto);
         setQuantidade(quantidade);
         getPedido().getItensPedido().add(this);
+    }
+
+    public ItemPedido() {
+
     }
 
     @Override

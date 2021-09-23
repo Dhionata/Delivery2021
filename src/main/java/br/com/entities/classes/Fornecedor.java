@@ -26,7 +26,7 @@ public class Fornecedor implements FornecedorInterface {
     @OneToOne
     @JoinColumn(name = "id_endereco_fornecedor")
     private EnderecoFornecedor endereco;
-    
+
     private String cnpjCpf;
     private Date data;
 
@@ -44,6 +44,10 @@ public class Fornecedor implements FornecedorInterface {
         setData(new Date());
         setListaProdutos(new ArrayList<ProdutoFornecedor>());
         setListaTelefones(new ArrayList<TelefoneFornecedor>());
+    }
+
+    public Fornecedor() {
+
     }
 
     @Override

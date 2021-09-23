@@ -50,6 +50,10 @@ public class Pedido implements PedidoInterface {
         setData(new Date());
     }
 
+    public Pedido() {
+
+    }
+
     @Override
     public String toString() {
         return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()

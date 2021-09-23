@@ -29,6 +29,9 @@ public class EnderecoFornecedor extends Endereco {
         getFornecedor().setEndereco(this);
     }
 
+    public EnderecoFornecedor() {
+    }
+
     public Fornecedor getFornecedor() {
         return fornecedor;
     }

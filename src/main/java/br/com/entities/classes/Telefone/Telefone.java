@@ -12,7 +12,7 @@ public class Telefone {
     @Id
     @GeneratedValue
     private Integer id;
-    
+
     private String numero;
 
     public Telefone(String numero) {
@@ -22,6 +22,9 @@ public class Telefone {
     public Telefone(Telefone telefone) {
         setId(telefone.getId());
         setNumero(telefone.getNumero());
+    }
+
+    public Telefone() {
     }
 
     @Override

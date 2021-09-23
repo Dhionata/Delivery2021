@@ -21,6 +21,9 @@ public class TelefoneFornecedor extends Telefone {
         getFornecedor().adicionarTelefone(this);
     }
 
+    public TelefoneFornecedor() {
+    }
+
     @Override
     public String toString() {
         return "\n-- Telefone do fornecedor --\nNúmero: " + super.getNumero() + "\nID: " + super.getId()

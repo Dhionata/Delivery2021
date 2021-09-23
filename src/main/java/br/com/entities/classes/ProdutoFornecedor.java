@@ -23,7 +23,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     @ManyToOne
     @JoinColumn(name = "id_fornecedor")
     private Fornecedor fornecedor;
-    
+
     private Float preco;
     private Integer quantidadeEmEstoque;
     private Date dataCadastro;
@@ -37,6 +37,10 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
         setDataCadastro(new Date());
         getFornecedor().adicionarProduto(this);
         getProduto().adicionarFornecedor(this);
+    }
+
+    public ProdutoFornecedor() {
+
     }
 
     @Override

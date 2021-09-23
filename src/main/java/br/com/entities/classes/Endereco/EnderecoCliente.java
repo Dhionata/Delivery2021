@@ -28,6 +28,9 @@ public class EnderecoCliente extends Endereco {
         getCliente().cadastrarEndereco(this);
     }
 
+    public EnderecoCliente() {
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
