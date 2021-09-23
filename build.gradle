@@ -19,28 +19,29 @@ repositories {
 }
 
 dependencies {
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
-implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.4'
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.4'
 
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
-implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.5.4'
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.5.4'
 
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.4'
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.4'
 
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.4'
-
-
-	runtimeOnly 'org.postgresql:postgresql'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
-implementation group: 'org.springframework.boot', name: 'spring-boot', version: '2.5.4'
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.4'
 
 
-	// https://mvnrepository.com/artifact/junit/junit
-testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+		runtimeOnly 'org.postgresql:postgresql'
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+	implementation group: 'org.springframework.boot', name: 'spring-boot', version: '2.5.4'
 
 
+		// https://mvnrepository.com/artifact/junit/junit
+	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+	//implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.4'
 
 	
 }
