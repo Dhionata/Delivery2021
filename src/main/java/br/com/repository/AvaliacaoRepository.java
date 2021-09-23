@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AvaliacaoRepository extends CrudRepository<Avaliacao, Integer> {
 
+    // verificar a possibilidade!
+    /* public Avaliacao findByAvaliacao(Avaliacao avaliacao); */
 }
