@@ -28,7 +28,7 @@ public class Avaliacao implements AvaliacaoInterface {
         setNota(nota);
         setPedido(pedido);
         setComentario(comentario);
-        getPedido().setAvaliacao(this);
+        //getPedido().setAvaliacao(this);
     }
 
     public Avaliacao() {

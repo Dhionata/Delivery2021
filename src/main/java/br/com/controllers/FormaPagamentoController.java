@@ -10,14 +10,16 @@ import br.com.repository.FormaPagamentoRepository;
 
 @RestController
 public class FormaPagamentoController {
+    
     @Autowired
     private FormaPagamentoRepository repository;
 
     @RequestMapping(value = "/formaDePagamento", method = RequestMethod.GET)
-    public Iterable<FormaPagamento> formaDePagamento() {
-        repository.save(new FormaPagamento("Débito"));
+    public String formaDePagamento() {
+        /* repository.save(new FormaPagamento("Débito"));
         repository.save(new FormaPagamento("Fiado"));
         System.out.println("\nTem quantas coisas no repositório??\n" + repository.count());
-        return repository.findAll();
+        return repository.findAll(); */
+        return "oi";
     }
 }

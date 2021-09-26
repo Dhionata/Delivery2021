@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Pedido implements PedidoInterface {
     @GeneratedValue
     private Integer id;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itensPedido;
 
     @ManyToOne
@@ -38,9 +39,8 @@ public class Pedido implements PedidoInterface {
     private Boolean entregue;
     private Date data;
 
-    @OneToOne
-    @JoinColumn(name = "id_avaliacao")
-    private Avaliacao avaliacao;
+    /* @OneToOne(mappedBy = "pedido")
+    private Avaliacao avaliacao; */
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
         setCliente(cliente);
@@ -59,7 +59,7 @@ public class Pedido implements PedidoInterface {
     public String toString() {
         return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: " + getPago()
-                + getCliente() + getAvaliacao();
+                + getCliente(); //getAvaliacao();
     }
 
     @Override
