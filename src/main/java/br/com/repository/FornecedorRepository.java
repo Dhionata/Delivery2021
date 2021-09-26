@@ -1,9 +1,9 @@
 package br.com.repository;
 
-import br.com.entities.classes.Fornecedor;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import br.com.model.entities.classes.Fornecedor;
 
 @Repository
 public interface FornecedorRepository extends CrudRepository<Fornecedor, Integer> {

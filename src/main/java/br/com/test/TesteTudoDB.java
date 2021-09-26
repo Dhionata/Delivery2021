@@ -1,7 +1,7 @@
 package br.com.test;
 
-import br.com.entities.classes.*;
-import br.com.entities.classes.Endereco.EnderecoCliente;
+import br.com.model.entities.classes.*;
+import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.repository.ClienteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
