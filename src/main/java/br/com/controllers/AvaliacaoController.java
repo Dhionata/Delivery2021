@@ -7,7 +7,6 @@ import br.com.model.entities.classes.ItemPedido;
 import br.com.repository.AvaliacaoRepository;
 import br.com.repository.ClienteRepository;
 import br.com.repository.FormaPagamentoRepository;
-import br.com.repository.ItemPedidoRepository;
 import br.com.repository.PedidoRepository;
 import br.com.repository.ProdutoRepository;
 import br.com.model.entities.classes.Pedido;

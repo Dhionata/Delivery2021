@@ -1,5 +1,6 @@
 package br.com.model.entities.classes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,8 +19,8 @@ public class Avaliacao implements AvaliacaoInterface {
 
     private Integer nota;
 
-    @OneToOne
-    @JoinColumn(name = "id_pedido")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
     private Pedido pedido;
 
     private String comentario;
@@ -28,7 +29,7 @@ public class Avaliacao implements AvaliacaoInterface {
         setNota(nota);
         setPedido(pedido);
         setComentario(comentario);
-        //getPedido().setAvaliacao(this);
+        getPedido().setAvaliacao(this);
     }
 
     public Avaliacao() {

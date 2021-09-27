@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +21,7 @@ import lombok.Data;
 @Data
 public class Pedido implements PedidoInterface {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -39,8 +40,8 @@ public class Pedido implements PedidoInterface {
     private Boolean entregue;
     private Date data;
 
-    /* @OneToOne(mappedBy = "pedido")
-    private Avaliacao avaliacao; */
+    @OneToOne(mappedBy = "pedido")
+    private Avaliacao avaliacao;
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
         setCliente(cliente);

@@ -5,6 +5,7 @@ import br.com.model.entities.classes.Endereco.*;
 import br.com.model.entities.classes.Telefone.*;
 
 public class testeTudo {
+
     public static void main(String[] args) {
         // cliente
         Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
