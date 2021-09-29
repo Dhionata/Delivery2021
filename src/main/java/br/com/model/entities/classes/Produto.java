@@ -8,12 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import br.com.model.entities.interfaces.ProdutoInterface;
-import lombok.Data;
 
 import java.util.ArrayList;
 
 @Entity
-@Data
 public class Produto implements ProdutoInterface {
     @Id
     @GeneratedValue
@@ -45,4 +43,38 @@ public class Produto implements ProdutoInterface {
         produtoFornecedor.setProduto(this);
         getListaFornecedores().add(produtoFornecedor);
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<ProdutoFornecedor> getListaFornecedores() {
+        return listaFornecedores;
+    }
+
+    public void setListaFornecedores(List<ProdutoFornecedor> listaFornecedores) {
+        this.listaFornecedores = listaFornecedores;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    
 }

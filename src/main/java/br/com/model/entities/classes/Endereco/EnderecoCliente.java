@@ -6,11 +6,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import br.com.model.entities.classes.Cliente;
-import lombok.Data;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_endereco")
-@Data
 public class EnderecoCliente extends Endereco {
 
     @ManyToOne
@@ -32,4 +30,13 @@ public class EnderecoCliente extends Endereco {
 
     public EnderecoCliente() {
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
 }

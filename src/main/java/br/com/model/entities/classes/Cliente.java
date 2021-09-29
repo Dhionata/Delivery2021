@@ -12,10 +12,8 @@ import javax.persistence.OneToMany;
 import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
 import br.com.model.entities.interfaces.ClienteInterface;
-import lombok.Data;
 
 @Entity
-@Data
 public class Cliente implements ClienteInterface {
     @Id
     @GeneratedValue
@@ -82,4 +80,70 @@ public class Cliente implements ClienteInterface {
         getListaTelefone().add(telefone);
 
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCnpjCpf() {
+        return cnpjCpf;
+    }
+
+    public void setCnpjCpf(String cnpjCpf) {
+        this.cnpjCpf = cnpjCpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public List<TelefoneCliente> getListaTelefone() {
+        return listaTelefone;
+    }
+
+    public void setListaTelefone(List<TelefoneCliente> listaTelefone) {
+        this.listaTelefone = listaTelefone;
+    }
+
+    public List<EnderecoCliente> getListaEndereco() {
+        return listaEndereco;
+    }
+
+    public void setListaEndereco(List<EnderecoCliente> listaEndereco) {
+        this.listaEndereco = listaEndereco;
+    }
+
+
 }

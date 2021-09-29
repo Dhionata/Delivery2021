@@ -43,14 +43,18 @@ public class AvaliacaoController {
         formaPagamentoRepository.save(formaPagamento);
 
         Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
-
         clienteRepository.save(cliente);
 
-        Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
+        Produto produto = new Produto("Abacate");
+        produtoRepository.save(produto);
 
+        Pedido pedido = new Pedido(cliente, formaPagamento, 7.00f, false, false);
         pedidoRepository.save(pedido);
 
-        Avaliacao avaliacao = new Avaliacao(5, pedido, "muito bom");
+        ItemPedido itemPedido = new ItemPedido(pedido, produto, 1);
+        itemPedidoRepository.save(itemPedido);
+
+        Avaliacao avaliacao = new Avaliacao(5, itemPedido, "muito bom");
         repository.save(avaliacao);
 
         return repository.findAll();

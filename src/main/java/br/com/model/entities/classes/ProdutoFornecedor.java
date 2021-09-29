@@ -9,10 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import br.com.model.entities.interfaces.ProdutoFornecedorInterface;
-import lombok.Data;
 
 @Entity
-@Data
 public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     @Id
     @GeneratedValue
@@ -59,33 +57,63 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
         return null;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public void setId(Integer id) {
         this.id = id;
-        setDataAtualizacao(new Date());
+    }
+
+    public Produto getProduto() {
+        return produto;
     }
 
     public void setProduto(Produto produto) {
         this.produto = produto;
-        setDataAtualizacao(new Date());
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
     }
 
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
-        setDataAtualizacao(new Date());
+    }
+
+    public Float getPreco() {
+        return preco;
     }
 
     public void setPreco(Float preco) {
         this.preco = preco;
-        setDataAtualizacao(new Date());
     }
 
-    public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+    public Integer getQuantidadeEmEstoque() {
+        return quantidadeEmEstoque;
+    }
+
+    public void setQuantidadeEmEstoque(Integer quantidadeEmEstoque) {
         this.quantidadeEmEstoque = quantidadeEmEstoque;
-        setDataAtualizacao(new Date());
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
     }
 
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
-        setDataAtualizacao(new Date());
     }
+
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    
+
+
 }

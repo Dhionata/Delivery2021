@@ -14,10 +14,8 @@ import javax.persistence.OneToOne;
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
 import br.com.model.entities.interfaces.FornecedorInterface;
-import lombok.Data;
 
 @Entity
-@Data
 public class Fornecedor implements FornecedorInterface {
     @Id
     @GeneratedValue
@@ -106,4 +104,69 @@ public class Fornecedor implements FornecedorInterface {
         // TODO Auto-generated method stub
         return false;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public EnderecoFornecedor getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoFornecedor endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCnpjCpf() {
+        return cnpjCpf;
+    }
+
+    public void setCnpjCpf(String cnpjCpf) {
+        this.cnpjCpf = cnpjCpf;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public List<ProdutoFornecedor> getListaProdutos() {
+        return listaProdutos;
+    }
+
+    public void setListaProdutos(List<ProdutoFornecedor> listaProdutos) {
+        this.listaProdutos = listaProdutos;
+    }
+
+    public List<TelefoneFornecedor> getListaTelefones() {
+        return listaTelefones;
+    }
+
+    public void setListaTelefones(List<TelefoneFornecedor> listaTelefones) {
+        this.listaTelefones = listaTelefones;
+    }
+
 }

@@ -6,11 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import lombok.Data;
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Data
+
 public class Telefone {
     @Id
     @GeneratedValue
@@ -33,6 +31,22 @@ public class Telefone {
     @Override
     public String toString() {
         return "\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
 }

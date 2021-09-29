@@ -41,7 +41,8 @@ public class testeTudo {
         ItemPedido itemPedido2 = new ItemPedido(pedido, produto2, 6);
 
         // avaliaçao
-        Avaliacao avaliacao = new Avaliacao(5, pedido, "teste de comentário");
+        Avaliacao avaliacao = new Avaliacao(5, itemPedido, "teste de comentário");
+        Avaliacao avaliacao2 = new Avaliacao(4, itemPedido2, "comentário teste de itemPedido2");
 
         System.out.println(pedido.toString());
     }

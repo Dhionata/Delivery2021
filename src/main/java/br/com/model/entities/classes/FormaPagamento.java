@@ -5,10 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import br.com.model.entities.interfaces.FormaPagamentoInterface;
-import lombok.Data;
 
 @Entity
-@Data
 public class FormaPagamento implements FormaPagamentoInterface {
     @Id
     @GeneratedValue
@@ -33,4 +31,22 @@ public class FormaPagamento implements FormaPagamentoInterface {
         // TODO Auto-generated method stub
         return null;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNomeForma() {
+        return nomeForma;
+    }
+
+    public void setNomeForma(String nomeForma) {
+        this.nomeForma = nomeForma;
+    }
+
+    
 }

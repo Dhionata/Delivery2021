@@ -7,11 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.model.entities.interfaces.AvaliacaoInterface;
-import lombok.Data;
 
 @Entity
-@Data
 public class Avaliacao implements AvaliacaoInterface {
     @Id
     @GeneratedValue
@@ -20,16 +20,17 @@ public class Avaliacao implements AvaliacaoInterface {
     private Integer nota;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
-    private Pedido pedido;
+    @JoinColumn(name = "id_item_pedido")
+    @JsonIgnore
+    private ItemPedido itemPedido;
 
     private String comentario;
 
-    public Avaliacao(Integer nota, Pedido pedido, String comentario) {
+    public Avaliacao(Integer nota, ItemPedido itemPedido, String comentario) {
         setNota(nota);
-        setPedido(pedido);
+        setItemPedido(itemPedido);
         setComentario(comentario);
-        getPedido().setAvaliacao(this);
+        getItemPedido().setAvaliacao(this);
     }
 
     public Avaliacao() {
@@ -39,6 +40,40 @@ public class Avaliacao implements AvaliacaoInterface {
     @Override
     public String toString() {
         return "\n-- Avaliacao --\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
-                + "\nID do Pedido: " + getPedido().getId();
+                + "\nID do Pedido: " + getItemPedido().getId();
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getNota() {
+        return nota;
+    }
+
+    public void setNota(Integer nota) {
+        this.nota = nota;
+    }
+
+    public ItemPedido getItemPedido() {
+        return itemPedido;
+    }
+
+    public void setItemPedido(ItemPedido itemPedido) {
+        this.itemPedido = itemPedido;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,19 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import br.com.model.entities.interfaces.PedidoInterface;
-import lombok.Data;
 
 @Entity
-@Data
 public class Pedido implements PedidoInterface {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itensPedido;
 
     @ManyToOne
@@ -39,9 +36,6 @@ public class Pedido implements PedidoInterface {
     private Boolean pago;
     private Boolean entregue;
     private Date data;
-
-    @OneToOne(mappedBy = "pedido")
-    private Avaliacao avaliacao;
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
         setCliente(cliente);
@@ -60,7 +54,7 @@ public class Pedido implements PedidoInterface {
     public String toString() {
         return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: " + getPago()
-                + getCliente(); //getAvaliacao();
+                + getCliente(); // getAvaliacao();
     }
 
     @Override
@@ -81,5 +75,69 @@ public class Pedido implements PedidoInterface {
 
     public void removerItemPedido(ItemPedido itemPedido) {
         getItensPedido().remove(itemPedido);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<ItemPedido> getItensPedido() {
+        return itensPedido;
+    }
+
+    public void setItensPedido(List<ItemPedido> itensPedido) {
+        this.itensPedido = itensPedido;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
+    public Float getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(Float desconto) {
+        this.desconto = desconto;
+    }
+
+    public Boolean getPago() {
+        return pago;
+    }
+
+    public void setPago(Boolean pago) {
+        this.pago = pago;
+    }
+
+    public Boolean getEntregue() {
+        return entregue;
+    }
+
+    public void setEntregue(Boolean entregue) {
+        this.entregue = entregue;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }
