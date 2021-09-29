@@ -5,6 +5,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.model.entities.classes.Cliente;
 
 @Entity
@@ -13,6 +15,7 @@ public class EnderecoCliente extends Endereco {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
+    @JsonIgnore
     private Cliente cliente;
 
     public EnderecoCliente(Cliente cliente, String logradouro, String cidade, String bairro, String complemento,

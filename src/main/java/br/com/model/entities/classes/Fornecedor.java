@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
@@ -23,7 +26,7 @@ public class Fornecedor implements FornecedorInterface {
     private String nome;
     private String descricao;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco_fornecedor")
     private EnderecoFornecedor endereco;
 
@@ -31,9 +34,10 @@ public class Fornecedor implements FornecedorInterface {
     private Date data;
 
     @OneToMany(mappedBy = "fornecedor")
+    @JsonIgnore
     private List<ProdutoFornecedor> listaProdutos;
 
-    @OneToMany(mappedBy = "fornecedor")
+    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
     private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf) {

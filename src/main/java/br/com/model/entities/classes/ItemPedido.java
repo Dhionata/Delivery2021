@@ -1,5 +1,6 @@
 package br.com.model.entities.classes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,19 +18,18 @@ public class ItemPedido implements ItemPedidoInterface {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_produto")
     private Produto produto;
 
     private Integer quantidade;
 
-    @OneToOne(mappedBy = "itemPedido")
-    @JsonIgnore
+    @OneToOne(mappedBy = "itemPedido", cascade = CascadeType.ALL)
     private Avaliacao avaliacao;
 
     public ItemPedido(Pedido pedido, Produto produto, Integer quantidade) {
@@ -89,5 +89,4 @@ public class ItemPedido implements ItemPedidoInterface {
         this.avaliacao = avaliacao;
     }
 
-    
 }

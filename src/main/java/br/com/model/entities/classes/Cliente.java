@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,10 +26,10 @@ public class Cliente implements ClienteInterface {
     private String senha;
     private Date data;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<TelefoneCliente> listaTelefone;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<EnderecoCliente> listaEndereco;
 
     public Cliente(String nome, String cnpjCpf, String email, String senha) {
@@ -80,6 +81,8 @@ public class Cliente implements ClienteInterface {
         getListaTelefone().add(telefone);
 
     }
+
+    // Getters and Setters
 
     public Integer getId() {
         return id;
@@ -144,6 +147,5 @@ public class Cliente implements ClienteInterface {
     public void setListaEndereco(List<EnderecoCliente> listaEndereco) {
         this.listaEndereco = listaEndereco;
     }
-
 
 }

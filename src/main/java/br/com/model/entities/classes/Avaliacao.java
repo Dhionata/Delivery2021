@@ -19,7 +19,7 @@ public class Avaliacao implements AvaliacaoInterface {
 
     private Integer nota;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_item_pedido")
     @JsonIgnore
     private ItemPedido itemPedido;

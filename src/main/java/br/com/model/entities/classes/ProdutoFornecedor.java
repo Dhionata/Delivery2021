@@ -2,11 +2,14 @@ package br.com.model.entities.classes;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.interfaces.ProdutoFornecedorInterface;
 
@@ -16,11 +19,12 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_produto")
+    @JsonIgnore
     private Produto produto;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_fornecedor")
     private Fornecedor fornecedor;
 
@@ -63,6 +67,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     public void setId(Integer id) {
         this.id = id;
+        setDataAtualizacao(new Date());
     }
 
     public Produto getProduto() {
@@ -71,6 +76,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+        setDataAtualizacao(new Date());
     }
 
     public Fornecedor getFornecedor() {
@@ -79,6 +85,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
+        setDataAtualizacao(new Date());
     }
 
     public Float getPreco() {
@@ -87,6 +94,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     public void setPreco(Float preco) {
         this.preco = preco;
+        setDataAtualizacao(new Date());
     }
 
     public Integer getQuantidadeEmEstoque() {
@@ -95,6 +103,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     public void setQuantidadeEmEstoque(Integer quantidadeEmEstoque) {
         this.quantidadeEmEstoque = quantidadeEmEstoque;
+        setDataAtualizacao(new Date());
     }
 
     public Date getDataCadastro() {
@@ -103,6 +112,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
+        setDataAtualizacao(new Date());
     }
 
     public Date getDataAtualizacao() {
@@ -112,8 +122,5 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     public void setDataAtualizacao(Date dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
-
-    
-
 
 }

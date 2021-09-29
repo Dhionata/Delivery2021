@@ -2,6 +2,7 @@ package br.com.model.entities.classes;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class Produto implements ProdutoInterface {
 
     private String nome;
 
-    @OneToMany(mappedBy = "produto")
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<ProdutoFornecedor> listaFornecedores;
 
     private boolean disponivel;
@@ -76,5 +77,4 @@ public class Produto implements ProdutoInterface {
         this.disponivel = disponivel;
     }
 
-    
 }
