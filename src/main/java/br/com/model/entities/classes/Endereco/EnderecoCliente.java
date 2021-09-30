@@ -34,6 +34,8 @@ public class EnderecoCliente extends Endereco {
     public EnderecoCliente() {
     }
 
+    // Getters / Setters
+
     public Cliente getCliente() {
         return cliente;
     }

@@ -58,6 +58,8 @@ public class Endereco implements EnderecoInterface {
                 + getNumero();
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }
@@ -130,5 +132,4 @@ public class Endereco implements EnderecoInterface {
         this.coordenaxaY = coordenaxaY;
     }
 
-    
 }

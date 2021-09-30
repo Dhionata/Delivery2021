@@ -33,6 +33,8 @@ public class TelefoneCliente extends Telefone {
                 + "\nID do cliente: " + getCliente().getId();
     }
 
+    // Getters / Setters
+
     public Cliente getCliente() {
         return cliente;
     }

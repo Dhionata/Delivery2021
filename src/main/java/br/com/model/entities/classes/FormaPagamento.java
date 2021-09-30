@@ -32,6 +32,8 @@ public class FormaPagamento implements FormaPagamentoInterface {
         return null;
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

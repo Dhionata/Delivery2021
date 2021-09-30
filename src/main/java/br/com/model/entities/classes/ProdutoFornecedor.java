@@ -61,6 +61,8 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
         return null;
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

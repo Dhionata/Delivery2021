@@ -34,6 +34,8 @@ public class TelefoneFornecedor extends Telefone {
                 + "\nID do fornecedor: " + getFornecedor().getId();
     }
 
+    // Getters / Setters
+
     public Fornecedor getFornecedor() {
         return fornecedor;
     }

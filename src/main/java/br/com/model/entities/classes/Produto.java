@@ -45,6 +45,8 @@ public class Produto implements ProdutoInterface {
         getListaFornecedores().add(produtoFornecedor);
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

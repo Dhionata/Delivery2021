@@ -43,6 +43,8 @@ public class Avaliacao implements AvaliacaoInterface {
                 + "\nID do Pedido: " + getItemPedido().getId();
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

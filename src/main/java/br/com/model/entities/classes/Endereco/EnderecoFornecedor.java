@@ -36,6 +36,8 @@ public class EnderecoFornecedor extends Endereco {
     public EnderecoFornecedor() {
     }
 
+    // Getters / Setters
+
     public Fornecedor getFornecedor() {
         return fornecedor;
     }

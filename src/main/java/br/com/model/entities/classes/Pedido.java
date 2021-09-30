@@ -78,6 +78,8 @@ public class Pedido implements PedidoInterface {
         getItensPedido().remove(itemPedido);
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

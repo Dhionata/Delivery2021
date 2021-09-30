@@ -109,6 +109,8 @@ public class Fornecedor implements FornecedorInterface {
         return false;
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

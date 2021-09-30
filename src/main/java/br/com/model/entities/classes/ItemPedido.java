@@ -49,6 +49,8 @@ public class ItemPedido implements ItemPedidoInterface {
                 + "\nQuantidade pedida: " + getQuantidade();
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }

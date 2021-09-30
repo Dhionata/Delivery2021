@@ -33,6 +33,8 @@ public class Telefone {
         return "\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero();
     }
 
+    // Getters / Setters
+
     public Integer getId() {
         return id;
     }
