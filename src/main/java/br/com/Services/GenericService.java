@@ -1,16 +1,18 @@
-package br.com.controllers;
+package br.com.Services;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
-public abstract class GenericController<T, R> {
-    private CrudRepository<T, R> repository;
+@Service
+public abstract class GenericService<T, R> {
+    private CrudRepository<T, Integer> repository;
     private String mensagem;
 
-    public GenericController(CrudRepository<T, R> repository) {
+    public GenericService(CrudRepository<T, Integer> repository) {
         setRepository(repository);
     }
 
@@ -28,15 +30,15 @@ public abstract class GenericController<T, R> {
         try {
             return getRepository().findAll();
         } catch (Exception e) {
-            return sendErrorMessage("Erro na busca: " + e.getMessage());
+            return sendErrorMessage("Erro na busca:\n" + e.getMessage());
         }
     }
 
-    public Object findById(R id) {
+    public Object findById(Integer id) {
         try {
             return getRepository().findById(id);
         } catch (Exception e) {
-            return sendErrorMessage("Erro na busca por código: " + e.getMessage());
+            return sendErrorMessage("Erro na busca por código:\n" + e.getMessage());
         }
     }
 
@@ -47,38 +49,44 @@ public abstract class GenericController<T, R> {
     public Object save(T entity) {
         try {
             validate(entity);
+
             T created = getRepository().save(entity);
+
             setMensagem("Persistência feita com sucesso!");
+
             List<Object> objects = new ArrayList<>();
             objects.add(created);
             objects.add(getMensagem());
             return objects;
         } catch (Exception e) {
-            return sendErrorMessage("Erro na persistência: " + e.getMessage());
+            return sendErrorMessage("Erro na persistência:\n" + e.getMessage());
         }
     }
 
     public Object update(T entity) {
         try {
             validate(entity);
-            List<Object> objects = new ArrayList<>();
+
             T created = getRepository().save(entity);
+
             setMensagem("Atualização feita com sucesso!");
+
+            List<Object> objects = new ArrayList<>();
             objects.add(created);
             objects.add(getMensagem());
             return objects;
         } catch (Exception e) {
-            return sendErrorMessage("Erro na atualização: " + e.getMessage());
+            return sendErrorMessage("Erro na atualização:\n" + e.getMessage());
         }
     }
 
-    public Object remove(R id) {
+    public Object remove(Integer id) {
         try {
             getRepository().deleteById(id);
             setMensagem("Remoção feita com sucesso!");
             return getMensagem();
         } catch (Exception e) {
-            return sendErrorMessage("Erro na remoção: " + e.getMessage());
+            return sendErrorMessage("Erro na remoção:\n" + e.getMessage());
         }
     }
 
@@ -88,11 +96,11 @@ public abstract class GenericController<T, R> {
 
     // Getters / Setters
 
-    private CrudRepository<T, R> getRepository() {
+    private CrudRepository<T, Integer> getRepository() {
         return repository;
     }
 
-    private void setRepository(CrudRepository<T, R> repository) {
+    private void setRepository(CrudRepository<T, Integer> repository) {
         this.repository = repository;
     }
 

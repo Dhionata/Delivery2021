@@ -1,6 +1,5 @@
 package br.com.model.entities.classes;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

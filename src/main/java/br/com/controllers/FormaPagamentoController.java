@@ -1,23 +1,50 @@
 package br.com.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.Services.GenericService;
 import br.com.model.entities.classes.FormaPagamento;
 import br.com.repository.FormaPagamentoRepository;
 
 @RestController
-public class FormaPagamentoController extends GenericController<FormaPagamento, FormaPagamentoRepository> {
+public class FormaPagamentoController extends GenericService<FormaPagamento, FormaPagamentoRepository> {
+
     private final String URL = "/formasDePagamento";
 
-    public FormaPagamentoController(CrudRepository<FormaPagamento, FormaPagamentoRepository> repository) {
+    @Autowired
+    public FormaPagamentoController(CrudRepository<FormaPagamento, Integer> repository) {
         super(repository);
     }
 
-    @RequestMapping(value = URL, method = RequestMethod.GET)
+    @GetMapping(value = URL)
     public Object findAll() {
         return super.findAll();
     }
+
+    @PostMapping(value = URL + "/Adicionar/teste")
+    public Object save() {
+        return super.save(new FormaPagamento("Forma Teste"));
+    }
+
+    @DeleteMapping(URL + "/Remover/teste")
+    public Object remove(Integer id) {
+        return super.remove(id);
+    }
+
+    @PatchMapping(URL + "/Atualizar/teste")
+    public Object update(FormaPagamento formaPagamento) {
+        return super.update(formaPagamento);
+    }
+
+    @GetMapping(URL + "/Buscar{id}")
+    public Object findById(Integer id) {
+        return super.findById(id);
+    }
+
 }
