@@ -6,19 +6,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
-import br.com.model.entities.classes.FormaPagamento;
-import br.com.repository.FormaPagamentoRepository;
+import br.com.model.entities.classes.Fornecedor;
+import br.com.repository.FornecedorRepository;
 
-@RestController
-public class FormaPagamentoController extends GenericService<FormaPagamento, FormaPagamentoRepository> {
+public class FornecedorController extends GenericService<Fornecedor, FornecedorRepository> {
 
-    private final String URL = "/formaDePagamento";
+    private final String URL = "/fornecedor";
 
     @Autowired
-    public FormaPagamentoController(CrudRepository<FormaPagamento, Integer> repository) {
+    public FornecedorController(CrudRepository<Fornecedor, Integer> repository) {
         super(repository);
     }
 
@@ -29,7 +27,7 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
 
     @PostMapping(value = URL + "/Adicionar/teste")
     public Object save() {
-        return super.save(new FormaPagamento("Forma Teste"));
+        return super.save(new Fornecedor());
     }
 
     @DeleteMapping(URL + "/Remover/teste")
@@ -38,8 +36,8 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
     }
 
     @PatchMapping(URL + "/Atualizar/teste")
-    public Object update(FormaPagamento formaPagamento) {
-        return super.update(formaPagamento);
+    public Object update(Fornecedor fornecedor) {
+        return super.update(fornecedor);
     }
 
     @GetMapping(URL + "/Buscar{id}")

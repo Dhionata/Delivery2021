@@ -1,4 +1,4 @@
-package br.com.controllers;
+package br.com.controllers.Telefone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -6,19 +6,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
-import br.com.model.entities.classes.FormaPagamento;
-import br.com.repository.FormaPagamentoRepository;
+import br.com.model.entities.classes.Telefone.TelefoneCliente;
+import br.com.repository.TelefoneClienteRepository;
 
-@RestController
-public class FormaPagamentoController extends GenericService<FormaPagamento, FormaPagamentoRepository> {
-
-    private final String URL = "/formaDePagamento";
+public class TelefoneClienteController extends GenericService<TelefoneCliente, TelefoneClienteRepository> {
+    private final String URL = "/telefoneCliente";
 
     @Autowired
-    public FormaPagamentoController(CrudRepository<FormaPagamento, Integer> repository) {
+    public TelefoneClienteController(CrudRepository<TelefoneCliente, Integer> repository) {
         super(repository);
     }
 
@@ -29,7 +26,7 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
 
     @PostMapping(value = URL + "/Adicionar/teste")
     public Object save() {
-        return super.save(new FormaPagamento("Forma Teste"));
+        return super.save(new TelefoneCliente());
     }
 
     @DeleteMapping(URL + "/Remover/teste")
@@ -38,13 +35,12 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
     }
 
     @PatchMapping(URL + "/Atualizar/teste")
-    public Object update(FormaPagamento formaPagamento) {
-        return super.update(formaPagamento);
+    public Object update(TelefoneCliente telefoneCliente) {
+        return super.update(telefoneCliente);
     }
 
     @GetMapping(URL + "/Buscar{id}")
     public Object findById(Integer id) {
         return super.findById(id);
     }
-
 }
