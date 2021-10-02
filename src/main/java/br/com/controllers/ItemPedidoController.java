@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
 import br.com.model.entities.classes.ItemPedido;
 import br.com.repository.ItemPedidoRepository;
 
+@RestController
 public class ItemPedidoController extends GenericService<ItemPedido, ItemPedidoRepository> {
 
     private final String URL = "/itemPedido";
@@ -40,8 +42,8 @@ public class ItemPedidoController extends GenericService<ItemPedido, ItemPedidoR
         return super.update(itemPedido);
     }
 
-    @GetMapping(URL + "/Buscar{id}")
-    public Object findById(Integer id) {
+    @GetMapping(URL + "/Buscar/")
+    public ItemPedido findById(Integer id) {
         return super.findById(id);
     }
 }

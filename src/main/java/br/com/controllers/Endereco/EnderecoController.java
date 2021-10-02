@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
 import br.com.model.entities.classes.Endereco.Endereco;
 import br.com.repository.EnderecoRepository;
 
+@RestController
 public class EnderecoController extends GenericService<Endereco, EnderecoRepository> {
     private final String URL = "/endereco";
 
@@ -39,8 +41,8 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
         return super.update(endereco);
     }
 
-    @GetMapping(URL + "/Buscar{id}")
-    public Object findById(Integer id) {
+    @GetMapping(URL + "/Buscar/")
+    public Endereco findById(Integer id) {
         return super.findById(id);
     }
 }

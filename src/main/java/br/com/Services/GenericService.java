@@ -34,11 +34,12 @@ public abstract class GenericService<T, R> {
         }
     }
 
-    public Object findById(Integer id) {
+    public T findById(Integer id) {
         try {
-            return getRepository().findById(id);
+            return getRepository().findById(id).get();
         } catch (Exception e) {
-            return sendErrorMessage("Erro na busca por código:\n" + e.getMessage());
+            sendErrorMessage("Erro na busca por código:\n" + e.getMessage());
+            return null;
         }
     }
 

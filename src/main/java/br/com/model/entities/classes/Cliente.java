@@ -46,6 +46,17 @@ public class Cliente implements ClienteInterface {
 
     }
 
+    /* public Cliente(Cliente cliente) {
+        setId(cliente.getId());
+        setCnpjCpf(cliente.getCnpjCpf());
+        setData(cliente.getData());
+        setEmail(cliente.getEmail());
+        setNome(cliente.getNome());
+        setSenha(cliente.getSenha());
+        setListaEndereco(cliente.getListaEndereco());
+        setListaTelefone(cliente.getListaTelefone());
+    } */
+
     @Override
     public String toString() {
         return "\n--Cliente--\nID: " + getId() + "\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: "

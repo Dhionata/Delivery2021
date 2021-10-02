@@ -42,8 +42,8 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
         return super.update(formaPagamento);
     }
 
-    @GetMapping(URL + "/Buscar{id}")
-    public Object findById(Integer id) {
+    @GetMapping(URL + "/Buscar/")
+    public FormaPagamento findById(Integer id) {
         return super.findById(id);
     }
 
