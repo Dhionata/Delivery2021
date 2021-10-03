@@ -23,7 +23,7 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<Avaliacao> findAll() {
         return super.findAll();
     }
 

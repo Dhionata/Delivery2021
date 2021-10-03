@@ -22,7 +22,7 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<Telefone> findAll() {
         return super.findAll();
     }
 

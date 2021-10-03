@@ -23,7 +23,7 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<FormaPagamento> findAll() {
         return super.findAll();
     }
 

@@ -23,7 +23,7 @@ public class ItemPedidoController extends GenericService<ItemPedido, ItemPedidoR
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<ItemPedido> findAll() {
         return super.findAll();
     }
 

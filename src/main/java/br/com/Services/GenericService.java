@@ -14,7 +14,7 @@ public abstract class GenericService<T, R> {
         setRepository(repository);
     }
 
-    public Object findAll() {
+    public Iterable<T> findAll() {
         return getRepository().findAll();
     }
 
@@ -49,8 +49,9 @@ public abstract class GenericService<T, R> {
     public Object update(T entity) {
         try {
             if (validate(entity) == true) {
-                ;
+
                 getRepository().save(entity);
+
                 return "Atualização feita com sucesso!" + entity;
             } else {
                 return notNull;

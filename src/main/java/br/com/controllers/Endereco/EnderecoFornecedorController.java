@@ -22,7 +22,7 @@ public class EnderecoFornecedorController extends GenericService<EnderecoFornece
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<EnderecoFornecedor> findAll() {
         return super.findAll();
     }
 

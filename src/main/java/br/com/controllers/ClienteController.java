@@ -23,7 +23,7 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<Cliente> findAll() {
         return super.findAll();
     }
 
@@ -45,7 +45,7 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     @PatchMapping(URL + "/AtualizarById/teste")
     public Object updateById(Integer id, String nome, String cnpjCpf, String email, String senha) {
         try {
-            var retorno = findById(id);
+            Cliente retorno = findById(id);
             System.out.println(retorno.toString());
 
             if (nome != null) {

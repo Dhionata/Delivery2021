@@ -24,7 +24,7 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<Produto> findAll() {
         return super.findAll();
     }
 

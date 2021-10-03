@@ -23,7 +23,7 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<Fornecedor> findAll() {
         return super.findAll();
     }
 

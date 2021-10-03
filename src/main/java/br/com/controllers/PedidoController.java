@@ -25,7 +25,7 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
     }
 
     @GetMapping(value = URL)
-    public Object findAll() {
+    public Iterable<Pedido> findAll() {
         return super.findAll();
     }
 
