@@ -12,7 +12,7 @@ public class testeFornecedor {
 
         testeEndereco.novaListaEnderecoFornecedor(fornecedor);
 
-        fornecedor.setListaProdutos(testeProdutoFornecedor.novaListaProdutosFornecedor(fornecedor));
+        fornecedor.setListaProdutoFornecedor(testeProdutoFornecedor.novaListaProdutosFornecedor(fornecedor));
 
         fornecedor.setListaTelefones(testeTelefone.novaListaTelefoneFornecedor(fornecedor));
         return fornecedor;

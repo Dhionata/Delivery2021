@@ -46,7 +46,7 @@ public class Fornecedor implements FornecedorInterface {
         setEndereco(endereco);
         setCnpjCpf(cnpjCpf);
         setData(new Date());
-        setListaProdutos(new ArrayList<ProdutoFornecedor>());
+        setListaProdutoFornecedor(new ArrayList<ProdutoFornecedor>());
         setListaTelefones(new ArrayList<TelefoneFornecedor>());
     }
 
@@ -58,13 +58,13 @@ public class Fornecedor implements FornecedorInterface {
     public String toString() {
         return "\n--Fornecedor--\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: " + getData()
                 + "\nDescriçao: " + getDescricao() + getEndereco() + "\nID: " + getId() + getListaTelefones()
-                + "\nLista de produtos: " + getListaProdutos();
+                + "\nLista de produtos: " + getListaProdutoFornecedor();
     }
 
     @Override
     public void adicionarProduto(ProdutoFornecedor produtoFornecedor) {
         produtoFornecedor.setFornecedor(this);
-        getListaProdutos().add(produtoFornecedor);
+        getListaProdutoFornecedor().add(produtoFornecedor);
     }
 
     @Override
@@ -159,11 +159,11 @@ public class Fornecedor implements FornecedorInterface {
         this.data = data;
     }
 
-    public List<ProdutoFornecedor> getListaProdutos() {
+    public List<ProdutoFornecedor> getListaProdutoFornecedor() {
         return listaProdutos;
     }
 
-    public void setListaProdutos(List<ProdutoFornecedor> listaProdutos) {
+    public void setListaProdutoFornecedor(List<ProdutoFornecedor> listaProdutos) {
         this.listaProdutos = listaProdutos;
     }
 
