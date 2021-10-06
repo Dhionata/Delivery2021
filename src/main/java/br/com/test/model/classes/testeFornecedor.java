@@ -1,19 +1,20 @@
 package br.com.test.model.classes;
 
 import br.com.model.entities.classes.Fornecedor;
-import br.com.model.entities.classes.Produto;
-import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 
 public class testeFornecedor {
     public static void main(String[] args) {
+        System.out.println(novoFornecedor().toString());
+    }
 
+    public static Fornecedor novoFornecedor() {
         Fornecedor fornecedor = new Fornecedor("TesteLTDA", "Empresa de teste", "000.000.000-00");
 
-        EnderecoFornecedor enderecoFornecedor = new EnderecoFornecedor(fornecedor, "Anhanguera", "Goiânia", "Cerrado",
-                "Q.0, L.0", "0000000-00", "S/N", 0.000000F, 0.000000F);
+        testeEndereco.novaListaEnderecoFornecedor(fornecedor);
 
-        fornecedor.adicionarProduto(new ProdutoFornecedor(new Produto("Mamão"), fornecedor, 0.15f, 3));
-        System.out.println(fornecedor.toString());
+        fornecedor.setListaProdutos(testeProdutoFornecedor.novaListaProdutosFornecedor(fornecedor));
+
+        fornecedor.setListaTelefones(testeTelefone.novaListaTelefoneFornecedor(fornecedor));
+        return fornecedor;
     }
 }

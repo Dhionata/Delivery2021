@@ -1,25 +1,30 @@
 package br.com.test.model.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import br.com.model.entities.classes.Fornecedor;
-import br.com.model.entities.classes.Produto;
 import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 
 public class testeProdutoFornecedor {
     public static void main(String[] args) {
         // public ProdutoFornecedor(Produto produto, Fornecedor fornecedor, Float preco,
         // int quantidadeEmEstoque)
-        Produto produto = new Produto("Abacate");
-        Produto produto2 = new Produto("Laranja");
-        Fornecedor fornecedor = new Fornecedor("TesteLTDA", "Empresa de teste", "000.000.000-00");
 
-        EnderecoFornecedor enderecoFornecedor = new EnderecoFornecedor(fornecedor, "Anhanguera", "Goiânia", "Cerrado",
-                "Q.0, L.0", "0000000-00", "S/N", 0.000000F, 0.000000F);
+        System.out.println(novaListaProdutosFornecedor(testeFornecedor.novoFornecedor()).toString());
+    }
 
-        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(produto, fornecedor, 0.15f, 3);
-        ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(produto2, fornecedor, 0.45f, 5);
+    public static List<ProdutoFornecedor> novaListaProdutosFornecedor(Fornecedor fornecedor) {
+        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(testeProduto.novoProduto(), fornecedor,
+                new Random().nextFloat(), new Random().nextInt(1000));
+        ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(testeProduto.novoProduto2(), fornecedor,
+                new Random().nextFloat(), new Random().nextInt(1000));
 
-        System.out.println(produtoFornecedor.toString());
-        System.out.println(produtoFornecedor2.toString());
+        List<ProdutoFornecedor> listaProdutoFornecedor = new ArrayList<ProdutoFornecedor>();
+        listaProdutoFornecedor.add(produtoFornecedor);
+        listaProdutoFornecedor.add(produtoFornecedor2);
+
+        return listaProdutoFornecedor;
     }
 }

@@ -1,5 +1,8 @@
 package br.com.test.model.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.model.entities.classes.Cliente;
 import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
@@ -9,18 +12,30 @@ public class testeTelefone {
     public static void main(String[] args) {
 
         // cliente
-        Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
-
-        TelefoneCliente telefoneDoCliente = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
-        TelefoneCliente telefoneDoCliente2 = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
-
-        System.out.println(cliente.toString());
+        System.out.println(novaListaTelefoneCliente(testeCliente.novoCliente()).toString());
 
         // fornecedor
-        Fornecedor fornecedor = new Fornecedor("NomeFornecedorTeste", "O Allan é gay", "123.456.789-12");
-        TelefoneFornecedor telefoneFornecedor = new TelefoneFornecedor(fornecedor, "(ii)thhhh-hhhh");
-        TelefoneFornecedor telefoneDoFornecedor = new TelefoneFornecedor(fornecedor, "(yy)qaaaa-zzzz");
 
-        System.out.println(fornecedor.toString());
+        System.out.println(novaListaTelefoneFornecedor(testeFornecedor.novoFornecedor()));
+    }
+
+    public static List<TelefoneFornecedor> novaListaTelefoneFornecedor(Fornecedor fornecedor) {
+        var telefone1 = new TelefoneFornecedor(fornecedor, "(ii)thhhh-hhhh");
+        var telefone2 = new TelefoneFornecedor(fornecedor, "(yy)qaaaa-zzzz");
+
+        var lista = new ArrayList<TelefoneFornecedor>();
+        lista.add(telefone1);
+        lista.add(telefone2);
+        return lista;
+    }
+
+    public static List<TelefoneCliente> novaListaTelefoneCliente(Cliente cliente) {
+        var telefone1 = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
+        var telefone2 = new TelefoneCliente(cliente, "(xx)yrrrr-rrrr");
+
+        var lista = new ArrayList<TelefoneCliente>();
+        lista.add(telefone1);
+        lista.add(telefone2);
+        return lista;
     }
 }

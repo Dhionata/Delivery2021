@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public abstract class GenericService<T, R> {
     private CrudRepository<T, Integer> repository;
-    private final String notNull = "A entidade não pode ser nulla!";
+    private final String NOT_NULL = "A entidade não pode ser nulla!";
 
     public GenericService(CrudRepository<T, Integer> repository) {
         setRepository(repository);
@@ -39,7 +39,7 @@ public abstract class GenericService<T, R> {
 
                 return "Persistência feita com sucesso!" + entity;
             } else {
-                return notNull;
+                return NOT_NULL;
             }
         } catch (Exception e) {
             return "Erro na persistência:\n" + e.getMessage();
@@ -54,7 +54,7 @@ public abstract class GenericService<T, R> {
 
                 return "Atualização feita com sucesso!" + entity;
             } else {
-                return notNull;
+                return NOT_NULL;
             }
         } catch (Exception e) {
             return "Erro na atualização:\n" + e.getMessage();

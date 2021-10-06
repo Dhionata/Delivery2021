@@ -34,8 +34,8 @@ public class Pedido implements PedidoInterface {
     private FormaPagamento formaPagamento;
 
     private Float desconto;
-    private Boolean pago;
-    private Boolean entregue;
+    private Boolean pago = false;
+    private Boolean entregue = false;
     private Date data;
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
@@ -48,6 +48,24 @@ public class Pedido implements PedidoInterface {
         setData(new Date());
     }
 
+    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto) {
+        setCliente(cliente);
+        setFormaPagamento(formaPagamento);
+        setDesconto(desconto);
+        setPago(false);
+        setEntregue(false);
+        setItensPedido(new ArrayList<>());
+        setData(new Date());
+    }
+
+    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, List<ItemPedido> listaItemPedido) {
+        setCliente(cliente);
+        setFormaPagamento(formaPagamento);
+        setDesconto(desconto);
+        setItensPedido(listaItemPedido);
+        setData(new Date());
+    }
+
     public Pedido() {
     }
 
@@ -55,7 +73,7 @@ public class Pedido implements PedidoInterface {
     public String toString() {
         return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: " + getPago()
-                + getCliente(); // getAvaliacao();
+                + getCliente();
     }
 
     @Override

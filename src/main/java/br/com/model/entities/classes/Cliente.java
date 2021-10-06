@@ -42,20 +42,28 @@ public class Cliente implements ClienteInterface {
         setListaEndereco(new ArrayList<EnderecoCliente>());
     }
 
+    public Cliente(String nome, String cnpjCpf, String email, String senha, List<TelefoneCliente> listaTelefones,
+            List<EnderecoCliente> listaEnderecos) {
+        setNome(nome);
+        setCnpjCpf(cnpjCpf);
+        setEmail(email);
+        setSenha(senha);
+        setData(new Date());
+        setListaEndereco(listaEndereco);
+        setListaTelefone(listaTelefone);
+    }
+
     public Cliente() {
 
     }
 
-    /* public Cliente(Cliente cliente) {
-        setId(cliente.getId());
-        setCnpjCpf(cliente.getCnpjCpf());
-        setData(cliente.getData());
-        setEmail(cliente.getEmail());
-        setNome(cliente.getNome());
-        setSenha(cliente.getSenha());
-        setListaEndereco(cliente.getListaEndereco());
-        setListaTelefone(cliente.getListaTelefone());
-    } */
+    /*
+     * public Cliente(Cliente cliente) { setId(cliente.getId());
+     * setCnpjCpf(cliente.getCnpjCpf()); setData(cliente.getData());
+     * setEmail(cliente.getEmail()); setNome(cliente.getNome());
+     * setSenha(cliente.getSenha()); setListaEndereco(cliente.getListaEndereco());
+     * setListaTelefone(cliente.getListaTelefone()); }
+     */
 
     @Override
     public String toString() {

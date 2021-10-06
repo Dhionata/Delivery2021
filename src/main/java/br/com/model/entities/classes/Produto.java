@@ -23,12 +23,16 @@ public class Produto implements ProdutoInterface {
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<ProdutoFornecedor> listaFornecedores;
 
-    private boolean disponivel;
+    private boolean disponivel = true;
 
     public Produto(String nome) {
         setNome(nome);
-        setDisponivel(true);
-        setListaFornecedores(new ArrayList<ProdutoFornecedor>());
+        setListaProdutoFornecedores(new ArrayList<ProdutoFornecedor>());
+    }
+
+    public Produto(String nome, List<ProdutoFornecedor> listaProdutoFornecedor) {
+        setNome(nome);
+        setListaProdutoFornecedores(listaProdutoFornecedor);
     }
 
     public Produto() {
@@ -67,7 +71,7 @@ public class Produto implements ProdutoInterface {
         return listaFornecedores;
     }
 
-    public void setListaFornecedores(List<ProdutoFornecedor> listaFornecedores) {
+    public void setListaProdutoFornecedores(List<ProdutoFornecedor> listaFornecedores) {
         this.listaFornecedores = listaFornecedores;
     }
 

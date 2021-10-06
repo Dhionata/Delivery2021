@@ -39,6 +39,11 @@ public class ItemPedido implements ItemPedidoInterface {
         getPedido().getItensPedido().add(this);
     }
 
+    public ItemPedido(Produto produto, Integer quantidade) {
+        setProduto(produto);
+        setQuantidade(quantidade);
+    }
+
     public ItemPedido() {
 
     }
@@ -46,7 +51,7 @@ public class ItemPedido implements ItemPedidoInterface {
     @Override
     public String toString() {
         return "\n-- ItemPedido --\nID: " + getId() + "\nPedido: " + getPedido().getId() + getProduto()
-                + "\nQuantidade pedida: " + getQuantidade();
+                + "\nQuantidade pedida: " + getQuantidade() + getAvaliacao();
     }
 
     // Getters / Setters
