@@ -40,7 +40,7 @@ public class Produto implements ProdutoInterface {
 
     @Override
     public String toString() {
-        return "\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
+        return "\n\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
                 + getListaFornecedores().toString() + "\nDisponibilidade: " + isDisponivel();
     }
 

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +31,7 @@ public class Pedido implements PedidoInterface {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_forma_pagamento")
+    @Enumerated(EnumType.ORDINAL)
     private FormaPagamento formaPagamento;
 
     private Float desconto;
@@ -71,9 +72,9 @@ public class Pedido implements PedidoInterface {
 
     @Override
     public String toString() {
-        return "\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
-                + "\nEntregue: " + getEntregue() + getItensPedido() + getFormaPagamento() + "\nPago: " + getPago()
-                + getCliente();
+        return "\n\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
+                + "\nEntregue: " + getEntregue() + getItensPedido() + "\n\n-- FormaPagamento --\n" + getFormaPagamento()
+                + "\nPago: " + getPago() + getCliente();
     }
 
     @Override

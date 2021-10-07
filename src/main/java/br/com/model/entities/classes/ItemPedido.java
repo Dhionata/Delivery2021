@@ -50,7 +50,7 @@ public class ItemPedido implements ItemPedidoInterface {
 
     @Override
     public String toString() {
-        return "\n-- ItemPedido --\nID: " + getId() + "\nPedido: " + getPedido().getId() + getProduto()
+        return "\n\n-- ItemPedido --\nID: " + getId() + "\nPedido: " + getPedido().getId() + getProduto()
                 + "\nQuantidade pedida: " + getQuantidade() + getAvaliacao();
     }
 

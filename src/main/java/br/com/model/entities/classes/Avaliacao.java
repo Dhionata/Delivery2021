@@ -38,7 +38,7 @@ public class Avaliacao implements AvaliacaoInterface {
 
     @Override
     public String toString() {
-        return "\n-- Avaliacao --\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
+        return "\n\n-- Avaliacao --\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
                 + "\nID do Pedido: " + getItemPedido().getId();
     }
 

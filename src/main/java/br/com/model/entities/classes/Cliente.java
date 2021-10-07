@@ -53,21 +53,24 @@ public class Cliente implements ClienteInterface {
         setListaTelefone(listaTelefone);
     }
 
+    public Cliente(Cliente cliente) {
+        setId(cliente.getId());
+        setCnpjCpf(cliente.getCnpjCpf());
+        setData(cliente.getData());
+        setEmail(cliente.getEmail());
+        setNome(cliente.getNome());
+        setSenha(cliente.getSenha());
+        setListaEndereco(cliente.getListaEndereco());
+        setListaTelefone(cliente.getListaTelefone());
+    }
+
     public Cliente() {
 
     }
 
-    /*
-     * public Cliente(Cliente cliente) { setId(cliente.getId());
-     * setCnpjCpf(cliente.getCnpjCpf()); setData(cliente.getData());
-     * setEmail(cliente.getEmail()); setNome(cliente.getNome());
-     * setSenha(cliente.getSenha()); setListaEndereco(cliente.getListaEndereco());
-     * setListaTelefone(cliente.getListaTelefone()); }
-     */
-
     @Override
     public String toString() {
-        return "\n--Cliente--\nID: " + getId() + "\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: "
+        return "\n\n--Cliente--\nID: " + getId() + "\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: "
                 + getData() + "\nEmail: " + getEmail() + "\nSenha: " + getSenha() + "\n-- Lista de telefones --"
                 + getListaTelefone() + "\n-- Lista de Endereços --" + getListaEndereco();
     }

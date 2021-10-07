@@ -29,7 +29,7 @@ public class TelefoneCliente extends Telefone {
 
     @Override
     public String toString() {
-        return "\n-- Telefone do cliente--\nNúmero: " + super.getNumero() + "\nID: " + super.getId()
+        return "\n\n-- Telefone do cliente--\nNúmero: " + super.getNumero() + "\nID: " + super.getId()
                 + "\nID do cliente: " + getCliente().getId();
     }
 

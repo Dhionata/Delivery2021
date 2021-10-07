@@ -29,11 +29,10 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
         return super.findAll();
     }
 
-    // public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto,
-    // Boolean pago, Boolean entregue
+    // public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto)
     @PostMapping(value = URL + "/Adicionar/teste")
-    public Object save(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
-        return super.save(new Pedido(cliente, formaPagamento, desconto, pago, entregue));
+    public Object save(Cliente cliente, Integer formaPagamento, Float desconto) {
+        return super.save(new Pedido(cliente, FormaPagamento.novaFormaPagamento(formaPagamento), desconto));
     }
 
     @DeleteMapping(URL + "/Remover/teste")

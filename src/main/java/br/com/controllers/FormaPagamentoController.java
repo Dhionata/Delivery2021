@@ -1,4 +1,4 @@
-package br.com.controllers;
+/* package br.com.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +12,7 @@ import br.com.Services.GenericService;
 import br.com.model.entities.classes.FormaPagamento;
 import br.com.repository.FormaPagamentoRepository;
 
-@RestController
+//@RestController
 public class FormaPagamentoController extends GenericService<FormaPagamento, FormaPagamentoRepository> {
 
     private final String URL = "/formaDePagamento";
@@ -28,8 +28,8 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
     }
 
     @PostMapping(value = URL + "/Adicionar/teste")
-    public Object save() {
-        return super.save(new FormaPagamento("Forma Teste"));
+    public Object save(Integer i) {
+        return super.save(FormaPagamento.novaFormaPagamento(i));
     }
 
     @DeleteMapping(URL + "/Remover/teste")
@@ -48,3 +48,4 @@ public class FormaPagamentoController extends GenericService<FormaPagamento, For
     }
 
 }
+ */
