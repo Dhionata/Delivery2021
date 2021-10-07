@@ -56,9 +56,8 @@ public class Fornecedor implements FornecedorInterface {
 
     @Override
     public String toString() {
-        return "\n\n--Fornecedor--\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: " + getData()
-                + "\nDescriçao: " + getDescricao() + getEndereco() + "\nID: " + getId() + getListaTelefones()
-                + "\nLista de produtos: " + getListaProdutoFornecedor();
+        return "\n\n--Fornecedor--\nNome: " + getNome() + "\nID: " + getId() + "\nCNPJ/CPF: " + getCnpjCpf()
+                + "\nData: " + getData() + "\nDescriçao: " + getDescricao() + getEndereco() + getListaTelefones();
     }
 
     @Override
