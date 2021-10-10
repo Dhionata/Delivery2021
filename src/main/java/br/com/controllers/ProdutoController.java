@@ -29,8 +29,8 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
     }
 
     @PostMapping(value = URL + "/Adicionar/teste")
-    public Object save() {
-        return super.save(new Produto("Produto Teste"));
+    public Object save(Produto produto) {
+        return super.save(produto);
     }
 
     @DeleteMapping(URL + "/Remover/teste")
