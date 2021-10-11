@@ -8,7 +8,7 @@ import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 
-public class testeEndereco {
+public class TesteEndereco {
 
     public static void main(String[] args) {
         System.out.println();

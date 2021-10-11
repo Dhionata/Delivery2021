@@ -2,7 +2,7 @@ package br.com.test.model.classes;
 
 import br.com.model.entities.classes.Produto;
 
-public class testeProduto {
+public class TesteProduto {
     public static void main(String[] args) {
 
         // Adicionar uma lista de fornecedores após a instância do mesmo.

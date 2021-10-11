@@ -6,15 +6,15 @@ import java.util.Random;
 import java.util.List;
 import br.com.model.entities.classes.ItemPedido;
 
-public class testeItemPedido {
+public class TesteItemPedido {
     public static void main(String[] args) {
         System.out.println(novaListaItensPedido().toString());
 
     }
 
     public static List<ItemPedido> novaListaItensPedido() {
-        ItemPedido itemPedido = new ItemPedido(testeProduto.novoProduto(), new Random().nextInt(10));
-        ItemPedido itemPedido2 = new ItemPedido(testeProduto.novoProduto2(), new Random().nextInt(10));
+        ItemPedido itemPedido = new ItemPedido(TesteProduto.novoProduto(), new Random().nextInt(10));
+        ItemPedido itemPedido2 = new ItemPedido(TesteProduto.novoProduto2(), new Random().nextInt(10));
 
         List<ItemPedido> novaListaItensPedido = new ArrayList<>();
         novaListaItensPedido.add(itemPedido);
@@ -23,7 +23,7 @@ public class testeItemPedido {
     }
 
     public static ItemPedido novoItemPedido() {
-        return new ItemPedido(testeProduto.novoProduto(), new Random().nextInt(10));
+        return new ItemPedido(TesteProduto.novoProduto(), new Random().nextInt(10));
     }
 
 }

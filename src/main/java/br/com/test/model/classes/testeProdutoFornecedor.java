@@ -7,18 +7,18 @@ import java.util.Random;
 import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.ProdutoFornecedor;
 
-public class testeProdutoFornecedor {
+public class TesteProdutoFornecedor {
     public static void main(String[] args) {
         // public ProdutoFornecedor(Produto produto, Fornecedor fornecedor, Float preco,
         // int quantidadeEmEstoque)
 
-        System.out.println(novaListaProdutosFornecedor(testeFornecedor.novoFornecedor()).toString());
+        System.out.println(novaListaProdutosFornecedor(TesteFornecedor.novoFornecedor()).toString());
     }
 
     public static List<ProdutoFornecedor> novaListaProdutosFornecedor(Fornecedor fornecedor) {
-        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(testeProduto.novoProduto(), fornecedor,
+        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(TesteProduto.novoProduto(), fornecedor,
                 new Random().nextFloat(), new Random().nextInt(1000));
-        ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(testeProduto.novoProduto2(), fornecedor,
+        ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(TesteProduto.novoProduto2(), fornecedor,
                 new Random().nextFloat(), new Random().nextInt(1000));
 
         List<ProdutoFornecedor> listaProdutoFornecedor = new ArrayList<ProdutoFornecedor>();

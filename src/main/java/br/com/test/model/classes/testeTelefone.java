@@ -8,15 +8,15 @@ import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
 
-public class testeTelefone {
+public class TesteTelefone {
     public static void main(String[] args) {
 
         // cliente
-        System.out.println(novaListaTelefoneCliente(testeCliente.novoCliente()).toString());
+        System.out.println(novaListaTelefoneCliente(TesteCliente.novoCliente()).toString());
 
         // fornecedor
 
-        System.out.println(novaListaTelefoneFornecedor(testeFornecedor.novoFornecedor()));
+        System.out.println(novaListaTelefoneFornecedor(TesteFornecedor.novoFornecedor()));
     }
 
     public static List<TelefoneFornecedor> novaListaTelefoneFornecedor(Fornecedor fornecedor) {
