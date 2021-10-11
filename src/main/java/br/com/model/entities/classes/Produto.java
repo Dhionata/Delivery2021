@@ -41,7 +41,7 @@ public class Produto implements ProdutoInterface {
     @Override
     public String toString() {
         return "\n\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
-                + getListaFornecedores().toString() + "\nDisponibilidade: " + isDisponivel();
+                + getListaFornecedores() + "\nDisponibilidade: " + isDisponivel();
     }
 
     public void adicionarFornecedor(ProdutoFornecedor produtoFornecedor) {

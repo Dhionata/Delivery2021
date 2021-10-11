@@ -54,7 +54,6 @@ public class TesteTudoRepository {
 
         // Salva todos os dados em cascata (cascade = CascadeType.ALL) em todas às
         // referências em árvore de Pedido.
-        // pedidoRepository.save(pedido);
 
         return pedidoRepository.findAll();
     }
