@@ -2,10 +2,13 @@ package br.com.controllers.Endereco;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
@@ -13,6 +16,7 @@ import br.com.model.entities.classes.Endereco.Endereco;
 import br.com.repository.EnderecoRepository;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class EnderecoController extends GenericService<Endereco, EnderecoRepository> {
     private final String URL = "/endereco";
 
@@ -22,27 +26,33 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
     }
 
     @GetMapping(value = URL)
+    @ResponseBody
     public Iterable<Endereco> findAll() {
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/teste")
-    public Object save() {
-        return super.save(new Endereco());
+    @PostMapping(value = URL + "/Adicionar/")
+    public Object save(@RequestBody Endereco endereco) {
+        return super.save(endereco);
     }
 
-    @DeleteMapping(URL + "/Remover/teste")
-    public Object remove(Integer id) {
-        return super.remove(id);
+    @DeleteMapping(URL + "/Remover/")
+    public Object remove(@RequestBody Endereco endereco) {
+        return super.remove(endereco);
     }
 
-    @PatchMapping(URL + "/Atualizar/teste")
-    public Object update(Endereco endereco) {
+    @PatchMapping(URL + "/Atualizar/")
+    public Object update(@RequestBody Endereco endereco) {
         return super.update(endereco);
     }
 
-    @GetMapping(URL + "/Buscar/")
-    public Endereco findById(Integer id) {
+    @GetMapping(URL + "/BuscarById/")
+    public Endereco findById(@RequestBody Integer id) {
         return super.findById(id);
+    }
+
+    @GetMapping(URL + "/Buscar/")
+    public Endereco find(@RequestBody Endereco endereco) {
+        return super.findById(endereco.getId());
     }
 }

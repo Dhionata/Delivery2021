@@ -2,10 +2,13 @@ package br.com.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
@@ -13,6 +16,7 @@ import br.com.model.entities.classes.Avaliacao;
 import br.com.repository.AvaliacaoRepository;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepository> {
 
     private final String URL = "/avaliacao";
@@ -23,27 +27,33 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     }
 
     @GetMapping(value = URL)
+    @ResponseBody
     public Iterable<Avaliacao> findAll() {
         return super.findAll();
     }
 
     @GetMapping(URL + "/Buscar/")
-    public Avaliacao findById(Integer id) {
+    public Avaliacao find(@RequestBody Avaliacao avaliacao) {
+        return super.findById(avaliacao.getId());
+    }
+
+    @GetMapping(URL + "/BuscarById/")
+    public Avaliacao findById(@RequestBody Integer id) {
         return super.findById(id);
     }
 
-    @PostMapping(value = URL + "/Adicionar/teste")
-    public Object save() {
-        return super.save(new Avaliacao());
+    @PostMapping(value = URL + "/Adicionar/")
+    public Object save(@RequestBody Avaliacao avaliacao) {
+        return super.save(avaliacao);
     }
 
-    @DeleteMapping(URL + "/Remover/teste")
-    public Object remove(Integer id) {
-        return super.remove(id);
+    @DeleteMapping(URL + "/Remover/")
+    public Object remove(@RequestBody Avaliacao avaliacao) {
+        return super.remove(avaliacao);
     }
 
-    @PatchMapping(URL + "/Atualizar/teste")
-    public Object update(Avaliacao avaliacao) {
+    @PatchMapping(URL + "/Atualizar/")
+    public Object update(@RequestBody Avaliacao avaliacao) {
         return super.update(avaliacao);
     }
 

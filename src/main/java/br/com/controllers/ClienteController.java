@@ -2,10 +2,13 @@ package br.com.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
@@ -13,6 +16,7 @@ import br.com.model.entities.classes.Cliente;
 import br.com.repository.ClienteRepository;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ClienteController extends GenericService<Cliente, ClienteRepository> {
 
     private final String URL = "/cliente";
@@ -23,53 +27,33 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     }
 
     @GetMapping(value = URL)
+    @ResponseBody
     public Iterable<Cliente> findAll() {
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/teste")
-    public Object save(String nome, String cnpjCpf, String email, String senha) {
-        return super.save(new Cliente(nome, cnpjCpf, email, senha));
+    @PostMapping(value = URL + "/Adicionar/")
+    public Object save(@RequestBody Cliente cliente) {
+        return super.save(cliente);
     }
 
-    @DeleteMapping(URL + "/Remover/teste")
-    public Object remove(Integer id) {
-        return super.remove(id);
+    @DeleteMapping(URL + "/Remover/")
+    public Object remove(@RequestBody Cliente cliente) {
+        return super.remove(cliente);
     }
 
-    @PatchMapping(URL + "/Atualizar/teste")
-    public Object update(Cliente cliente) {
+    @PatchMapping(URL + "/Atualizar/")
+    public Object update(@RequestBody Cliente cliente) {
         return super.update(cliente);
     }
 
-    @PatchMapping(URL + "/AtualizarById/teste")
-    public Object updateById(Integer id, String nome, String cnpjCpf, String email, String senha) {
-        try {
-            Cliente retorno = findById(id);
-            System.out.println(retorno.toString());
-
-            if (nome != null) {
-                retorno.setNome(nome);
-            }
-            if (cnpjCpf != null) {
-                retorno.setCnpjCpf(cnpjCpf);
-            }
-            if (email != null) {
-                retorno.setEmail(email);
-            }
-            if (senha != null) {
-                retorno.setSenha(senha);
-            }
-            update(retorno);
-            return findById(retorno.getId());
-        } catch (Exception exception) {
-            return exception.getMessage();
-        }
-    }
-
-    @GetMapping(URL + "/Buscar/")
+    @GetMapping(URL + "/BuscarById/")
     public Cliente findById(Integer id) {
         return super.findById(id);
     }
 
+    @GetMapping(URL + "/Buscar")
+    public Cliente find(@RequestBody Cliente cliente) {
+        return super.findById(cliente.getId());
+    }
 }

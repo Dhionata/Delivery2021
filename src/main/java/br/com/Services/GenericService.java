@@ -22,25 +22,19 @@ public abstract class GenericService<T, R> {
         return getRepository().findById(id).get();
     }
 
-    // Caso tenha regra de negócio ao salvar ou atualizar: sobrescrever este método
-    public boolean validate(T entity) throws Exception {
+    public void validate(T entity) throws Exception {
         if (entity == null) {
-            return false;
-        } else {
-            return true;
+            throw new Exception(NOT_NULL);
         }
     }
 
     public Object save(T entity) {
         try {
-            if (validate(entity) == true) {
+            validate(entity);
 
-                getRepository().save(entity);
+            getRepository().save(entity);
 
-                return "Persistência feita com sucesso!" + entity;
-            } else {
-                return NOT_NULL;
-            }
+            return "Persistência feita com sucesso!" + entity;
         } catch (Exception e) {
             return "Erro na persistência:\n" + e.getMessage();
         }
@@ -48,22 +42,21 @@ public abstract class GenericService<T, R> {
 
     public Object update(T entity) {
         try {
-            if (validate(entity) == true) {
+            validate(entity);
 
-                getRepository().save(entity);
+            getRepository().save(entity);
 
-                return "Atualização feita com sucesso!" + entity;
-            } else {
-                return NOT_NULL;
-            }
+            return "Atualização feita com sucesso!" + entity;
+
         } catch (Exception e) {
             return "Erro na atualização:\n" + e.getMessage();
         }
     }
 
-    public Object remove(Integer id) {
+    public Object remove(T entity) {
         try {
-            getRepository().deleteById(id);
+            validate(entity);
+            getRepository().delete(entity);
             return "Remoção feita com sucesso!";
         } catch (Exception e) {
             return "Erro na remoção:\n" + e.getMessage();
