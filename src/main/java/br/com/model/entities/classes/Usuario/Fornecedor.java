@@ -1,4 +1,4 @@
-package br.com.model.entities.classes;
+package br.com.model.entities.classes.Usuario;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,32 +6,26 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.model.entities.classes.ProdutoFornecedor;
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
 import br.com.model.entities.interfaces.FornecedorInterface;
 
 @Entity
-public class Fornecedor implements FornecedorInterface {
-    @Id
-    @GeneratedValue
-    private Integer id;
-    private String nome;
+@PrimaryKeyJoinColumn(name = "id_usuario")
+public class Fornecedor extends Usuario implements FornecedorInterface {
     private String descricao;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco_fornecedor")
     private EnderecoFornecedor endereco;
-
-    private String cnpjCpf;
-    private Date data;
 
     @OneToMany(mappedBy = "fornecedor")
     @JsonIgnore
@@ -41,11 +35,11 @@ public class Fornecedor implements FornecedorInterface {
     private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf) {
-        setNome(nome);
+        super.setNome(nome);
         setDescricao(descricao);
         setEndereco(endereco);
-        setCnpjCpf(cnpjCpf);
-        setData(new Date());
+        super.setCnpjCpf(cnpjCpf);
+        super.setData(new Date());
         setListaProdutoFornecedor(new ArrayList<ProdutoFornecedor>());
         setListaTelefones(new ArrayList<TelefoneFornecedor>());
     }
@@ -110,22 +104,6 @@ public class Fornecedor implements FornecedorInterface {
 
     // Getters / Setters
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -140,22 +118,6 @@ public class Fornecedor implements FornecedorInterface {
 
     public void setEndereco(EnderecoFornecedor endereco) {
         this.endereco = endereco;
-    }
-
-    public String getCnpjCpf() {
-        return cnpjCpf;
-    }
-
-    public void setCnpjCpf(String cnpjCpf) {
-        this.cnpjCpf = cnpjCpf;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
     }
 
     public List<ProdutoFornecedor> getListaProdutoFornecedor() {

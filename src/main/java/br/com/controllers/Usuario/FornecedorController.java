@@ -1,4 +1,4 @@
-package br.com.controllers;
+package br.com.controllers.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -12,48 +12,44 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
-import br.com.model.entities.classes.Cliente;
-import br.com.repository.ClienteRepository;
+import br.com.model.entities.classes.Usuario.Fornecedor;
+import br.com.repository.Usuario.FornecedorRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class ClienteController extends GenericService<Cliente, ClienteRepository> {
+public class FornecedorController extends GenericService<Fornecedor, FornecedorRepository> {
 
-    private final String URL = "/cliente";
+    private final String URL = "/fornecedor";
 
     @Autowired
-    public ClienteController(CrudRepository<Cliente, Integer> repository) {
+    public FornecedorController(CrudRepository<Fornecedor, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Cliente> findAll() {
+    public Iterable<Fornecedor> findAll() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Cliente cliente) {
-        return super.save(cliente);
+    public Object save(@RequestBody Fornecedor fornecedor) {
+        return super.save(fornecedor);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Cliente cliente) {
-        return super.remove(cliente);
+    public Object remove(@RequestBody Fornecedor fornecedor) {
+        return super.remove(fornecedor);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Cliente cliente) {
-        return super.update(cliente);
+    public Object update(@RequestBody Fornecedor fornecedor) {
+        return super.update(fornecedor);
     }
 
-    @GetMapping(URL + "/BuscarById/")
-    public Cliente findById(Integer id) {
+    @GetMapping(URL + "/Buscar/")
+    public Fornecedor findById(@RequestBody Integer id) {
         return super.findById(id);
     }
 
-    @GetMapping(URL + "/Buscar")
-    public Cliente find(@RequestBody Cliente cliente) {
-        return super.findById(cliente.getId());
-    }
 }

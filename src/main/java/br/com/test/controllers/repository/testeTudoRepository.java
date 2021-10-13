@@ -1,9 +1,7 @@
 package br.com.test.controllers.repository;
 
 import br.com.model.entities.classes.Avaliacao;
-import br.com.model.entities.classes.Cliente;
 import br.com.model.entities.classes.FormaPagamento;
-import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.ItemPedido;
 import br.com.repository.PedidoRepository;
 import br.com.model.entities.classes.Pedido;
@@ -13,6 +11,8 @@ import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
+import br.com.model.entities.classes.Usuario.Cliente;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

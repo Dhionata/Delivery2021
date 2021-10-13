@@ -3,10 +3,10 @@ package br.com.test.model.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.model.entities.classes.Cliente;
-import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
+import br.com.model.entities.classes.Usuario.Cliente;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 public class TesteTelefone {
     public static void main(String[] args) {

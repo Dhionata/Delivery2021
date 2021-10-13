@@ -7,7 +7,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.classes.Cliente;
+import br.com.model.entities.classes.Usuario.Cliente;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_endereco")

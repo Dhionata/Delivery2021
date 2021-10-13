@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
-import br.com.repository.EnderecoFornecedorRepository;
+import br.com.repository.Endereco.EnderecoFornecedorRepository;
 
 @RestController
 @CrossOrigin(origins = "*")

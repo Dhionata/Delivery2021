@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.model.entities.classes.Usuario.Fornecedor;
 import br.com.model.entities.interfaces.ProdutoFornecedorInterface;
 
 @Entity

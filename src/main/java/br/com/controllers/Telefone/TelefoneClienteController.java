@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
-import br.com.repository.TelefoneClienteRepository;
+import br.com.repository.Telefone.TelefoneClienteRepository;
 
 @RestController
 @CrossOrigin(origins = "*")

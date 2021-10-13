@@ -1,6 +1,6 @@
 package br.com.test.model.classes;
 
-import br.com.model.entities.classes.Fornecedor;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 public class TesteFornecedor {
     public static void main(String[] args) {

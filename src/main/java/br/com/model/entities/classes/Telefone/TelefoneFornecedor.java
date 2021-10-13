@@ -7,11 +7,10 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.classes.Fornecedor;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_telefone")
-
 public class TelefoneFornecedor extends Telefone {
 
     @ManyToOne

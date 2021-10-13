@@ -1,6 +1,6 @@
 package br.com.test.model.classes;
 
-import br.com.model.entities.classes.Cliente;
+import br.com.model.entities.classes.Usuario.Cliente;
 
 public class TesteCliente {
     public static void main(String[] args) {

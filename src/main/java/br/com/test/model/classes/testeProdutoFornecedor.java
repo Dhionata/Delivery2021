@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.ProdutoFornecedor;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 public class TesteProdutoFornecedor {
     public static void main(String[] args) {

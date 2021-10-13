@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
 import br.com.encrypt.Criptografia;
-import br.com.model.entities.classes.Cliente;
-import br.com.repository.ClienteRepository;
+import br.com.model.entities.classes.Usuario.Cliente;
+import br.com.repository.Usuario.ClienteRepository;
 import br.com.test.model.classes.TesteCliente;
 
 @RestController

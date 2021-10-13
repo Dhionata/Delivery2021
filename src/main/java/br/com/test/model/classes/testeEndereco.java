@@ -3,10 +3,10 @@ package br.com.test.model.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.model.entities.classes.Cliente;
-import br.com.model.entities.classes.Fornecedor;
 import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
+import br.com.model.entities.classes.Usuario.Cliente;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 public class TesteEndereco {
 
