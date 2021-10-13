@@ -43,6 +43,14 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
 	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.4'
 
+	//encrypt
+	//
+	 //ARGON2
+    implementation 'de.mkammerer:argon2-jvm:2.11'
+
+    // https://mvnrepository.com/artifact/net.java.dev.jna/jna
+    //implementation('net.java.dev.jna:jna:5.9.0')
+
 }
 
 test {

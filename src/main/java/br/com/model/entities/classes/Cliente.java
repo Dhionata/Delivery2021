@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import br.com.encrypt.Criptografia;
 import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
 import br.com.model.entities.interfaces.ClienteInterface;
@@ -36,7 +37,7 @@ public class Cliente implements ClienteInterface {
         setNome(nome);
         setCnpjCpf(cnpjCpf);
         setEmail(email);
-        setSenha(senha);
+        setSenha(Criptografia.argon(senha));
         setData(new Date());
         setListaTelefone(new ArrayList<TelefoneCliente>());
         setListaEndereco(new ArrayList<EnderecoCliente>());
@@ -47,7 +48,7 @@ public class Cliente implements ClienteInterface {
         setNome(nome);
         setCnpjCpf(cnpjCpf);
         setEmail(email);
-        setSenha(senha);
+        setSenha(Criptografia.argon(senha));
         setData(new Date());
         setListaEndereco(listaEndereco);
         setListaTelefone(listaTelefone);
@@ -59,7 +60,7 @@ public class Cliente implements ClienteInterface {
         setData(cliente.getData());
         setEmail(cliente.getEmail());
         setNome(cliente.getNome());
-        setSenha(cliente.getSenha());
+        setSenha(Criptografia.argon(cliente.getSenha()));
         setListaEndereco(cliente.getListaEndereco());
         setListaTelefone(cliente.getListaTelefone());
     }
@@ -83,7 +84,7 @@ public class Cliente implements ClienteInterface {
 
     @Override
     public void removeEndereco(EnderecoCliente endereco) {
-        // TODO Auto-generated method stub
+        getListaEndereco().remove(endereco);
     }
 
     @Override
@@ -101,7 +102,6 @@ public class Cliente implements ClienteInterface {
     @Override
     public void adicionarTelefone(TelefoneCliente telefone) {
         getListaTelefone().add(telefone);
-
     }
 
     // Getters and Setters
