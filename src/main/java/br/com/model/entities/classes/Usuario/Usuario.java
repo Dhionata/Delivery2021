@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import br.com.encrypt.Criptografia;
+
 @Entity
 public class Usuario {
     @Id
@@ -16,15 +18,59 @@ public class Usuario {
     private Date data;
     private String nome;
     private String senha;
+    private String email;
     private List<Permissao> permissoes;
+
+    public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email,
+            List<Permissao> permissoes) {
+        setId(id);
+        setCnpjCpf(cnpjCpf);
+        setData(data);
+        setNome(nome);
+        setSenha(Criptografia.argon(senha));
+        setEmail(email);
+        setPermissoes(permissoes);
+    }
+
+    public Usuario(String cnpjCpf, Date data, String nome, String senha, String email, List<Permissao> permissoes) {
+        setCnpjCpf(cnpjCpf);
+        setData(data);
+        setNome(nome);
+        setSenha(Criptografia.argon(senha));
+        setEmail(email);
+        setPermissoes(permissoes);
+    }
+
+    public Usuario(String cnpjCpf, String nome, String senha, String email, List<Permissao> permissoes) {
+        setCnpjCpf(cnpjCpf);
+        setData(new Date());
+        setNome(nome);
+        setSenha(Criptografia.argon(senha));
+        setEmail(email);
+        setPermissoes(permissoes);
+    }
+
+    public Usuario(String cnpjCpf, String nome, String senha, String email) {
+        setCnpjCpf(cnpjCpf);
+        setData(new Date());
+        setNome(nome);
+        setSenha(Criptografia.argon(senha));
+        setEmail(email);
+    }
+
+    public Usuario() {
+
+    }
 
     @Override
     public String toString() {
-        return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + "\nCNPJCPF: " + getCnpjCpf() + "\nData: " + getData()
-                + getNome() + "\nPermissões: " + getPermissoes() + "\nSenha: " + getSenha();
+        return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + "\nEmail: " + getEmail() + "\nCNPJCPF: "
+                + getCnpjCpf() + "\nData: " + getData() + getNome() + "\nPermissões: " + getPermissoes() + "\nSenha: "
+                + getSenha();
     }
 
     // Getters / Setters
+
     public Integer getId() {
         return id;
     }
@@ -39,6 +85,14 @@ public class Usuario {
 
     public void setCnpjCpf(String cnpjCpf) {
         this.cnpjCpf = cnpjCpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getData() {

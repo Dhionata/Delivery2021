@@ -1,7 +1,6 @@
 package br.com.model.entities.classes.Usuario;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,12 +33,10 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
     private List<TelefoneFornecedor> listaTelefones;
 
-    public Fornecedor(String nome, String descricao, String cnpjCpf) {
-        super.setNome(nome);
+    public Fornecedor(String nome, String descricao, String cnpjCpf, String senha, String email) {
+        super(cnpjCpf, nome, senha, email);
         setDescricao(descricao);
-        setEndereco(endereco);
-        super.setCnpjCpf(cnpjCpf);
-        super.setData(new Date());
+        setEnderecoFornecedor(endereco);
         setListaProdutoFornecedor(new ArrayList<ProdutoFornecedor>());
         setListaTelefones(new ArrayList<TelefoneFornecedor>());
     }
@@ -50,8 +47,9 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
 
     @Override
     public String toString() {
-        return "\n\n--Fornecedor--\nNome: " + getNome() + "\nID: " + getId() + "\nCNPJ/CPF: " + getCnpjCpf()
-                + "\nData: " + getData() + "\nDescriçao: " + getDescricao() + getEndereco() + getListaTelefones();
+        return "\n\n--Fornecedor--\nNome: " + super.getNome() + "\nID: " + super.getId() + "\nCNPJ/CPF: "
+                + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao() + getEnderecoFornecedor()
+                + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: " + super.getSenha();
     }
 
     @Override
@@ -73,7 +71,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
 
     @Override
     public void removeProduto(ProdutoFornecedor produto) {
-        // TODO Auto-generated method stub
+        getListaProdutoFornecedor().remove(produto);
 
     }
 
@@ -112,11 +110,11 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
         this.descricao = descricao;
     }
 
-    public EnderecoFornecedor getEndereco() {
+    public EnderecoFornecedor getEnderecoFornecedor() {
         return endereco;
     }
 
-    public void setEndereco(EnderecoFornecedor endereco) {
+    public void setEnderecoFornecedor(EnderecoFornecedor endereco) {
         this.endereco = endereco;
     }
 

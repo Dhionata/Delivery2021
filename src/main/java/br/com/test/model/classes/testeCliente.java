@@ -8,7 +8,7 @@ public class TesteCliente {
     }
 
     public static Cliente novoCliente() {
-        Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste@gmail.com", "teste123456");
+        Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste123456", "teste@gmail.com");
         TesteTelefone.novaListaTelefoneCliente(cliente);
         TesteEndereco.novaListaEnderecoCliente(cliente);
 

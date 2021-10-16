@@ -1,7 +1,6 @@
 package br.com.model.entities.classes.Usuario;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-import br.com.encrypt.Criptografia;
 import br.com.model.entities.classes.Pedido;
 import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
@@ -19,42 +17,29 @@ import br.com.model.entities.interfaces.ClienteInterface;
 @PrimaryKeyJoinColumn(name = "id_usuario")
 public class Cliente extends Usuario implements ClienteInterface {
 
-    private String email;
-
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<TelefoneCliente> listaTelefone;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<EnderecoCliente> listaEndereco;
 
-    public Cliente(String nome, String cnpjCpf, String email, String senha) {
-        super.setNome(nome);
-        super.setCnpjCpf(cnpjCpf);
-        setEmail(email);
-        super.setSenha(Criptografia.argon(senha));
-        super.setData(new Date());
+    public Cliente(String nome, String cnpjCpf, String senha, String email) {
+        super(cnpjCpf, nome, senha, email);
         setListaTelefone(new ArrayList<TelefoneCliente>());
         setListaEndereco(new ArrayList<EnderecoCliente>());
+        // falta permissões
     }
 
     public Cliente(String nome, String cnpjCpf, String email, String senha, List<TelefoneCliente> listaTelefones,
-            List<EnderecoCliente> listaEnderecos) {
-        super.setNome(nome);
-        super.setCnpjCpf(cnpjCpf);
-        setEmail(email);
-        super.setSenha(Criptografia.argon(senha));
-        super.setData(new Date());
+            List<EnderecoCliente> listaEnderecos, List<Permissao> permissoes) {
+        super(cnpjCpf, nome, senha, email, permissoes);
         setListaEndereco(listaEndereco);
         setListaTelefone(listaTelefone);
     }
 
     public Cliente(Cliente cliente) {
-        super.setId(cliente.getId());
-        super.setCnpjCpf(cliente.getCnpjCpf());
-        super.setData(cliente.getData());
-        setEmail(cliente.getEmail());
-        super.setNome(cliente.getNome());
-        super.setSenha(Criptografia.argon(cliente.getSenha()));
+        super(cliente.getId(), cliente.getCnpjCpf(), cliente.getData(), cliente.getNome(), cliente.getSenha(),
+                cliente.getEmail(), cliente.getPermissoes());
         setListaEndereco(cliente.getListaEndereco());
         setListaTelefone(cliente.getListaTelefone());
     }
@@ -65,9 +50,10 @@ public class Cliente extends Usuario implements ClienteInterface {
 
     @Override
     public String toString() {
-        return "\n\n--Cliente--\nID: " + getId() + "\nNome: " + getNome() + "\nCNPJ/CPF: " + getCnpjCpf() + "\nData: "
-                + getData() + "\nEmail: " + getEmail() + "\nSenha: " + getSenha() + "\n-- Lista de telefones --"
-                + getListaTelefone() + "\n-- Lista de Endereços --" + getListaEndereco();
+        return "\n\n--Cliente--\nID: " + super.getId() + "\nNome: " + super.getNome() + "\nCNPJ/CPF: "
+                + super.getCnpjCpf() + "\nData: " + super.getData() + "\nEmail: " + super.getEmail() + "\nSenha: "
+                + super.getSenha() + "\n-- Lista de telefones --" + getListaTelefone() + "\n-- Lista de Endereços --"
+                + getListaEndereco() + "\n-- Lista de Permissões --" + super.getPermissoes();
     }
 
     // verificar funcionalidade.
@@ -98,15 +84,12 @@ public class Cliente extends Usuario implements ClienteInterface {
         getListaTelefone().add(telefone);
     }
 
+    @Override
+    public void removerTelefone(TelefoneCliente telefone) {
+        getListaTelefone().remove(telefone);
+
+    }
     // Getters and Setters
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public List<TelefoneCliente> getListaTelefone() {
         return listaTelefone;

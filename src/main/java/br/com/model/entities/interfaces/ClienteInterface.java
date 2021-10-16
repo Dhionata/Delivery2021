@@ -9,9 +9,11 @@ import br.com.model.entities.classes.Telefone.TelefoneCliente;
 public interface ClienteInterface {
     public void cadastrarEndereco(EnderecoCliente endereco);
 
+    public void removeEndereco(EnderecoCliente endereco);
+
     public void adicionarTelefone(TelefoneCliente telefone);
 
-    public void removeEndereco(EnderecoCliente endereco);
+    public void removerTelefone(TelefoneCliente telefone);
 
     public boolean realizarPagamento(Float valor);
 
