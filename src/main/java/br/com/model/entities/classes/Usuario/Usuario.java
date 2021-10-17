@@ -3,7 +3,11 @@ package br.com.model.entities.classes.Usuario;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -19,6 +23,9 @@ public class Usuario {
     private String nome;
     private String senha;
     private String email;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.ORDINAL)
     private List<Permissao> permissoes;
 
     public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email,
