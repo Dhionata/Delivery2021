@@ -33,7 +33,7 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody ProdutoFornecedor produtoFornecedor) {
+    public ProdutoFornecedor save(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
         return super.save(produtoFornecedor);
     }
 
@@ -43,8 +43,8 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody ProdutoFornecedor produtoFornecedor) {
-        return super.update(produtoFornecedor);
+    public Object update(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
+        return super.save(produtoFornecedor);
     }
 
     @GetMapping(URL + "/BuscarById/")

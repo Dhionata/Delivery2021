@@ -32,7 +32,7 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Telefone telefone) {
+    public Telefone save(@RequestBody Telefone telefone) throws Exception {
         return super.save(telefone);
     }
 
@@ -42,8 +42,8 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Telefone telefone) {
-        return super.update(telefone);
+    public Object update(@RequestBody Telefone telefone) throws Exception {
+        return super.save(telefone);
     }
 
     @GetMapping(URL + "/BuscarById/")

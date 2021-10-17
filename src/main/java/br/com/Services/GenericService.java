@@ -1,12 +1,11 @@
 package br.com.Services;
 
-import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public abstract class GenericService<T, R> {
+
     private CrudRepository<T, Integer> repository;
     private final String NOT_NULL = "A entidade não pode ser nulla!";
 
@@ -28,30 +27,11 @@ public abstract class GenericService<T, R> {
         }
     }
 
-    //verificar classe DB do exemplo Jair
-    public Object save(T entity) {
-        try {
-            validate(entity);
+    // verificar classe DB do exemplo Jair
+    public T save(T entity) throws Exception {
+        validate(entity);
 
-            getRepository().save(entity);
-
-            return "Persistência feita com sucesso!" + entity;
-        } catch (Exception e) {
-            return "Erro na persistência:\n" + e.getMessage();
-        }
-    }
-
-    public Object update(T entity) {
-        try {
-            validate(entity);
-
-            getRepository().save(entity);
-
-            return "Atualização feita com sucesso!" + entity;
-
-        } catch (Exception e) {
-            return "Erro na atualização:\n" + e.getMessage();
-        }
+        return getRepository().save(entity);
     }
 
     public Object remove(T entity) {
@@ -62,10 +42,6 @@ public abstract class GenericService<T, R> {
         } catch (Exception e) {
             return "Erro na remoção:\n" + e.getMessage();
         }
-    }
-
-    public boolean isTrue(Boolean value) {
-        return Optional.ofNullable(value).orElse(false);
     }
 
     // Getters / Setters

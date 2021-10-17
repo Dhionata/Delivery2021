@@ -32,7 +32,7 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Endereco endereco) {
+    public Endereco save(@RequestBody Endereco endereco) throws Exception {
         return super.save(endereco);
     }
 
@@ -42,8 +42,8 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Endereco endereco) {
-        return super.update(endereco);
+    public Endereco update(@RequestBody Endereco endereco) throws Exception {
+        return super.save(endereco);
     }
 
     @GetMapping(URL + "/BuscarById/")

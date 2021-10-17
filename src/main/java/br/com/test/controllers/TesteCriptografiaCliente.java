@@ -23,7 +23,7 @@ public class TesteCriptografiaCliente extends GenericService<Cliente, ClienteRep
     }
 
     @GetMapping(value = URL)
-    public Cliente save() {
+    public Cliente save() throws Exception {
         super.save(cliente);
         Criptografia.verificar(cliente, "teste123456");
         return cliente;

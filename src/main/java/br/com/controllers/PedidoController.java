@@ -33,7 +33,7 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Pedido pedido) {
+    public Pedido save(@RequestBody Pedido pedido) throws Exception {
         return super.save(pedido);
     }
 
@@ -43,8 +43,8 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Pedido pedido) {
-        return super.update(pedido);
+    public Object update(@RequestBody Pedido pedido) throws Exception {
+        return super.save(pedido);
     }
 
     @GetMapping(URL + "/BuscarById/")

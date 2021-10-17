@@ -43,7 +43,7 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Avaliacao avaliacao) {
+    public Avaliacao save(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
     }
 
@@ -53,8 +53,8 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Avaliacao avaliacao) {
-        return super.update(avaliacao);
+    public Object update(@RequestBody Avaliacao avaliacao) throws Exception {
+        return super.save(avaliacao);
     }
 
 }

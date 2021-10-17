@@ -33,7 +33,7 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Fornecedor fornecedor) {
+    public Fornecedor save(@RequestBody Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
@@ -43,8 +43,8 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Fornecedor fornecedor) {
-        return super.update(fornecedor);
+    public Object update(@RequestBody Fornecedor fornecedor) throws Exception {
+        return super.save(fornecedor);
     }
 
     @GetMapping(URL + "/Buscar/")

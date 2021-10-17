@@ -33,7 +33,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Usuario usuario) {
+    public Usuario save(@RequestBody Usuario usuario) throws Exception {
         return super.save(usuario);
     }
 
@@ -43,8 +43,8 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Usuario usuario) {
-        return super.update(usuario);
+    public Object update(@RequestBody Usuario usuario) throws Exception {
+        return super.save(usuario);
     }
 
     @GetMapping(URL + "/BuscarById/")

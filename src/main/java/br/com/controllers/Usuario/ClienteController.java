@@ -33,7 +33,7 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Object save(@RequestBody Cliente cliente) {
+    public Cliente save(@RequestBody Cliente cliente) throws Exception {
         return super.save(cliente);
     }
 
@@ -43,8 +43,8 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Cliente cliente) {
-        return super.update(cliente);
+    public Object update(@RequestBody Cliente cliente) throws Exception {
+        return super.save(cliente);
     }
 
     @GetMapping(URL + "/BuscarById/")
