@@ -28,6 +28,7 @@ public abstract class GenericService<T, R> {
         }
     }
 
+    //verificar classe DB do exemplo Jair
     public Object save(T entity) {
         try {
             validate(entity);

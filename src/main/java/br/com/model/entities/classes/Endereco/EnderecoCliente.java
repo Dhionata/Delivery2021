@@ -14,7 +14,7 @@ import br.com.model.entities.classes.Usuario.Cliente;
 public class EnderecoCliente extends Endereco {
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "id_usuario")
     @JsonIgnore
     private Cliente cliente;
 

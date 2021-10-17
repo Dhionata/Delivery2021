@@ -1,6 +1,6 @@
 package br.com.test.model.classes;
 
-import br.com.model.entities.classes.*;
+import br.com.model.entities.classes.ItemPedido;
 
 public class TesteTudo {
 

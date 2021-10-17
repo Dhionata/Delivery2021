@@ -5,8 +5,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.com.model.entities.classes.Usuario.Cliente;
 
 @Entity
@@ -14,8 +12,7 @@ import br.com.model.entities.classes.Usuario.Cliente;
 public class TelefoneCliente extends Telefone {
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
-    @JsonIgnore
+    @JoinColumn(name = "id_usuario")
     private Cliente cliente;
 
     public TelefoneCliente(Cliente cliente, String numero) {

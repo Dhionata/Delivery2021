@@ -15,7 +15,7 @@ import br.com.model.entities.classes.Usuario.Fornecedor;
 public class EnderecoFornecedor extends Endereco {
 
     @ManyToOne
-    @JoinColumn(name = "id_fornecedor")
+    @JoinColumn(name = "id_usuario")
     @JsonIgnore
     private Fornecedor fornecedor;
 

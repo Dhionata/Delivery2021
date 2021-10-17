@@ -19,6 +19,7 @@ import br.com.model.entities.interfaces.FornecedorInterface;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_usuario")
+
 public class Fornecedor extends Usuario implements FornecedorInterface {
     private String descricao;
 
@@ -31,6 +32,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     private List<ProdutoFornecedor> listaProdutos;
 
     @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf, String senha, String email) {

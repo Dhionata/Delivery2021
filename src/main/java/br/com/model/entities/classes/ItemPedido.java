@@ -8,8 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.com.model.entities.interfaces.ItemPedidoInterface;
 
 @Entity
@@ -18,8 +16,8 @@ public class ItemPedido implements ItemPedidoInterface {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToOne()
+    //@JsonIgnore
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 

@@ -13,8 +13,9 @@ public class TestePedido {
     public static Pedido novoPedido() {
 
         Pedido pedido = new Pedido(TesteCliente.novoCliente(),
-                FormaPagamento.novaFormaPagamento(new Random().nextInt(5)), new Random().nextFloat(10),
-                TesteItemPedido.novaListaItensPedido());
+                FormaPagamento.novaFormaPagamento(new Random().nextInt(5)), new Random().nextFloat(10));
+
+        pedido.setItensPedido(TesteItemPedido.novaListaItensPedido(pedido));
 
         return pedido;
     }

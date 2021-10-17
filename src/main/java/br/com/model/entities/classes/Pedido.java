@@ -8,12 +8,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.Usuario.Cliente;
 import br.com.model.entities.interfaces.PedidoInterface;
@@ -25,11 +28,12 @@ public class Pedido implements PedidoInterface {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<ItemPedido> itensPedido;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "id_usuario")
     private Cliente cliente;
 
     @Enumerated(EnumType.ORDINAL)

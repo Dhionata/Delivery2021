@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.model.entities.classes.Pedido;
 import br.com.model.entities.classes.Endereco.EnderecoCliente;
 import br.com.model.entities.classes.Telefone.TelefoneCliente;
@@ -18,9 +20,11 @@ import br.com.model.entities.interfaces.ClienteInterface;
 public class Cliente extends Usuario implements ClienteInterface {
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TelefoneCliente> listaTelefone;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<EnderecoCliente> listaEndereco;
 
     public Cliente(String nome, String cnpjCpf, String senha, String email) {
