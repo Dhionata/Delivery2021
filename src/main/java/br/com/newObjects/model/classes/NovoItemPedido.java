@@ -10,8 +10,8 @@ import br.com.model.entities.classes.Pedido;
 public class NovoItemPedido {
 
     public static List<ItemPedido> novaListaItensPedido(Pedido pedido) {
-        ItemPedido itemPedido = new ItemPedido(pedido,NovoProduto.novoProduto(), new Random().nextInt(10));
-        ItemPedido itemPedido2 = new ItemPedido(pedido,NovoProduto.novoProduto2(), new Random().nextInt(10));
+        ItemPedido itemPedido = new ItemPedido(pedido, NovoProduto.novoProduto(), new Random().nextInt(10));
+        ItemPedido itemPedido2 = new ItemPedido(pedido, NovoProduto.novoProduto2(), new Random().nextInt(10));
 
         List<ItemPedido> novaListaItensPedido = new ArrayList<>();
         novaListaItensPedido.add(itemPedido);
@@ -19,8 +19,8 @@ public class NovoItemPedido {
         return novaListaItensPedido;
     }
 
-    public static ItemPedido novoItemPedido() {
-        return new ItemPedido(NovoProduto.novoProduto(), new Random().nextInt(10));
+    public static ItemPedido novoItemPedido(Pedido pedido) {
+        return new ItemPedido(pedido, NovoProduto.novoProduto(), new Random().nextInt(10));
     }
 
 }

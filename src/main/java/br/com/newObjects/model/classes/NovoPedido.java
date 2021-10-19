@@ -11,7 +11,7 @@ public class NovoPedido {
     public static Pedido novoPedido() {
 
         Pedido pedido = new Pedido(NovoCliente.novoCliente(),
-                FormaPagamento.novaFormaPagamento(new Random().nextInt(5)+1), new Random().nextFloat(10));
+                FormaPagamento.novaFormaPagamento(new Random().nextInt(5) + 1), new Random().nextFloat(10));
 
         pedido.setItensPedido(NovoItemPedido.novaListaItensPedido(pedido));
 
@@ -22,5 +22,10 @@ public class NovoPedido {
                     NovoProdutoFornecedor.novaListaProdutosFornecedor(NovoFornecedor.novoFornecedor()));
         }
         return pedido;
+    }
+
+    public static Pedido novoPedidoSimples() {
+        return new Pedido(NovoCliente.novoCliente(), FormaPagamento.novaFormaPagamento(new Random().nextInt(5) + 1),
+                new Random().nextFloat(100) + 1);
     }
 }
