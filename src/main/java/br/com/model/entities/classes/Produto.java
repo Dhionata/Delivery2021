@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.model.entities.interfaces.ProdutoInterface;
 
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ public class Produto implements ProdutoInterface {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    @JsonIgnore
     public List<ProdutoFornecedor> getListaFornecedores() {
         return listaFornecedores;
     }
