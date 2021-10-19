@@ -8,7 +8,7 @@ import br.com.newObjects.model.classes.NovoPedido;
 public class NovoItemPedidoTest {
     @Test
     void testNovaListaItensPedido() {
-        System.out.println(NovoItemPedido.novaListaItensPedido(NovoPedido.novoPedidoSimples()));
+        System.out.println(NovoItemPedido.novaListaItensPedido(NovoPedido.novoPedido()));
     }
 
     @Test

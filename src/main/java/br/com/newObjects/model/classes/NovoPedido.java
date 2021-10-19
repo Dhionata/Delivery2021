@@ -16,8 +16,7 @@ public class NovoPedido {
         pedido.setItensPedido(NovoItemPedido.novaListaItensPedido(pedido));
 
         for (ItemPedido i : pedido.getItensPedido()) {
-            i.setPedido(pedido);
-            i.setAvaliacao(NovaAvaliacao.novaAvaliacao());
+            i.setAvaliacao(NovaAvaliacao.novaAvaliacao(i));
             i.getProduto().setListaProdutoFornecedores(
                     NovoProdutoFornecedor.novaListaProdutosFornecedor(NovoFornecedor.novoFornecedor()));
         }
