@@ -15,6 +15,7 @@ public enum FormaPagamento {
         } else if (i == 5) {
             return FormaPagamento.BOLETO;
         } else {
+            System.out.println("esse número não deveria estar aqui!" + i);
             return null;
         }
     }

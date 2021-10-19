@@ -1,4 +1,4 @@
-package br.com.test.model.classes;
+package br.com.newObjects.model.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,7 @@ import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
 import br.com.model.entities.classes.Usuario.Cliente;
 import br.com.model.entities.classes.Usuario.Fornecedor;
 
-public class TesteEndereco {
-
-    public static void main(String[] args) {
-        System.out.println();
-    }
+public class NovoEndereco {
 
     public static List<EnderecoCliente> novaListaEnderecoCliente(Cliente cliente) {
         EnderecoCliente enderecoCliente1 = new EnderecoCliente(cliente, "logradouro", "cidade", "bairro", "complemento",

@@ -1,4 +1,4 @@
-package br.com.test.model.classes;
+package br.com.newObjects.model.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,16 +8,7 @@ import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
 import br.com.model.entities.classes.Usuario.Cliente;
 import br.com.model.entities.classes.Usuario.Fornecedor;
 
-public class TesteTelefone {
-    public static void main(String[] args) {
-
-        // cliente
-        System.out.println(novaListaTelefoneCliente(TesteCliente.novoCliente()).toString());
-
-        // fornecedor
-
-        System.out.println(novaListaTelefoneFornecedor(TesteFornecedor.novoFornecedor()));
-    }
+public class NovoTelefone {
 
     public static List<TelefoneFornecedor> novaListaTelefoneFornecedor(Fornecedor fornecedor) {
         var telefone1 = new TelefoneFornecedor(fornecedor, "(ii)thhhh-hhhh");
