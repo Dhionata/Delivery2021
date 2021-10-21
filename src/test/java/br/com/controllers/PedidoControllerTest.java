@@ -21,7 +21,7 @@ public class PedidoControllerTest {
     @Test
     void testFind() throws Exception {
         var a = new Pedido();
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 5; i++) {
             var b = pedidoController.save(NovoPedido.novoPedido());
             if (i == 3) {
                 a = b;
@@ -32,7 +32,7 @@ public class PedidoControllerTest {
 
     @Test
     void testFindAll() throws Exception {
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 5; i++) {
             pedidoController.save(NovoPedido.novoPedido());
         }
         System.out.println(pedidoController.findAll());
@@ -41,7 +41,7 @@ public class PedidoControllerTest {
     @Test
     void testFindById() throws Exception {
         var a = new Pedido();
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 5; i++) {
             var b = pedidoController.save(NovoPedido.novoPedido());
             if (i == 3) {
                 a = b;
