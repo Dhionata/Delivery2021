@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import br.com.controllers.Usuario.ClienteController;
+import br.com.controllers.usuario.ClienteController;
 import br.com.newObjects.model.entities.classes.usuario.NovoCliente;
 
 @DataJpaTest

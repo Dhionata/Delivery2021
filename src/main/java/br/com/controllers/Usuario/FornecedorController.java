@@ -1,4 +1,4 @@
-package br.com.controllers.Usuario;
+package br.com.controllers.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.Services.GenericService;
+import br.com.services.GenericService;
 import br.com.model.entities.classes.usuario.Fornecedor;
-import br.com.repository.Usuario.FornecedorRepository;
+import br.com.repository.usuario.FornecedorRepository;
 
 @RestController
 @CrossOrigin(origins = "*")

@@ -1,4 +1,4 @@
-package br.com.Services;
+package br.com.services;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
