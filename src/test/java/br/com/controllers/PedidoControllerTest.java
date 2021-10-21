@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import br.com.model.entities.classes.Pedido;
-import br.com.newObjects.model.classes.NovoPedido;
+import br.com.newObjects.model.entities.classes.NovoPedido;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)

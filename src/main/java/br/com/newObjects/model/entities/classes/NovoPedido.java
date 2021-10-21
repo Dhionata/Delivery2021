@@ -1,10 +1,11 @@
-package br.com.newObjects.model.classes;
+package br.com.newObjects.model.entities.classes;
 
 import java.util.Random;
 
 import br.com.model.entities.classes.FormaPagamento;
 import br.com.model.entities.classes.ItemPedido;
 import br.com.model.entities.classes.Pedido;
+import br.com.newObjects.model.entities.classes.usuario.NovoCliente;
 
 public class NovoPedido {
 

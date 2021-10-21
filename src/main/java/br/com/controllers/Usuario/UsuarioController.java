@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
-import br.com.model.entities.classes.Usuario.Usuario;
+import br.com.model.entities.classes.usuario.Usuario;
 import br.com.repository.Usuario.UsuarioRepository;
 
 @RestController

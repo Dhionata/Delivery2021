@@ -1,10 +1,10 @@
-package br.com.model.classes;
+package br.com.model.entities.classes;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.newObjects.model.classes.NovoItemPedido;
-import br.com.newObjects.model.classes.NovoPedido;
-import br.com.newObjects.model.classes.NovoProdutoFornecedor;
+import br.com.newObjects.model.entities.classes.NovoItemPedido;
+import br.com.newObjects.model.entities.classes.NovoPedido;
+import br.com.newObjects.model.entities.classes.NovoProdutoFornecedor;
 
 public class NovoItemPedidoTest {
     @Test

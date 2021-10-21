@@ -1,8 +1,8 @@
 package br.com.model.entities.interfaces;
 
 import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
-import br.com.model.entities.classes.Usuario.Fornecedor;
+import br.com.model.entities.classes.telefone.TelefoneFornecedor;
+import br.com.model.entities.classes.usuario.Fornecedor;
 
 public interface FornecedorInterface {
     public void adicionarProduto(ProdutoFornecedor produto);

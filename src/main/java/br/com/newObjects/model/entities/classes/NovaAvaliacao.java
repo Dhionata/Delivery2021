@@ -1,4 +1,4 @@
-package br.com.newObjects.model.classes;
+package br.com.newObjects.model.entities.classes;
 
 import br.com.model.entities.classes.Avaliacao;
 import br.com.model.entities.classes.ItemPedido;

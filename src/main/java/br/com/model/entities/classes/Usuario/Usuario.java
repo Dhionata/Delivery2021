@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Usuario;
+package br.com.model.entities.classes.usuario;
 
 import java.util.Date;
 import java.util.List;

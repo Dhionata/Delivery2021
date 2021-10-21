@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Services.GenericService;
-import br.com.model.entities.classes.Endereco.EnderecoCliente;
+import br.com.model.entities.classes.endereco.EnderecoCliente;
 import br.com.repository.Endereco.EnderecoClienteRepository;
 
 @RestController

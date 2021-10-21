@@ -1,4 +1,4 @@
-package br.com.newObjects.model.classes;
+package br.com.newObjects.model.entities.classes;
 
 import java.util.ArrayList;
 import java.util.Random;

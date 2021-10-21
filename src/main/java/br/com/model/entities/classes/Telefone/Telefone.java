@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Telefone;
+package br.com.model.entities.classes.telefone;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

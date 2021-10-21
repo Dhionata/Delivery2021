@@ -1,11 +1,9 @@
-package br.com.model.classes;
+package br.com.model.entities.classes;
 
 import java.util.Random;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
-import br.com.model.entities.classes.FormaPagamento;
 
 public class NovaFormaPagamento {
 
