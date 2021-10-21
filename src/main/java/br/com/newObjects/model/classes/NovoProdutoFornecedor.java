@@ -9,7 +9,8 @@ import br.com.model.entities.classes.Usuario.Fornecedor;
 
 public class NovoProdutoFornecedor {
 
-    public static List<ProdutoFornecedor> novaListaProdutosFornecedor(Fornecedor fornecedor) {
+    public static List<ProdutoFornecedor> novaListaProdutosFornecedor() {
+        Fornecedor fornecedor = NovoFornecedor.novoFornecedor();
         ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(NovoProduto.novoProduto(), fornecedor,
                 new Random().nextFloat(), new Random().nextInt(1000));
         ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(NovoProduto.novoProduto2(), fornecedor,

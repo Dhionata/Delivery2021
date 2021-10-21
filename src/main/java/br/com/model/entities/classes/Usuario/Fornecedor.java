@@ -50,8 +50,9 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     @Override
     public String toString() {
         return "\n\n--Fornecedor--\nNome: " + super.getNome() + "\nID: " + super.getId() + "\nCNPJ/CPF: "
-                + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao() + getEnderecoFornecedor()
-                + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: " + super.getSenha();
+                + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao()
+                + getEnderecoFornecedor() + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: "
+                + super.getSenha();
     }
 
     @Override

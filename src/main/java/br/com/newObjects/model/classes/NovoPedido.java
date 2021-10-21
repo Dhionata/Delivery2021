@@ -13,12 +13,11 @@ public class NovoPedido {
         Pedido pedido = new Pedido(NovoCliente.novoCliente(),
                 FormaPagamento.novaFormaPagamento(new Random().nextInt(5) + 1), new Random().nextFloat(10));
 
-        pedido.setItensPedido(NovoItemPedido.novaListaItensPedido(pedido));
+        pedido.setItensPedido(
+                NovoItemPedido.novaListaItensPedido(pedido, NovoProdutoFornecedor.novaListaProdutosFornecedor()));
 
         for (ItemPedido i : pedido.getItensPedido()) {
             i.setAvaliacao(NovaAvaliacao.novaAvaliacao(i));
-            i.getProduto().setListaProdutoFornecedores(
-                    NovoProdutoFornecedor.novaListaProdutosFornecedor(NovoFornecedor.novoFornecedor()));
         }
         return pedido;
     }

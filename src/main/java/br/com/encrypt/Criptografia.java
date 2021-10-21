@@ -14,6 +14,7 @@ public class Criptografia {
 
     public static String argon(String senha) {
         try {
+            System.out.println(senha);
             String hash;
             Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, 16, 32);
             var start = Instant.now();
