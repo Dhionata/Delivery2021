@@ -2,7 +2,7 @@ package br.com.encrypt;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.newObjects.model.classes.NovoCliente;
+import br.com.newObjects.model.entities.classes.usuario.NovoCliente;
 
 public class CriptografiaTest {
 

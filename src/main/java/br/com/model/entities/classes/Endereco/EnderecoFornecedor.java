@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Endereco;
+package br.com.model.entities.classes.endereco;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -7,7 +7,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.classes.Usuario.Fornecedor;
+import br.com.model.entities.classes.usuario.Fornecedor;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_endereco")

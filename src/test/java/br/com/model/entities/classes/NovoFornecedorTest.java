@@ -1,8 +1,8 @@
-package br.com.model.classes;
+package br.com.model.entities.classes;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.newObjects.model.classes.NovoFornecedor;
+import br.com.newObjects.model.entities.classes.usuario.NovoFornecedor;
 
 public class NovoFornecedorTest {
     @Test

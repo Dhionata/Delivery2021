@@ -1,4 +1,4 @@
-package br.com.model.classes;
+package br.com.model.entities.classes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,9 +8,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import br.com.newObjects.model.classes.NovaAvaliacao;
-import br.com.newObjects.model.classes.NovoItemPedido;
-import br.com.newObjects.model.classes.NovoPedido;
+import br.com.newObjects.model.entities.classes.NovaAvaliacao;
+import br.com.newObjects.model.entities.classes.NovoItemPedido;
+import br.com.newObjects.model.entities.classes.NovoPedido;
 import br.com.repository.AvaliacaoRepository;
 
 @DataJpaTest

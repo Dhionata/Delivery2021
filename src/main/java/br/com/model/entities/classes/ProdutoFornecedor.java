@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.classes.Usuario.Fornecedor;
+import br.com.model.entities.classes.usuario.Fornecedor;
 import br.com.model.entities.interfaces.ProdutoFornecedorInterface;
 
 @Entity
@@ -51,9 +51,9 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     @Override
     public String toString() {
         return "\n\n-- ProdutoFornecedor --\nID: " + getId() + "\nData de atualização: " + getDataAtualizacao()
-                + "\nData de cadastro: " + getDataCadastro() + "\nFornecedor: " + getFornecedor()
-                + "\nProduto: " + getProduto().getNome() + "\nQuantidade em estoque: " + getQuantidadeEmEstoque()
-                + "\nPreço: " + getPreco();
+                + "\nData de cadastro: " + getDataCadastro() + "\nFornecedor: " + getFornecedor() + "\nProduto: "
+                + getProduto().getNome() + "\nQuantidade em estoque: " + getQuantidadeEmEstoque() + "\nPreço: "
+                + getPreco();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Usuario;
+package br.com.model.entities.classes.usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
-import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
+import br.com.model.entities.classes.endereco.EnderecoFornecedor;
+import br.com.model.entities.classes.telefone.TelefoneFornecedor;
 import br.com.model.entities.interfaces.FornecedorInterface;
 
 @Entity
@@ -50,8 +50,9 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     @Override
     public String toString() {
         return "\n\n--Fornecedor--\nNome: " + super.getNome() + "\nID: " + super.getId() + "\nCNPJ/CPF: "
-                + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao() + getEnderecoFornecedor()
-                + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: " + super.getSenha();
+                + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao()
+                + getEnderecoFornecedor() + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: "
+                + super.getSenha();
     }
 
     @Override

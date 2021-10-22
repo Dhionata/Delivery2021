@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Usuario;
+package br.com.model.entities.classes.usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.Pedido;
-import br.com.model.entities.classes.Endereco.EnderecoCliente;
-import br.com.model.entities.classes.Telefone.TelefoneCliente;
+import br.com.model.entities.classes.endereco.EnderecoCliente;
+import br.com.model.entities.classes.telefone.TelefoneCliente;
 import br.com.model.entities.interfaces.ClienteInterface;
 
 @Entity

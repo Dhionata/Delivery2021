@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 import javax.swing.JOptionPane;
 
-import br.com.model.entities.classes.Usuario.Usuario;
+import br.com.model.entities.classes.usuario.Usuario;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import de.mkammerer.argon2.Argon2Helper;
@@ -14,6 +14,7 @@ public class Criptografia {
 
     public static String argon(String senha) {
         try {
+            System.out.println(senha);
             String hash;
             Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, 16, 32);
             var start = Instant.now();

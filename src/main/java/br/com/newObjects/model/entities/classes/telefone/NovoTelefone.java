@@ -1,12 +1,12 @@
-package br.com.newObjects.model.classes;
+package br.com.newObjects.model.entities.classes.telefone;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.model.entities.classes.Telefone.TelefoneCliente;
-import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
-import br.com.model.entities.classes.Usuario.Cliente;
-import br.com.model.entities.classes.Usuario.Fornecedor;
+import br.com.model.entities.classes.telefone.TelefoneCliente;
+import br.com.model.entities.classes.telefone.TelefoneFornecedor;
+import br.com.model.entities.classes.usuario.Cliente;
+import br.com.model.entities.classes.usuario.Fornecedor;
 
 public class NovoTelefone {
 

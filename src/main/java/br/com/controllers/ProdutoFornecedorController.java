@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.Services.GenericService;
+import br.com.services.GenericService;
 import br.com.model.entities.classes.ProdutoFornecedor;
 import br.com.repository.ProdutoFornecedorRepository;
 
