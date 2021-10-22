@@ -16,7 +16,7 @@ import br.com.model.entities.classes.ProdutoFornecedor;
 import br.com.repository.ProdutoFornecedorRepository;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProdutoFornecedorController extends GenericService<ProdutoFornecedor, ProdutoFornecedorRepository> {
 
     private final String URL = "/produtoFornecedor";
