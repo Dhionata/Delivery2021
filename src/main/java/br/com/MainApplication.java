@@ -8,10 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan(basePackages = { "br.com.model.entities" })
-@ComponentScan(basePackages = { "br.com.controllers", "br.com.test.controllers.repository","br.com.test.controllers" }) // Não esquecer de tirar
-																								// os
-// repositórios de teste na hora de
-// subir a aplicação online.
+@ComponentScan(basePackages = { "br.com.controllers","br.com.test.controllers" })
 @EnableJpaRepositories(basePackages = { "br.com.repository" })
 public class MainApplication {
 

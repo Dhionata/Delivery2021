@@ -12,6 +12,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.model.entities.classes.Produto;
 import br.com.model.entities.classes.ProdutoFornecedor;
 import br.com.model.entities.classes.endereco.EnderecoFornecedor;
 import br.com.model.entities.classes.telefone.TelefoneFornecedor;
@@ -41,6 +42,15 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
         setEnderecoFornecedor(endereco);
         setListaProdutoFornecedor(new ArrayList<ProdutoFornecedor>());
         setListaTelefones(new ArrayList<TelefoneFornecedor>());
+    }
+
+    public Fornecedor(Usuario usuario, String descricao, EnderecoFornecedor endereco, List<ProdutoFornecedor> listaProdutoFornecedor,
+            List<TelefoneFornecedor> listaTelefoneFornecedor) {
+        super(usuario);
+        setDescricao(descricao);
+        setEnderecoFornecedor(endereco);
+        setListaProdutoFornecedor(listaProdutoFornecedor);
+        setListaTelefones(listaTelefoneFornecedor);
     }
 
     public Fornecedor() {
@@ -98,9 +108,16 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     }
 
     @Override
-    public boolean confirmarEstoque(int quantidadeEmEstoque) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean confirmarEstoque(int quantidadePedida, Produto produto) {
+        var quantidadeTemporaria = 0;
+        for(ProdutoFornecedor produtoFornecedor : getListaProdutoFornecedor()) {
+            if((produtoFornecedor.getQuantidadeEmEstoque() - quantidadePedida)>0 && produtoFornecedor.getProduto().equals(produto)) {
+                quantidadeTemporaria = produtoFornecedor.getQuantidadeEmEstoque();
+        }
+        }   
+        if(quantidadeTemporaria !=0){
+            return true;
+        }else {return false;}
     }
 
     // Getters / Setters

@@ -48,6 +48,12 @@ public class Cliente extends Usuario implements ClienteInterface {
         setListaTelefone(cliente.getListaTelefone());
     }
 
+    public Cliente(Usuario usuario, List<EnderecoCliente> listaEndereco, List<TelefoneCliente> listaTelefone) {
+        super(usuario);
+        setListaEndereco(listaEndereco);
+        setListaTelefone(listaTelefone);
+    }
+
     public Cliente() {
 
     }

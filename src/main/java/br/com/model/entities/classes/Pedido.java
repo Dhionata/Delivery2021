@@ -22,13 +22,13 @@ import br.com.model.entities.classes.usuario.Cliente;
 import br.com.model.entities.interfaces.PedidoInterface;
 
 @Entity
-public class Pedido implements PedidoInterface {
+public class Pedido implements PedidoInterface{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<ItemPedido> itensPedido;
 
@@ -79,19 +79,20 @@ public class Pedido implements PedidoInterface {
     public String toString() {
         return "\n\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + "\n\n-- FormaPagamento --\n" + getFormaPagamento()
-                + "\nPago: " + getPago() + getCliente();
+                + "\nPago: " + getPago() + getCliente()+"\nValor Total: "+ calculaValorTotal(this);
     }
 
-    @Override
-    public Float calculaValorTotal() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public Float calculaValorTotal(Pedido pedido)  {
+        Float total = 0F;
 
-    @Override
-    public boolean statusEntrega(int idPedido) {
-        // TODO Auto-generated method stub
-        return false;
+        for(ItemPedido item: pedido.getItensPedido()){
+            for(ProdutoFornecedor produtoFornecedor: item.getProduto().getListaProdutoFornecedore()){
+                if(produtoFornecedor.getProduto().equals(item.getProduto())){
+                    total += item.getQuantidade() * produtoFornecedor.getPreco();
+                }
+            }
+        }
+        return total;
     }
 
     public void addItemPedido(ItemPedido itemPedido) {
