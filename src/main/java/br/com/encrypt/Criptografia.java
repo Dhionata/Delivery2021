@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 import javax.swing.JOptionPane;
 
-import br.com.model.entities.classes.usuario.Usuario;
+import br.com.model.entities.classes.Usuario.Usuario;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import de.mkammerer.argon2.Argon2Helper;

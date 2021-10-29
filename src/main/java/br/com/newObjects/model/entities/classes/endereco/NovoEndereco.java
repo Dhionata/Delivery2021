@@ -3,10 +3,10 @@ package br.com.newObjects.model.entities.classes.endereco;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.model.entities.classes.endereco.EnderecoCliente;
-import br.com.model.entities.classes.endereco.EnderecoFornecedor;
-import br.com.model.entities.classes.usuario.Cliente;
-import br.com.model.entities.classes.usuario.Fornecedor;
+import br.com.model.entities.classes.Endereco.EnderecoCliente;
+import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
+import br.com.model.entities.classes.Usuario.Cliente;
+import br.com.model.entities.classes.Usuario.Fornecedor;
 
 public class NovoEndereco {
 

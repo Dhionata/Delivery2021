@@ -1,11 +1,11 @@
-package br.com.model.entities.classes.telefone;
+package br.com.model.entities.classes.Telefone;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-import br.com.model.entities.classes.usuario.Cliente;
+import br.com.model.entities.classes.Usuario.Cliente;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_telefone")

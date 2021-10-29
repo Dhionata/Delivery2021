@@ -1,4 +1,4 @@
-package br.com.controllers.endereco;
+package br.com.controllers.Endereco;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.services.GenericService;
-import br.com.model.entities.classes.endereco.Endereco;
-import br.com.repository.endereco.EnderecoRepository;
+import br.com.Services.GenericService;
+import br.com.model.entities.classes.Endereco.Endereco;
+import br.com.repository.Endereco.EnderecoRepository;
 
 @RestController
 @CrossOrigin(origins = "*")

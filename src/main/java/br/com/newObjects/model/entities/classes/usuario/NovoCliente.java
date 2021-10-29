@@ -1,6 +1,6 @@
 package br.com.newObjects.model.entities.classes.usuario;
 
-import br.com.model.entities.classes.usuario.Cliente;
+import br.com.model.entities.classes.Usuario.Cliente;
 import br.com.newObjects.model.entities.classes.endereco.NovoEndereco;
 import br.com.newObjects.model.entities.classes.telefone.NovoTelefone;
 
