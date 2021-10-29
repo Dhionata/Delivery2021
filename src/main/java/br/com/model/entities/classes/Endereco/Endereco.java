@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Endereco;
+package br.com.model.entities.classes.endereco;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

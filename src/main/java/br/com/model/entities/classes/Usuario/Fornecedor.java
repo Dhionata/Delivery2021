@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.Usuario;
+package br.com.model.entities.classes.usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.Produto;
 import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.model.entities.classes.Endereco.EnderecoFornecedor;
-import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
+import br.com.model.entities.classes.endereco.EnderecoFornecedor;
+import br.com.model.entities.classes.telefone.TelefoneFornecedor;
 import br.com.model.entities.interfaces.FornecedorInterface;
 
 @Entity

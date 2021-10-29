@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.classes.Usuario.Cliente;
+import br.com.model.entities.classes.usuario.Cliente;
 import br.com.model.entities.interfaces.PedidoInterface;
 
 @Entity
@@ -54,10 +54,10 @@ public class Pedido implements PedidoInterface{
         setData(new Date());
     }
 
-    public Pedido(Cliente cliente, FormaPagamento formaPagamento, int i) {
+    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto) {
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
-        setDesconto((float) i);
+        setDesconto(desconto);
         setPago(false);
         setEntregue(false);
         setItensPedido(new ArrayList<>());
@@ -141,8 +141,8 @@ public class Pedido implements PedidoInterface{
         return desconto;
     }
 
-    public void setDesconto(Float desconto2) {
-        this.desconto = desconto2;
+    public void setDesconto(Float desconto) {
+        this.desconto = desconto;
     }
 
     public Boolean getPago() {

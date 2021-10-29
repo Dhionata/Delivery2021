@@ -1,4 +1,4 @@
-package br.com.controllers.Telefone;
+package br.com.controllers.telefone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.Services.GenericService;
-import br.com.model.entities.classes.Telefone.Telefone;
-import br.com.repository.Telefone.TelefoneRepository;
+import br.com.services.GenericService;
+import br.com.model.entities.classes.telefone.Telefone;
+import br.com.repository.telefone.TelefoneRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
