@@ -56,12 +56,6 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
                 + getPreco();
     }
 
-    @Override
-    public Produto buscarProduto(String nome) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     // Getters / Setters
 
     public Integer getId() {

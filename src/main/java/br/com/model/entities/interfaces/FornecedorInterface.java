@@ -1,5 +1,6 @@
 package br.com.model.entities.interfaces;
 
+import br.com.model.entities.classes.Produto;
 import br.com.model.entities.classes.ProdutoFornecedor;
 import br.com.model.entities.classes.Telefone.TelefoneFornecedor;
 import br.com.model.entities.classes.Usuario.Fornecedor;
@@ -20,5 +21,5 @@ public interface FornecedorInterface {
     // Verificar!
     public Fornecedor buscarFornecedor(String nome);
 
-    public boolean confirmarEstoque(int quantidadeEmEstoque);
+    public boolean confirmarEstoque(int quantidadePedida, Produto produto);
 }

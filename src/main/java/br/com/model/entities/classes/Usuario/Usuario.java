@@ -68,6 +68,16 @@ public class Usuario {
         setEmail(email);
     }
 
+    public Usuario(Usuario usuario) {
+        setId(usuario.getId());
+        setCnpjCpf(usuario.getCnpjCpf());
+        setData(usuario.getData());
+        setNome(usuario.getNome());
+        setSenha(Criptografia.argon(usuario.getSenha()));
+        setEmail(usuario.getEmail());
+        setPermissoes(usuario.getPermissoes());
+    }
+
     public Usuario() {
 
     }

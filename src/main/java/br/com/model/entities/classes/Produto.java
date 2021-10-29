@@ -41,12 +41,12 @@ public class Produto implements ProdutoInterface {
     @Override
     public String toString() {
         return "\n\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
-                + getListaFornecedores() + "\nDisponibilidade: " + isDisponivel();
+                + getListaProdutoFornecedore() + "\nDisponibilidade: " + isDisponivel();
     }
 
     public void adicionarFornecedor(ProdutoFornecedor produtoFornecedor) {
         produtoFornecedor.setProduto(this);
-        getListaFornecedores().add(produtoFornecedor);
+        getListaProdutoFornecedore().add(produtoFornecedor);
     }
 
     // Getters / Setters
@@ -67,7 +67,7 @@ public class Produto implements ProdutoInterface {
         this.nome = nome;
     }
 
-    public List<ProdutoFornecedor> getListaFornecedores() {
+    public List<ProdutoFornecedor> getListaProdutoFornecedore() {
         return listaFornecedores;
     }
 
