@@ -1,4 +1,4 @@
-package br.com.model.entities.classes;
+package br.com.model.entities.classes.telefone;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,6 @@ public class NovoTelefoneTest {
     @Test
     void testNovaListaTelefoneFornecedor() {
         // fornecedor
-
         System.out.println(NovoTelefone.novaListaTelefoneFornecedor(NovoFornecedor.novoFornecedor()));
     }
 }

@@ -23,4 +23,11 @@ public class NovoProdutoFornecedor {
 
         return listaProdutoFornecedor;
     }
+
+    public static ProdutoFornecedor novoProdutoFornecedor(){
+        Fornecedor fornecedor = NovoFornecedor.novoFornecedor();
+        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(NovoProduto.novoProduto(), fornecedor,
+                new Random().nextFloat(), new Random().nextInt(1000));
+        return produtoFornecedor;
+    }
 }

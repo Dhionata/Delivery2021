@@ -10,7 +10,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.classes.Pedido;
 import br.com.model.entities.classes.endereco.EnderecoCliente;
 import br.com.model.entities.classes.telefone.TelefoneCliente;
 import br.com.model.entities.interfaces.ClienteInterface;
@@ -35,15 +34,15 @@ public class Cliente extends Usuario implements ClienteInterface {
     }
 
     public Cliente(String nome, String cnpjCpf, String email, String senha, List<TelefoneCliente> listaTelefones,
-            List<EnderecoCliente> listaEnderecos, List<Permissao> permissoes) {
-        super(cnpjCpf, nome, senha, email, permissoes);
+            List<EnderecoCliente> listaEnderecos, TipoUsuario tipo) {
+        super(cnpjCpf, nome, senha, email, tipo);
         setListaEndereco(listaEndereco);
         setListaTelefone(listaTelefone);
     }
 
     public Cliente(Cliente cliente) {
         super(cliente.getId(), cliente.getCnpjCpf(), cliente.getData(), cliente.getNome(), cliente.getSenha(),
-                cliente.getEmail(), cliente.getPermissoes());
+                cliente.getEmail(), cliente.getTipo());
         setListaEndereco(cliente.getListaEndereco());
         setListaTelefone(cliente.getListaTelefone());
     }
@@ -63,7 +62,7 @@ public class Cliente extends Usuario implements ClienteInterface {
         return "\n\n--Cliente--\nID: " + super.getId() + "\nNome: " + super.getNome() + "\nCNPJ/CPF: "
                 + super.getCnpjCpf() + "\nData: " + super.getData() + "\nEmail: " + super.getEmail() + "\nSenha: "
                 + super.getSenha() + "\n-- Lista de telefones --" + getListaTelefone() + "\n-- Lista de Endereços --"
-                + getListaEndereco() + "\n-- Lista de Permissões --" + super.getPermissoes();
+                + getListaEndereco() + "\n-- Lista de Permissões --" + super.getTipo();
     }
 
     // verificar funcionalidade.
@@ -81,12 +80,6 @@ public class Cliente extends Usuario implements ClienteInterface {
     public boolean realizarPagamento(Float valor) {
         // TODO Auto-generated method stub
         return false;
-    }
-
-    @Override
-    public void listaPedidos(List<Pedido> pedidos) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override

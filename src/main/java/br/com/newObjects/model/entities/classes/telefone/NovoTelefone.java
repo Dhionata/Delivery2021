@@ -29,4 +29,9 @@ public class NovoTelefone {
         lista.add(telefone2);
         return lista;
     }
+
+    public static TelefoneFornecedor novoTelefone(Fornecedor fornecedor) {
+        var telefone = new TelefoneFornecedor(fornecedor, "(xx)yyyy-yyyy");
+        return telefone;
+    }
 }

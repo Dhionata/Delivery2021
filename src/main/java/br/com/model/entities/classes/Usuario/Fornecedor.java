@@ -44,8 +44,8 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
         setListaTelefones(new ArrayList<TelefoneFornecedor>());
     }
 
-    public Fornecedor(Usuario usuario, String descricao, EnderecoFornecedor endereco, List<ProdutoFornecedor> listaProdutoFornecedor,
-            List<TelefoneFornecedor> listaTelefoneFornecedor) {
+    public Fornecedor(Usuario usuario, String descricao, EnderecoFornecedor endereco,
+            List<ProdutoFornecedor> listaProdutoFornecedor, List<TelefoneFornecedor> listaTelefoneFornecedor) {
         super(usuario);
         setDescricao(descricao);
         setEnderecoFornecedor(endereco);
@@ -62,7 +62,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
         return "\n\n--Fornecedor--\nNome: " + super.getNome() + "\nID: " + super.getId() + "\nCNPJ/CPF: "
                 + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao()
                 + getEnderecoFornecedor() + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: "
-                + super.getSenha();
+                + super.getSenha() + "\nLista de Produtos: " + getListaProdutoFornecedor();
     }
 
     @Override
@@ -78,20 +78,20 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
 
     @Override
     public boolean confirmarPedido(int idPedido) {
-        // TODO Auto-generated method stub
+        // TODO blz
+        // getPedidos().stream().filter(p -> p.getId() == idPedido).forEach(p ->
+        // p.getPago("Confirmado"));
         return false;
     }
 
     @Override
     public void removeProduto(ProdutoFornecedor produto) {
         getListaProdutoFornecedor().remove(produto);
-
     }
 
     @Override
     public void confirmarEntrega(int idPedido) {
-        // TODO Auto-generated method stub
-
+        getPedidos().stream().filter(pedido -> pedido.getId() == idPedido).forEach(pedido -> pedido.setEntregue(true));
     }
 
     @Override
@@ -110,14 +110,17 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     @Override
     public boolean confirmarEstoque(int quantidadePedida, Produto produto) {
         var quantidadeTemporaria = 0;
-        for(ProdutoFornecedor produtoFornecedor : getListaProdutoFornecedor()) {
-            if((produtoFornecedor.getQuantidadeEmEstoque() - quantidadePedida)>0 && produtoFornecedor.getProduto().equals(produto)) {
+        for (ProdutoFornecedor produtoFornecedor : getListaProdutoFornecedor()) {
+            if ((produtoFornecedor.getQuantidadeEmEstoque() - quantidadePedida) > 0
+                    && produtoFornecedor.getProduto().equals(produto)) {
                 quantidadeTemporaria = produtoFornecedor.getQuantidadeEmEstoque();
+            }
         }
-        }   
-        if(quantidadeTemporaria !=0){
+        if (quantidadeTemporaria != 0) {
             return true;
-        }else {return false;}
+        } else {
+            return false;
+        }
     }
 
     // Getters / Setters

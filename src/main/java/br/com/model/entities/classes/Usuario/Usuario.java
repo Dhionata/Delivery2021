@@ -3,17 +3,16 @@ package br.com.model.entities.classes.usuario;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 
 import br.com.encrypt.Criptografia;
+import br.com.model.entities.classes.Pedido;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -26,38 +25,37 @@ public class Usuario {
     private String nome;
     private String senha;
     private String email;
+    private TipoUsuario tipo;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.ORDINAL)
-    private List<Permissao> permissoes;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Pedido> pedidos;
 
     public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email,
-            List<Permissao> permissoes) {
+            TipoUsuario tipo) {
         setId(id);
         setCnpjCpf(cnpjCpf);
         setData(data);
         setNome(nome);
         setSenha(Criptografia.argon(senha));
         setEmail(email);
-        setPermissoes(permissoes);
     }
 
-    public Usuario(String cnpjCpf, Date data, String nome, String senha, String email, List<Permissao> permissoes) {
+    public Usuario(String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo) {
         setCnpjCpf(cnpjCpf);
         setData(data);
         setNome(nome);
         setSenha(Criptografia.argon(senha));
         setEmail(email);
-        setPermissoes(permissoes);
+        setTipo(tipo);
     }
 
-    public Usuario(String cnpjCpf, String nome, String senha, String email, List<Permissao> permissoes) {
+    public Usuario(String cnpjCpf, String nome, String senha, String email, TipoUsuario tipo) {
         setCnpjCpf(cnpjCpf);
         setData(new Date());
         setNome(nome);
         setSenha(Criptografia.argon(senha));
         setEmail(email);
-        setPermissoes(permissoes);
+        setTipo(tipo);
     }
 
     public Usuario(String cnpjCpf, String nome, String senha, String email) {
@@ -75,7 +73,7 @@ public class Usuario {
         setNome(usuario.getNome());
         setSenha(Criptografia.argon(usuario.getSenha()));
         setEmail(usuario.getEmail());
-        setPermissoes(usuario.getPermissoes());
+        setTipo(usuario.getTipo());
     }
 
     public Usuario() {
@@ -85,11 +83,27 @@ public class Usuario {
     @Override
     public String toString() {
         return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + "\nEmail: " + getEmail() + "\nCNPJCPF: "
-                + getCnpjCpf() + "\nData: " + getData() + getNome() + "\nPermissões: " + getPermissoes() + "\nSenha: "
+                + getCnpjCpf() + "\nData: " + getData() + getNome() + "\nTipo de usuário: " + getTipo() + "\nSenha: "
                 + getSenha();
     }
 
     // Getters / Setters
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
+    }
 
     public Integer getId() {
         return id;
@@ -138,13 +152,4 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public List<Permissao> getPermissoes() {
-        return permissoes;
-    }
-
-    public void setPermissoes(List<Permissao> permissoes) {
-        this.permissoes = permissoes;
-    }
-
 }
