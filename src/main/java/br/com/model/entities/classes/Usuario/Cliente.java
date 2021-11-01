@@ -27,28 +27,30 @@ public class Cliente extends Usuario implements ClienteInterface {
     private List<EnderecoCliente> listaEndereco;
 
     public Cliente(String nome, String cnpjCpf, String senha, String email) {
-        super(cnpjCpf, nome, senha, email);
+        super(cnpjCpf, nome, senha, email, TipoUsuario.CLIENTE);
         setListaTelefone(new ArrayList<TelefoneCliente>());
         setListaEndereco(new ArrayList<EnderecoCliente>());
-        // falta permissões
     }
 
     public Cliente(String nome, String cnpjCpf, String email, String senha, List<TelefoneCliente> listaTelefones,
-            List<EnderecoCliente> listaEnderecos, TipoUsuario tipo) {
-        super(cnpjCpf, nome, senha, email, tipo);
+            List<EnderecoCliente> listaEnderecos) {
+        super(cnpjCpf, nome, senha, email, TipoUsuario.CLIENTE);
         setListaEndereco(listaEndereco);
         setListaTelefone(listaTelefone);
     }
 
     public Cliente(Cliente cliente) {
         super(cliente.getId(), cliente.getCnpjCpf(), cliente.getData(), cliente.getNome(), cliente.getSenha(),
-                cliente.getEmail(), cliente.getTipo());
+                cliente.getEmail(), TipoUsuario.CLIENTE);
         setListaEndereco(cliente.getListaEndereco());
         setListaTelefone(cliente.getListaTelefone());
     }
 
     public Cliente(Usuario usuario, List<EnderecoCliente> listaEndereco, List<TelefoneCliente> listaTelefone) {
         super(usuario);
+        // TODO verificar se existirá classes "visitante" e/ou "administrador", se sim,
+        // verificar TipoUsuario.ADMINISTRADOR e TipoUsuario.VISITANTE
+        setTipo(TipoUsuario.CLIENTE);
         setListaEndereco(listaEndereco);
         setListaTelefone(listaTelefone);
     }

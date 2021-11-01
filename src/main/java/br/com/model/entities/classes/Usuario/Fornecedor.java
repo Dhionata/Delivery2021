@@ -37,7 +37,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf, String senha, String email) {
-        super(cnpjCpf, nome, senha, email);
+        super(cnpjCpf, nome, senha, email,TipoUsuario.FORNECEDOR);
         setDescricao(descricao);
         setEnderecoFornecedor(endereco);
         setListaProdutoFornecedor(new ArrayList<ProdutoFornecedor>());
@@ -47,6 +47,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     public Fornecedor(Usuario usuario, String descricao, EnderecoFornecedor endereco,
             List<ProdutoFornecedor> listaProdutoFornecedor, List<TelefoneFornecedor> listaTelefoneFornecedor) {
         super(usuario);
+        setTipo(TipoUsuario.FORNECEDOR);
         setDescricao(descricao);
         setEnderecoFornecedor(endereco);
         setListaProdutoFornecedor(listaProdutoFornecedor);
@@ -100,9 +101,10 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
 
     }
 
-    // Verificar a possibilidade de uma lista de fornecedores.
     @Override
     public Fornecedor buscarFornecedor(String nome) {
+        // Verificar a possibilidade de uma lista de fornecedores.
+        // 2.0 verificar a possibilidade de retornar uma lista de fornecedores através do repository.
         // TODO Auto-generated method stub
         return null;
     }
