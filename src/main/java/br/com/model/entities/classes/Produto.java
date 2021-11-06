@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.model.entities.interfaces.ProdutoInterface;
 
 import java.util.ArrayList;
@@ -20,19 +22,24 @@ public class Produto implements ProdutoInterface {
 
     private String nome;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
-    private List<ProdutoFornecedor> listaFornecedores;
+    private List<ProdutoFornecedor> listaFornecedores = new ArrayList<>();
 
     private boolean disponivel = true;
 
     public Produto(String nome) {
         setNome(nome);
-        setListaProdutoFornecedores(new ArrayList<ProdutoFornecedor>());
     }
 
     public Produto(String nome, List<ProdutoFornecedor> listaProdutoFornecedor) {
         setNome(nome);
         setListaProdutoFornecedores(listaProdutoFornecedor);
+    }
+
+    public Produto(String nome, ProdutoFornecedor produtoFornecedor){
+        setNome(nome);
+        adicionarFornecedor(produtoFornecedor);
     }
 
     public Produto() {
@@ -41,12 +48,12 @@ public class Produto implements ProdutoInterface {
     @Override
     public String toString() {
         return "\n\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
-                + getListaProdutoFornecedore() + "\nDisponibilidade: " + isDisponivel();
+                + getListaProdutoFornecedores() + "\nDisponibilidade: " + isDisponivel();
     }
 
     public void adicionarFornecedor(ProdutoFornecedor produtoFornecedor) {
         produtoFornecedor.setProduto(this);
-        getListaProdutoFornecedore().add(produtoFornecedor);
+        getListaProdutoFornecedores().add(produtoFornecedor);
     }
 
     // Getters / Setters
@@ -67,12 +74,14 @@ public class Produto implements ProdutoInterface {
         this.nome = nome;
     }
 
-    public List<ProdutoFornecedor> getListaProdutoFornecedore() {
-        return listaFornecedores;
+    public List<ProdutoFornecedor> getListaProdutoFornecedores() {
+        return listaFornecedores
+;
     }
 
     public void setListaProdutoFornecedores(List<ProdutoFornecedor> listaFornecedores) {
-        this.listaFornecedores = listaFornecedores;
+        this.listaFornecedores
+ = listaFornecedores;
     }
 
     public boolean isDisponivel() {

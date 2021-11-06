@@ -27,6 +27,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
+    @JsonIgnore
     private Fornecedor fornecedor;
 
     private Float preco;

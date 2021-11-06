@@ -86,7 +86,7 @@ public class Pedido implements PedidoInterface{
         Float total = 0F;
 
         for(ItemPedido item: pedido.getItensPedido()){
-            for(ProdutoFornecedor produtoFornecedor: item.getProduto().getListaProdutoFornecedore()){
+            for(ProdutoFornecedor produtoFornecedor: item.getProduto().getListaProdutoFornecedores()){
                 if(produtoFornecedor.getProduto().equals(item.getProduto())){
                     total += item.getQuantidade() * produtoFornecedor.getPreco();
                 }

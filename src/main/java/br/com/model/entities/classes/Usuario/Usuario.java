@@ -11,6 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.encrypt.Criptografia;
 import br.com.model.entities.classes.Pedido;
 
@@ -28,6 +30,7 @@ public class Usuario {
     private TipoUsuario tipo;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Pedido> pedidos;
 
     public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email,

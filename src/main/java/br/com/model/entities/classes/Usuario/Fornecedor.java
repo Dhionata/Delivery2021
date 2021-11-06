@@ -28,7 +28,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     @JoinColumn(name = "id_endereco_fornecedor")
     private EnderecoFornecedor endereco;
 
-    @OneToMany(mappedBy = "fornecedor")
+    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ProdutoFornecedor> listaProdutos;
 
