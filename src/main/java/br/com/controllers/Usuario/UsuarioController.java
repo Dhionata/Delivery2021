@@ -22,38 +22,38 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     private final String URL = "/usuario";
 
     @Autowired
-    public UsuarioController(CrudRepository<Usuario, Integer> repository) {
+    private UsuarioController(CrudRepository<Usuario, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Usuario> findAll() {
+    private Iterable<Usuario> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Usuario save(@RequestBody Usuario usuario) throws Exception {
+    private Usuario salvar(@RequestBody Usuario usuario) throws Exception {
         return super.save(usuario);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Usuario usuario) {
+    private Object remover(@RequestBody Usuario usuario) {
         return super.remove(usuario);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Usuario usuario) throws Exception {
+    private Object update(@RequestBody Usuario usuario) throws Exception {
         return super.save(usuario);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public Usuario findById(Integer id) {
+    private Usuario procurarPorID(Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar")
-    public Usuario find(@RequestBody Usuario usuario) {
+    private Usuario find(@RequestBody Usuario usuario) {
         return super.findById(usuario.getId());
     }
 }

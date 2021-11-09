@@ -22,7 +22,7 @@ public abstract class GenericService<T, R> {
     }
 
     public void validate(T entity) throws Exception {
-        if (entity == null) {
+        if (entity.equals(null)) {
             throw new Exception(NOT_NULL);
         }
     }

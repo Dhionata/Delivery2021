@@ -27,7 +27,7 @@ public class PedidoControllerTest {
                 a = b;
             }
         }
-        System.out.println(pedidoController.find(a));
+        System.out.println(pedidoController.findById(a.getId()));
     }
 
     @Test
@@ -59,15 +59,15 @@ public class PedidoControllerTest {
     @Test
     void testSave() throws Exception {
         var a = pedidoController.save(NovoPedido.novoPedido());
-        assertEquals(a, pedidoController.find(a));
+        assertEquals(a, pedidoController.findById(a.getId()));
     }
 
     @Test
     void testUpdate() throws Exception {
         var a = pedidoController.save(NovoPedido.novoPedido());
         a.setPago(true);
-        pedidoController.update(a);
-        assertEquals(a, pedidoController.find(a));
+        pedidoController.save(a);
+        assertEquals(a, pedidoController.findById(a.getId()));
 
     }
 }

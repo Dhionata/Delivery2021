@@ -21,38 +21,38 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
     private final String URL = "/endereco";
 
     @Autowired
-    public EnderecoController(CrudRepository<Endereco, Integer> repository) {
+    private EnderecoController(CrudRepository<Endereco, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Endereco> findAll() {
+    private Iterable<Endereco> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Endereco save(@RequestBody Endereco endereco) throws Exception {
+    private Endereco salvar(@RequestBody Endereco endereco) throws Exception {
         return super.save(endereco);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Endereco endereco) {
+    private Object remover(@RequestBody Endereco endereco) {
         return super.remove(endereco);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Endereco update(@RequestBody Endereco endereco) throws Exception {
+    private Endereco update(@RequestBody Endereco endereco) throws Exception {
         return super.save(endereco);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public Endereco findById(@RequestBody Integer id) {
+    private Endereco procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
-    public Endereco find(@RequestBody Endereco endereco) {
+    private Endereco find(@RequestBody Endereco endereco) {
         return super.findById(endereco.getId());
     }
 }

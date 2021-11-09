@@ -34,10 +34,10 @@ public class Produto implements ProdutoInterface {
 
     public Produto(String nome, List<ProdutoFornecedor> listaProdutoFornecedor) {
         setNome(nome);
-        setListaProdutoFornecedores(listaProdutoFornecedor);
+        setListaFornecedores(listaProdutoFornecedor);
     }
 
-    public Produto(String nome, ProdutoFornecedor produtoFornecedor){
+    public Produto(String nome, ProdutoFornecedor produtoFornecedor) {
         setNome(nome);
         adicionarFornecedor(produtoFornecedor);
     }
@@ -48,12 +48,12 @@ public class Produto implements ProdutoInterface {
     @Override
     public String toString() {
         return "\n\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
-                + getListaProdutoFornecedores() + "\nDisponibilidade: " + isDisponivel();
+                + getListaFornecedores() + "\nDisponibilidade: " + isDisponivel();
     }
 
     public void adicionarFornecedor(ProdutoFornecedor produtoFornecedor) {
         produtoFornecedor.setProduto(this);
-        getListaProdutoFornecedores().add(produtoFornecedor);
+        getListaFornecedores().add(produtoFornecedor);
     }
 
     // Getters / Setters
@@ -74,14 +74,12 @@ public class Produto implements ProdutoInterface {
         this.nome = nome;
     }
 
-    public List<ProdutoFornecedor> getListaProdutoFornecedores() {
-        return listaFornecedores
-;
+    public List<ProdutoFornecedor> getListaFornecedores() {
+        return listaFornecedores;
     }
 
-    public void setListaProdutoFornecedores(List<ProdutoFornecedor> listaFornecedores) {
-        this.listaFornecedores
- = listaFornecedores;
+    public void setListaFornecedores(List<ProdutoFornecedor> listaFornecedores) {
+        this.listaFornecedores = listaFornecedores;
     }
 
     public boolean isDisponivel() {

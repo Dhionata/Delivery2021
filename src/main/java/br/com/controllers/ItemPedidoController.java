@@ -22,38 +22,38 @@ public class ItemPedidoController extends GenericService<ItemPedido, ItemPedidoR
     private final String URL = "/itemPedido";
 
     @Autowired
-    public ItemPedidoController(CrudRepository<ItemPedido, Integer> repository) {
+    private ItemPedidoController(CrudRepository<ItemPedido, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<ItemPedido> findAll() {
+    private Iterable<ItemPedido> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public ItemPedido save(@RequestBody ItemPedido itemPedido) throws Exception {
+    private ItemPedido salvar(@RequestBody ItemPedido itemPedido) throws Exception {
         return super.save(itemPedido);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody ItemPedido itemPedido) {
+    private Object remover(@RequestBody ItemPedido itemPedido) {
         return super.remove(itemPedido);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody ItemPedido itemPedido) throws Exception {
+    private Object update(@RequestBody ItemPedido itemPedido) throws Exception {
         return super.save(itemPedido);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public ItemPedido findById(@RequestBody Integer id) {
+    private ItemPedido procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
-    public ItemPedido find(@RequestBody ItemPedido itemPedido) {
+    private ItemPedido find(@RequestBody ItemPedido itemPedido) {
         return super.findById(itemPedido.getId());
     }
 }

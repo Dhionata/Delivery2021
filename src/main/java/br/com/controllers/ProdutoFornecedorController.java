@@ -22,38 +22,38 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     private final String URL = "/produtoFornecedor";
 
     @Autowired
-    public ProdutoFornecedorController(CrudRepository<ProdutoFornecedor, Integer> repository) {
+    private ProdutoFornecedorController(CrudRepository<ProdutoFornecedor, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<ProdutoFornecedor> findAll() {
+    private Iterable<ProdutoFornecedor> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public ProdutoFornecedor save(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
+    private ProdutoFornecedor salvar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
         return super.save(produtoFornecedor);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody ProdutoFornecedor produtoFornecedor) {
+    private Object remover(@RequestBody ProdutoFornecedor produtoFornecedor) {
         return super.remove(produtoFornecedor);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
+    private Object update(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
         return super.save(produtoFornecedor);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public ProdutoFornecedor findById(@RequestBody Integer id) {
+    private ProdutoFornecedor procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
-    public ProdutoFornecedor find(@RequestBody ProdutoFornecedor produtoFornecedor) {
+    private ProdutoFornecedor find(@RequestBody ProdutoFornecedor produtoFornecedor) {
         return super.findById(produtoFornecedor.getId());
     }
 }

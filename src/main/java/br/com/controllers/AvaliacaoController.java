@@ -22,38 +22,38 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     private final String URL = "/avaliacao";
 
     @Autowired
-    public AvaliacaoController(CrudRepository<Avaliacao, Integer> repository) {
+    private AvaliacaoController(CrudRepository<Avaliacao, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Avaliacao> findAll() {
+    private Iterable<Avaliacao> todos() {
         return super.findAll();
     }
 
     @GetMapping(URL + "/Buscar/")
-    public Avaliacao find(@RequestBody Avaliacao avaliacao) {
+    private Avaliacao find(@RequestBody Avaliacao avaliacao) {
         return super.findById(avaliacao.getId());
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public Avaliacao findById(@RequestBody Integer id) {
+    private Avaliacao procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Avaliacao save(@RequestBody Avaliacao avaliacao) throws Exception {
+    private Avaliacao salvar(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Avaliacao avaliacao) {
+    private Object remover(@RequestBody Avaliacao avaliacao) {
         return super.remove(avaliacao);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Avaliacao avaliacao) throws Exception {
+    private Object update(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
     }
 

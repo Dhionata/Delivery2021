@@ -21,38 +21,38 @@ public class EnderecoFornecedorController extends GenericService<EnderecoFornece
     private final String URL = "/enderecoFornecedor";
 
     @Autowired
-    public EnderecoFornecedorController(CrudRepository<EnderecoFornecedor, Integer> repository) {
+    private EnderecoFornecedorController(CrudRepository<EnderecoFornecedor, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<EnderecoFornecedor> findAll() {
+    private Iterable<EnderecoFornecedor> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public EnderecoFornecedor save(@RequestBody EnderecoFornecedor enderecoFornecedor) throws Exception {
+    private EnderecoFornecedor salvar(@RequestBody EnderecoFornecedor enderecoFornecedor) throws Exception {
         return super.save(enderecoFornecedor);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody EnderecoFornecedor enderecoFornecedor) {
+    private Object remover(@RequestBody EnderecoFornecedor enderecoFornecedor) {
         return super.remove(enderecoFornecedor);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody EnderecoFornecedor enderecoFornecedor) throws Exception {
+    private Object update(@RequestBody EnderecoFornecedor enderecoFornecedor) throws Exception {
         return super.save(enderecoFornecedor);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public EnderecoFornecedor findById(@RequestBody Integer id) {
+    private EnderecoFornecedor procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
-    public EnderecoFornecedor find(@RequestBody EnderecoFornecedor enderecoFornecedor) {
+    private EnderecoFornecedor find(@RequestBody EnderecoFornecedor enderecoFornecedor) {
         return super.findById(enderecoFornecedor.getId());
     }
 }

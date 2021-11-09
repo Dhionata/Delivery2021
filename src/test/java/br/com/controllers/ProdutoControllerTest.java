@@ -21,11 +21,11 @@ public class ProdutoControllerTest {
         var a = new Produto();
         for (int i = 0; i < 5; i++) {
             var b = produtoController.save(NovoProduto.novoProduto());
-            if(i==3){
+            if (i == 3) {
                 a = b;
             }
         }
-        System.out.println(produtoController.find(a));
+        System.out.println(produtoController.findById(a.getId()));
     }
 
     @Test

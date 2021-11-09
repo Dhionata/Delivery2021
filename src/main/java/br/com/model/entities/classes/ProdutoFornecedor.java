@@ -120,5 +120,4 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     public void setDataAtualizacao(Date dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
-
 }

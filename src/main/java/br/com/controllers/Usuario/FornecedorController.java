@@ -22,33 +22,33 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     private final String URL = "/fornecedor";
 
     @Autowired
-    public FornecedorController(CrudRepository<Fornecedor, Integer> repository) {
+    private FornecedorController(CrudRepository<Fornecedor, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Fornecedor> findAll() {
+    private Iterable<Fornecedor> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Fornecedor save(@RequestBody Fornecedor fornecedor) throws Exception {
+    private Fornecedor salvar(@RequestBody Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Fornecedor fornecedor) {
+    private Object remover(@RequestBody Fornecedor fornecedor) {
         return super.remove(fornecedor);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Fornecedor fornecedor) throws Exception {
+    private Object update(@RequestBody Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
     @GetMapping(URL + "/Buscar/")
-    public Fornecedor findById(@RequestBody Integer id) {
+    private Fornecedor procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 

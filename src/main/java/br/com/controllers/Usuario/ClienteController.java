@@ -22,38 +22,38 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     private final String URL = "/cliente";
 
     @Autowired
-    public ClienteController(CrudRepository<Cliente, Integer> repository) {
+    private ClienteController(CrudRepository<Cliente, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Cliente> findAll() {
+    private Iterable<Cliente> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Cliente save(@RequestBody Cliente cliente) throws Exception {
+    private Cliente salvar(@RequestBody Cliente cliente) throws Exception {
         return super.save(cliente);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Cliente cliente) {
+    private Object remover(@RequestBody Cliente cliente) {
         return super.remove(cliente);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Cliente cliente) throws Exception {
+    private Object update(@RequestBody Cliente cliente) throws Exception {
         return super.save(cliente);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public Cliente findById(Integer id) {
+    private Cliente procurarPorID(Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar")
-    public Cliente find(@RequestBody Cliente cliente) {
+    private Cliente find(@RequestBody Cliente cliente) {
         return super.findById(cliente.getId());
     }
 }

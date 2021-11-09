@@ -55,7 +55,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     }
 
     public Fornecedor() {
-
+        super();
     }
 
     @Override

@@ -56,7 +56,7 @@ public class Cliente extends Usuario implements ClienteInterface {
     }
 
     public Cliente() {
-
+        super();
     }
 
     @Override

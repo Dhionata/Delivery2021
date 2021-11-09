@@ -22,7 +22,7 @@ import br.com.model.entities.classes.usuario.Cliente;
 import br.com.model.entities.interfaces.PedidoInterface;
 
 @Entity
-public class Pedido implements PedidoInterface{
+public class Pedido implements PedidoInterface {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -79,15 +79,15 @@ public class Pedido implements PedidoInterface{
     public String toString() {
         return "\n\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + "\n\n-- FormaPagamento --\n" + getFormaPagamento()
-                + "\nPago: " + getPago() + getCliente()+"\nValor Total: "+ calculaValorTotal(this);
+                + "\nPago: " + getPago() + getCliente() + "\nValor Total: " + calculaValorTotal(this);
     }
 
-    public Float calculaValorTotal(Pedido pedido)  {
+    public Float calculaValorTotal(Pedido pedido) {
         Float total = 0F;
 
-        for(ItemPedido item: pedido.getItensPedido()){
-            for(ProdutoFornecedor produtoFornecedor: item.getProduto().getListaProdutoFornecedores()){
-                if(produtoFornecedor.getProduto().equals(item.getProduto())){
+        for (ItemPedido item : pedido.getItensPedido()) {
+            for (ProdutoFornecedor produtoFornecedor : item.getProduto().getListaFornecedores()) {
+                if (produtoFornecedor.getProduto().equals(item.getProduto())) {
                     total += item.getQuantidade() * produtoFornecedor.getPreco();
                 }
             }

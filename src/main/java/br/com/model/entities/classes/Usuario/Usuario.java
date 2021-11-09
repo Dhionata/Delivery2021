@@ -80,7 +80,7 @@ public class Usuario {
     }
 
     public Usuario() {
-
+        setData(new Date());
     }
 
     @Override

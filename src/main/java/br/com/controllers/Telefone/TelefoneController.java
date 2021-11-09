@@ -21,38 +21,38 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
     private final String URL = "/telefone";
 
     @Autowired
-    public TelefoneController(CrudRepository<Telefone, Integer> repository) {
+    private TelefoneController(CrudRepository<Telefone, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Telefone> findAll() {
+    private Iterable<Telefone> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    public Telefone save(@RequestBody Telefone telefone) throws Exception {
+    private Telefone salvar(@RequestBody Telefone telefone) throws Exception {
         return super.save(telefone);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Telefone telefone) {
+    private Object remover(@RequestBody Telefone telefone) {
         return super.remove(telefone);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Telefone telefone) throws Exception {
+    private Object update(@RequestBody Telefone telefone) throws Exception {
         return super.save(telefone);
     }
 
     @GetMapping(URL + "/BuscarById/")
-    public Telefone findById(@RequestBody Integer id) {
+    private Telefone procurarPorID(@RequestBody Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
-    public Telefone find(@RequestBody Telefone telefone) {
+    private Telefone find(@RequestBody Telefone telefone) {
         return super.findById(telefone.getId());
     }
 }
