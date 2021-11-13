@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,6 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
     @Autowired
     private ProdutoController(CrudRepository<Produto, Integer> repository) {
         super(repository);
-
     }
 
     @GetMapping(value = URL)
@@ -39,8 +39,9 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
     }
 
     @DeleteMapping(URL + "/Remover/")
-    private Object remover(@RequestBody Produto produto) {
-        return super.remove(produto);
+    // TODO verificar retorno, não está funcionando quando Object ou String
+    private void remover(@RequestBody Produto produto) throws Exception {
+        super.remove(produto);
     }
 
     @PatchMapping(URL + "/Atualizar/")
@@ -49,7 +50,7 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
     }
 
     @GetMapping(URL + "/BuscarById/")
-    private Produto procurarPorID(@RequestBody Integer id) {
+    private Produto procurarPorID(@RequestParam Integer id) {
         return super.findById(id);
     }
 

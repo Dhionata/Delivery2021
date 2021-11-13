@@ -20,7 +20,6 @@ import br.com.model.entities.interfaces.FornecedorInterface;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id_usuario")
-
 public class Fornecedor extends Usuario implements FornecedorInterface {
     private String descricao;
 

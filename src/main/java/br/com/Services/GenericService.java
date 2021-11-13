@@ -34,7 +34,7 @@ public abstract class GenericService<T, R> {
         return getRepository().save(entity);
     }
 
-    public Object remove(T entity) {
+    public String remove(T entity) {
         try {
             validate(entity);
             getRepository().delete(entity);

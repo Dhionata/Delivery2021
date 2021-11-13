@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,16 +33,6 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
         return super.findAll();
     }
 
-    @GetMapping(URL + "/Buscar/")
-    private Avaliacao find(@RequestBody Avaliacao avaliacao) {
-        return super.findById(avaliacao.getId());
-    }
-
-    @GetMapping(URL + "/BuscarById/")
-    private Avaliacao procurarPorID(@RequestBody Integer id) {
-        return super.findById(id);
-    }
-
     @PostMapping(value = URL + "/Adicionar/")
     private Avaliacao salvar(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
@@ -57,4 +48,13 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
         return super.save(avaliacao);
     }
 
+    @GetMapping(URL + "/BuscarById/")
+    private Avaliacao procurarPorID(@RequestParam Integer id) {
+        return super.findById(id);
+    }
+
+    @GetMapping(URL + "/Buscar/")
+    private Avaliacao find(@RequestBody Avaliacao avaliacao) {
+        return super.findById(avaliacao.getId());
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,7 +48,7 @@ public class EnderecoFornecedorController extends GenericService<EnderecoFornece
     }
 
     @GetMapping(URL + "/BuscarById/")
-    private EnderecoFornecedor procurarPorID(@RequestBody Integer id) {
+    private EnderecoFornecedor procurarPorID(@RequestParam Integer id) {
         return super.findById(id);
     }
 

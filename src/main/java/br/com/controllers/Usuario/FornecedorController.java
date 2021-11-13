@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,7 +44,7 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestBody Fornecedor fornecedor) throws Exception {
+    private Object update(@RequestParam Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
