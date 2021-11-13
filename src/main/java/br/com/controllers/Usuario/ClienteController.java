@@ -44,7 +44,7 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestBody Cliente cliente) throws Exception {
+    private Object atualizar(@RequestBody Cliente cliente) throws Exception {
         return super.save(cliente);
     }
 

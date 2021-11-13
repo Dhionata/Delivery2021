@@ -43,7 +43,7 @@ public class TelefoneFornecedorController extends GenericService<TelefoneFornece
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestBody TelefoneFornecedor telefoneFornecedor) throws Exception {
+    private Object atualizar(@RequestBody TelefoneFornecedor telefoneFornecedor) throws Exception {
         return super.save(telefoneFornecedor);
     }
 

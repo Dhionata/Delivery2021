@@ -43,7 +43,7 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Endereco update(@RequestBody Endereco endereco) throws Exception {
+    private Endereco atualizar(@RequestBody Endereco endereco) throws Exception {
         return super.save(endereco);
     }
 

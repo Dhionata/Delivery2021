@@ -44,13 +44,18 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestParam Fornecedor fornecedor) throws Exception {
+    private Object atualizar(@RequestBody Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
-    @GetMapping(URL + "/Buscar/")
-    private Fornecedor procurarPorID(@RequestBody Integer id) {
+    @GetMapping(URL + "/BuscarById/")
+    private Fornecedor procurarPorID(@RequestParam Integer id) {
         return super.findById(id);
+    }
+
+    @GetMapping(URL + "/Buscar/")
+    private Fornecedor procurar(@RequestBody Fornecedor fornecedor) {
+        return super.findById(fornecedor.getId());
     }
 
 }

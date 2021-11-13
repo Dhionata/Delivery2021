@@ -44,7 +44,7 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
+    private Object atualizar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
         return super.save(produtoFornecedor);
     }
 

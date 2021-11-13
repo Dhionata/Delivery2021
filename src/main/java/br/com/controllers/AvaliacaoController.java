@@ -44,7 +44,7 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestBody Avaliacao avaliacao) throws Exception {
+    private Object atualizar(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
     }
 

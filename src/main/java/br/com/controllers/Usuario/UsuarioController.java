@@ -44,7 +44,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object update(@RequestBody Usuario usuario) throws Exception {
+    private Object atualizar(@RequestBody Usuario usuario) throws Exception {
         return super.save(usuario);
     }
 
