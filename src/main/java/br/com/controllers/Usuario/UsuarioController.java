@@ -39,8 +39,9 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     }
 
     @DeleteMapping(URL + "/Remover/")
-    private Object remover(@RequestBody Usuario usuario) {
-        return super.remove(usuario);
+    // TODO verificar retorno, não está funcionando quando Object ou String
+    private void remover(@RequestBody Usuario usuario) throws Exception {
+        super.remove(usuario);
     }
 
     @PatchMapping(URL + "/Atualizar/")
