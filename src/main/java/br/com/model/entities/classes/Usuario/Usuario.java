@@ -72,7 +72,7 @@ public class Usuario {
     public Usuario(Usuario usuario) {
         setId(usuario.getId());
         setCnpjCpf(usuario.getCnpjCpf());
-        setData(usuario.getData());
+        setData(new Date());
         setNome(usuario.getNome());
         setSenha(Criptografia.argon(usuario.getSenha()));
         setEmail(usuario.getEmail());

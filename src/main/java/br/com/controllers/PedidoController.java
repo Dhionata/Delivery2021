@@ -44,7 +44,7 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object atualizar(@RequestBody Pedido pedido) throws Exception {
+    private Pedido atualizar(@RequestBody Pedido pedido) throws Exception {
         return super.save(pedido);
     }
 

@@ -35,28 +35,32 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
 
     @PostMapping(value = URL + "/Adicionar/")
     private Produto salvar(@RequestBody Produto produto) throws Exception {
+        System.out.println("\n\n-- Entrou para salvar! --\n\n" + produto.toString() + "\n\n\n");
         return super.save(produto);
     }
 
     @DeleteMapping(URL + "/Remover/")
     // TODO verificar retorno, não está funcionando quando Object ou String
     private void remover(@RequestBody Produto produto) throws Exception {
+        System.out.println("\n\n-- Entrou para remover! --\n\n" + produto.toString() + "\n\n\n");
         super.remove(produto);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Object atualizar(@RequestBody Produto produto) throws Exception {
+    private Produto atualizar(@RequestBody Produto produto) throws Exception {
+        System.out.println("\n\n\n-- Entrou no Atualizar --\n\n" + produto.toString() + "\n\n");
         return super.save(produto);
     }
 
     @GetMapping(URL + "/BuscarById/")
     private Produto procurarPorID(@RequestParam Integer id) {
+        System.out.println("\n\n-- Entrou para procurarPorID\nID: ! --\n\n" + id + "\n\n\n");
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
     private Produto find(@RequestBody Produto produto) {
+        System.out.println("\n\n-- Entrou para procurar! --\n\n" + produto.toString() + "\n\n\n");
         return super.findById(produto.getId());
     }
-
 }
