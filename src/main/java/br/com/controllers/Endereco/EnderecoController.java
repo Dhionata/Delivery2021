@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.services.GenericService;
 import br.com.model.entities.classes.endereco.Endereco;
 import br.com.repository.endereco.EnderecoRepository;
@@ -47,8 +46,8 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
         return super.save(endereco);
     }
 
-    @GetMapping(URL + "/BuscarById/")
-    private Endereco procurarPorID(@RequestParam Integer id) {
+    @GetMapping(URL + "/BuscarById/{id}")
+    private Endereco procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
 

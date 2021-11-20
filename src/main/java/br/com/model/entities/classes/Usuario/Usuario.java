@@ -33,8 +33,7 @@ public class Usuario {
     @JsonIgnore
     private List<Pedido> pedidos;
 
-    public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email,
-            TipoUsuario tipo) {
+    public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo) {
         setId(id);
         setCnpjCpf(cnpjCpf);
         setData(data);
@@ -86,8 +85,8 @@ public class Usuario {
     @Override
     public String toString() {
         return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + "\nEmail: " + getEmail() + "\nCNPJCPF: "
-                + getCnpjCpf() + "\nData: " + getData() + getNome() + "\nTipo de usuário: " + getTipo() + "\nSenha: "
-                + getSenha();
+                + getCnpjCpf() + "\nData: " + getData() + "\nNome: " + getNome() + "\nTipo de usuário: " + getTipo()
+                + "\nSenha: " + getSenha();
     }
 
     // Getters / Setters

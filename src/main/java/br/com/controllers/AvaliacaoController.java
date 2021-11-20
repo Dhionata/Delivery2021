@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.services.GenericService;
 import br.com.model.entities.classes.Avaliacao;
 import br.com.repository.AvaliacaoRepository;
@@ -48,8 +47,8 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
         return super.save(avaliacao);
     }
 
-    @GetMapping(URL + "/BuscarById/")
-    private Avaliacao procurarPorID(@RequestParam Integer id) {
+    @GetMapping(URL + "/BuscarById/{id}")
+    private Avaliacao procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
 
