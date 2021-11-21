@@ -84,9 +84,8 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + "\nEmail: " + getEmail() + "\nCNPJCPF: "
-                + getCnpjCpf() + "\nData: " + getData() + "\nNome: " + getNome() + "\nTipo de usuário: " + getTipo()
-                + "\nSenha: " + getSenha();
+        return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + getNome() + "\nEmail: " + getEmail() + "\nCNPJCPF: "
+                + getCnpjCpf() + "\nData: " + getData() + "\nTipo de usuário: " + getTipo() + "\nSenha: " + getSenha();
     }
 
     // Getters / Setters

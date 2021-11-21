@@ -22,12 +22,11 @@ public abstract class GenericService<T, R> {
     }
 
     public void validate(T entity) throws Exception {
-        if (entity.equals(null)) {
+        if (entity == null) {
             throw new Exception(NOT_NULL);
         }
     }
-
-    // verificar classe DB do exemplo Jair
+    
     public T save(T entity) throws Exception {
         validate(entity);
 
