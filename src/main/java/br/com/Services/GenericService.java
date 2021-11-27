@@ -22,11 +22,13 @@ public abstract class GenericService<T, R> {
     }
 
     public void validate(T entity) throws Exception {
-        if (entity == null) {
-            throw new Exception(NOT_NULL);
-        }
+        /*
+         * var oi = entity.getClass().getDeclaredFields(); for (var field : oi) {
+         * System.out.println("\n\n\n-- Campo --\n\n" + oi + "\n\n\n"); if
+         * (field.get(entity) == null) { throw new Exception(NOT_NULL); } }
+         */
     }
-    
+
     public T save(T entity) throws Exception {
         validate(entity);
 
@@ -52,4 +54,5 @@ public abstract class GenericService<T, R> {
     private void setRepository(CrudRepository<T, Integer> repository) {
         this.repository = repository;
     }
+
 }

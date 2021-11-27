@@ -84,6 +84,21 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
 
     @GetMapping(URL + "/Buscar")
     private Usuario find(@RequestBody Usuario usuario) {
-        return super.findById(usuario.getId());
+        System.out.println("\n\n\n-- Usuário para Buscar --\n\n\n" + usuario.toString() + "\n\n\n");
+        var a = buscar(usuario);
+        return a;
+    }
+    
+    public Usuario buscar(Usuario entity) {
+        var a = super.findAll();
+        for (var b : a) {
+            System.out.println("\n\nUsuário a ser comparado....\n\n" + b.toString());
+            if (b.getEmail().equals(entity.getEmail()) && b.getNome().equals(entity.getNome())
+                    && b.getCnpjCpf().equals(entity.getCnpjCpf())) {
+                System.out.println("\n\nOS USUÁRIO SÃO IGUAIS!\n\n");
+                return b;
+            }
+        }
+        return null;
     }
 }
