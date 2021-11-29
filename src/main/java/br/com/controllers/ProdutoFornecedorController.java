@@ -57,4 +57,10 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     private ProdutoFornecedor find(@RequestBody ProdutoFornecedor produtoFornecedor) {
         return super.findById(produtoFornecedor.getId());
     }
+
+    @Override
+    public void validate(ProdutoFornecedor entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

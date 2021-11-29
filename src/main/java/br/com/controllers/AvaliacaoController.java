@@ -56,4 +56,10 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     private Avaliacao find(@RequestBody Avaliacao avaliacao) {
         return super.findById(avaliacao.getId());
     }
+
+    @Override
+    public void validate(Avaliacao entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

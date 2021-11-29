@@ -56,4 +56,10 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
     private Pedido find(@RequestBody Pedido pedido) {
         return super.findById(pedido.getId());
     }
+
+    @Override
+    public void validate(Pedido entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

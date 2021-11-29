@@ -56,4 +56,10 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     private Cliente find(@RequestBody Cliente cliente) {
         return super.findById(cliente.getId());
     }
+
+    @Override
+    public void validate(Cliente entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

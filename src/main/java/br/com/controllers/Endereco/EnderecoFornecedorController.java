@@ -55,4 +55,10 @@ public class EnderecoFornecedorController extends GenericService<EnderecoFornece
     private EnderecoFornecedor find(@RequestBody EnderecoFornecedor enderecoFornecedor) {
         return super.findById(enderecoFornecedor.getId());
     }
+
+    @Override
+    public void validate(EnderecoFornecedor entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

@@ -56,4 +56,10 @@ public class ItemPedidoController extends GenericService<ItemPedido, ItemPedidoR
     private ItemPedido find(@RequestBody ItemPedido itemPedido) {
         return super.findById(itemPedido.getId());
     }
+
+    @Override
+    public void validate(ItemPedido entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

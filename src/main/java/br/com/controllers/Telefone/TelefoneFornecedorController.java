@@ -55,4 +55,10 @@ public class TelefoneFornecedorController extends GenericService<TelefoneFornece
     private TelefoneFornecedor find(@RequestBody TelefoneFornecedor telefoneFornecedor) {
         return super.findById(telefoneFornecedor.getId());
     }
+
+    @Override
+    public void validate(TelefoneFornecedor entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

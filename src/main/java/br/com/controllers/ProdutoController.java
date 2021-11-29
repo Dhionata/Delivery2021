@@ -63,4 +63,10 @@ public class ProdutoController extends GenericService<Produto, ProdutoRepository
         System.out.println("\n\n-- Entrou para procurar! --\n\n" + produto.toString() + "\n\n\n");
         return super.findById(produto.getId());
     }
+
+    @Override
+    public void validate(Produto entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

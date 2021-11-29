@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 public abstract class GenericService<T, R> {
 
     private CrudRepository<T, Integer> repository;
-    private final String NOT_NULL = "A entidade não pode ser nulla!";
 
     public GenericService(CrudRepository<T, Integer> repository) {
         setRepository(repository);
@@ -21,13 +20,7 @@ public abstract class GenericService<T, R> {
         return getRepository().findById(id).get();
     }
 
-    public void validate(T entity) throws Exception {
-        /*
-         * var oi = entity.getClass().getDeclaredFields(); for (var field : oi) {
-         * System.out.println("\n\n\n-- Campo --\n\n" + oi + "\n\n\n"); if
-         * (field.get(entity) == null) { throw new Exception(NOT_NULL); } }
-         */
-    }
+    public abstract void validate(T entity) throws Exception;
 
     public T save(T entity) throws Exception {
         validate(entity);

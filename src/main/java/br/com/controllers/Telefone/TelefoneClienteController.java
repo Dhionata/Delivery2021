@@ -55,4 +55,10 @@ public class TelefoneClienteController extends GenericService<TelefoneCliente, T
     private TelefoneCliente find(@RequestBody TelefoneCliente telefoneCliente) {
         return super.findById(telefoneCliente.getId());
     }
+
+    @Override
+    public void validate(TelefoneCliente entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

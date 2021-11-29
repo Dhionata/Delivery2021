@@ -55,4 +55,10 @@ public class EnderecoClienteController extends GenericService<EnderecoCliente, E
     private EnderecoCliente find(@RequestBody EnderecoCliente enderecoCliente) {
         return super.findById(enderecoCliente.getId());
     }
+
+    @Override
+    public void validate(EnderecoCliente entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }

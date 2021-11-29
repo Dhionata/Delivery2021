@@ -57,4 +57,10 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
         return super.findById(fornecedor.getId());
     }
 
+    @Override
+    public void validate(Fornecedor entity) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

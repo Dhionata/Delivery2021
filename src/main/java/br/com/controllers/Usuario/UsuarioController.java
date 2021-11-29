@@ -88,7 +88,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         var a = buscar(usuario);
         return a;
     }
-    
+
     public Usuario buscar(Usuario entity) {
         var a = super.findAll();
         for (var b : a) {
@@ -100,5 +100,19 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
             }
         }
         return null;
+    }
+
+    @Override
+    public void validate(Usuario entity) throws Exception {
+        if (entity.getNome() == null || entity.getNome().isEmpty()) {
+            throw new Exception("Nome não pode ser vazio!");
+        }
+        if (entity.getEmail() == null || entity.getEmail().isEmpty()) {
+            throw new Exception("Email não pode ser vazio!");
+        }
+
+        if (entity.getCnpjCpf() == null || entity.getCnpjCpf().isEmpty()) {
+            throw new Exception("CNPJ/CPF não pode ser vazio!");
+        }
     }
 }
