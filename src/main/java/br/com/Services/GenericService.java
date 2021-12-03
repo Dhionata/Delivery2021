@@ -24,7 +24,6 @@ public abstract class GenericService<T, R> {
 
     public T save(T entity) throws Exception {
         validate(entity);
-
         return getRepository().save(entity);
     }
 

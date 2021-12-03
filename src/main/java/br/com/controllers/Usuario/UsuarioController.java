@@ -38,11 +38,14 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     private Usuario salvar(@RequestBody Usuario usuario) throws Exception {
         System.out.println("\n\n-- Usuário Requisição -- Salvar --\n\n" + usuario.toString());
         var usuarioTemp = new Usuario(usuario);
+
         System.out.println("\n\n-- Usuário a ser Salvo --\n\n" + usuarioTemp.toString());
-        System.out.println(usuarioTemp.toString());
         super.save(usuarioTemp);
+
         System.out.println("\n\n-- Usuário Salvo --\n\n" + usuarioTemp.toString());
+
         usuarioTemp.setSenha(null);
+        
         System.out.println("\n\n-- Usuário retornado! --\n\n" + usuarioTemp.toString());
         return usuarioTemp;
     }

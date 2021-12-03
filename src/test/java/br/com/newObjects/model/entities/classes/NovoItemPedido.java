@@ -10,10 +10,15 @@ import br.com.model.entities.classes.ProdutoFornecedor;
 
 public class NovoItemPedido {
 
-    public static List<ItemPedido> novaListaItensPedido(Pedido pedido, List<ProdutoFornecedor> produtoFornecedores) {
-        ItemPedido itemPedido = new ItemPedido(pedido, produtoFornecedores.get(0).getProduto(),
+    public static List<ItemPedido> novaListaItensPedido(Pedido pedido,
+    List<ProdutoFornecedor> produtoFornecedores) {
+
+        ItemPedido itemPedido = new ItemPedido(pedido,
+        produtoFornecedores.get(0).getProduto(),
                 new Random().nextInt(10) + 1);
-        ItemPedido itemPedido2 = new ItemPedido(pedido, produtoFornecedores.get(1).getProduto(),
+                
+        ItemPedido itemPedido2 = new ItemPedido(pedido,
+        produtoFornecedores.get(1).getProduto(),
                 new Random().nextInt(10) + 1);
 
         List<ItemPedido> novaListaItensPedido = new ArrayList<>();

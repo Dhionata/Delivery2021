@@ -7,7 +7,8 @@ import br.com.newObjects.model.entities.classes.telefone.NovoTelefone;
 public class NovoCliente {
 
     public static Cliente novoCliente() {
-        Cliente cliente = new Cliente("NomeClienteTeste", "000.000.000-00", "teste123456", "teste@gmailCliente.com");
+        Cliente cliente = new Cliente("NomeClienteTeste",
+        "000.000.000-00", "teste123456", "teste@gmailCliente.com");
         NovoTelefone.novaListaTelefoneCliente(cliente);
         NovoEndereco.novaListaEnderecoCliente(cliente);
 

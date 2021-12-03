@@ -58,8 +58,6 @@ public class Pedido implements PedidoInterface {
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
         setDesconto(desconto);
-        setPago(false);
-        setEntregue(false);
         setItensPedido(new ArrayList<>());
         setData(new Date());
     }

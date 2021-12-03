@@ -12,10 +12,12 @@ public class NovoPedido {
     public static Pedido novoPedido() {
 
         Pedido pedido = new Pedido(NovoCliente.novoCliente(),
-                FormaPagamento.novaFormaPagamento(new Random().nextInt(5) + 1), new Random().nextFloat(10));
+                FormaPagamento.novaFormaPagamento(new Random().nextInt(5) + 1),
+                new Random().nextFloat(10));
 
         pedido.setItensPedido(
-                NovoItemPedido.novaListaItensPedido(pedido, NovoProdutoFornecedor.novaListaProdutosFornecedor()));
+                NovoItemPedido.novaListaItensPedido(pedido,
+                NovoProdutoFornecedor.novaListaProdutosFornecedor()));
 
         for (ItemPedido i : pedido.getItensPedido()) {
             i.setAvaliacao(NovaAvaliacao.novaAvaliacao(i));

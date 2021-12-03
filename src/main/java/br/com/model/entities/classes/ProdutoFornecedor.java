@@ -35,7 +35,9 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     private Date dataCadastro;
     private Date dataAtualizacao;
 
-    public ProdutoFornecedor(Produto produto, Fornecedor fornecedor, Float preco, Integer quantidadeEmEstoque) {
+    public ProdutoFornecedor(Produto produto,
+            Fornecedor fornecedor,
+            Float preco, Integer quantidadeEmEstoque) {
         setProduto(produto);
         setFornecedor(fornecedor);
         setPreco(preco);

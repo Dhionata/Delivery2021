@@ -25,7 +25,8 @@ public class Avaliacao implements AvaliacaoInterface {
 
     private String comentario;
 
-    public Avaliacao(Integer nota, ItemPedido itemPedido, String comentario) {
+    public Avaliacao(Integer nota, ItemPedido itemPedido,
+            String comentario) {
         setNota(nota);
         setItemPedido(itemPedido);
         setComentario(comentario);
@@ -76,5 +77,4 @@ public class Avaliacao implements AvaliacaoInterface {
         this.comentario = comentario;
     }
 
-    
 }

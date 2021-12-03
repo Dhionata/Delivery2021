@@ -59,7 +59,15 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
 
     @Override
     public void validate(Pedido entity) throws Exception {
-        // TODO Auto-generated method stub
-        
+        if (entity.getItensPedido().isEmpty()) {
+            throw new Exception("Pedido não pode ser salvo sem itens");
+        }
+        if (entity.getCliente() == null) {
+            throw new Exception("Pedido não pode ser salvo sem cliente");
+        }
+        if (entity.getFormaPagamento() == null) {
+            throw new Exception("Pedido não pode ser salvo sem forma de pagamento");
+        }
+
     }
 }

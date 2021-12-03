@@ -12,10 +12,12 @@ public class NovoProdutoFornecedor {
 
     public static List<ProdutoFornecedor> novaListaProdutosFornecedor() {
         Fornecedor fornecedor = NovoFornecedor.novoFornecedor();
-        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(NovoProduto.novoProduto(), fornecedor,
-                new Random().nextFloat(), new Random().nextInt(1000));
-        ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(NovoProduto.novoProduto2(), fornecedor,
-                new Random().nextFloat(), new Random().nextInt(1000));
+
+        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(NovoProduto.novoProduto(),
+                fornecedor, new Random().nextFloat(), new Random().nextInt(1000));
+
+        ProdutoFornecedor produtoFornecedor2 = new ProdutoFornecedor(NovoProduto.novoProduto2(),
+                fornecedor, new Random().nextFloat(), new Random().nextInt(1000));
 
         List<ProdutoFornecedor> listaProdutoFornecedor = new ArrayList<ProdutoFornecedor>();
         listaProdutoFornecedor.add(produtoFornecedor);
@@ -24,7 +26,7 @@ public class NovoProdutoFornecedor {
         return listaProdutoFornecedor;
     }
 
-    public static ProdutoFornecedor novoProdutoFornecedor(){
+    public static ProdutoFornecedor novoProdutoFornecedor() {
         Fornecedor fornecedor = NovoFornecedor.novoFornecedor();
         ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(NovoProduto.novoProduto(), fornecedor,
                 new Random().nextFloat(), new Random().nextInt(1000));
