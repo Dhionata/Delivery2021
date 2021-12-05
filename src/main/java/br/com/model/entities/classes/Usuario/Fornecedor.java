@@ -5,17 +5,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.Produto;
 import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.model.entities.classes.endereco.EnderecoFornecedor;
-import br.com.model.entities.classes.telefone.TelefoneFornecedor;
 import br.com.model.entities.interfaces.FornecedorInterface;
 
 @Entity
@@ -23,35 +19,23 @@ import br.com.model.entities.interfaces.FornecedorInterface;
 public class Fornecedor extends Usuario implements FornecedorInterface {
     private String descricao;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco_fornecedor")
-    private EnderecoFornecedor endereco;
-
     @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ProdutoFornecedor> listaProdutos;
-
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<TelefoneFornecedor> listaTelefones;
 
     public Fornecedor(String nome, String descricao, String cnpjCpf,
             String senha, String email) {
         super(cnpjCpf, nome, senha, email, TipoUsuario.FORNECEDOR);
         setDescricao(descricao);
-        setEnderecoFornecedor(endereco);
         setListaProdutoFornecedor(new ArrayList<ProdutoFornecedor>());
-        setListaTelefones(new ArrayList<TelefoneFornecedor>());
     }
 
-    public Fornecedor(Usuario usuario, String descricao, EnderecoFornecedor endereco,
-            List<ProdutoFornecedor> listaProdutoFornecedor, List<TelefoneFornecedor> listaTelefoneFornecedor) {
+    public Fornecedor(Usuario usuario, String descricao,
+            List<ProdutoFornecedor> listaProdutoFornecedor) {
         super(usuario);
         setTipo(TipoUsuario.FORNECEDOR);
         setDescricao(descricao);
-        setEnderecoFornecedor(endereco);
         setListaProdutoFornecedor(listaProdutoFornecedor);
-        setListaTelefones(listaTelefoneFornecedor);
     }
 
     public Fornecedor() {
@@ -62,19 +46,15 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     public String toString() {
         return "\n\n--Fornecedor--\nNome: " + super.getNome() + "\nID: " + super.getId() + "\nCNPJ/CPF: "
                 + super.getCnpjCpf() + "\nData: " + super.getData() + "\nDescriçao: " + getDescricao()
-                + getEnderecoFornecedor() + getListaTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: "
-                + super.getSenha() + "\nLista de Produtos: " + getListaProdutoFornecedor();
+                + super.getEnderecos() + super.getTelefones() + "\nEmail: " + super.getEmail() + "\nSenha: "
+                + super.getSenha() + "\nLista de Produtos: " + getListaProdutoFornecedor() + "\nTipo de Usuário: "
+                + super.getTipo();
     }
 
     @Override
     public void adicionarProduto(ProdutoFornecedor produtoFornecedor) {
         produtoFornecedor.setFornecedor(this);
         getListaProdutoFornecedor().add(produtoFornecedor);
-    }
-
-    @Override
-    public void adicionarTelefone(TelefoneFornecedor telefone) {
-        getListaTelefones().add(telefone);
     }
 
     @Override
@@ -136,14 +116,6 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
         this.descricao = descricao;
     }
 
-    public EnderecoFornecedor getEnderecoFornecedor() {
-        return endereco;
-    }
-
-    public void setEnderecoFornecedor(EnderecoFornecedor endereco) {
-        this.endereco = endereco;
-    }
-
     public List<ProdutoFornecedor> getListaProdutoFornecedor() {
         return listaProdutos;
     }
@@ -151,13 +123,4 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     public void setListaProdutoFornecedor(List<ProdutoFornecedor> listaProdutos) {
         this.listaProdutos = listaProdutos;
     }
-
-    public List<TelefoneFornecedor> getListaTelefones() {
-        return listaTelefones;
-    }
-
-    public void setListaTelefones(List<TelefoneFornecedor> listaTelefones) {
-        this.listaTelefones = listaTelefones;
-    }
-
 }

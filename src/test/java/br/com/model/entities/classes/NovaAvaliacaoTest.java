@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import br.com.newObjects.model.entities.classes.NovaAvaliacao;
-import br.com.newObjects.model.entities.classes.NovoItemPedido;
 import br.com.newObjects.model.entities.classes.NovoPedido;
 import br.com.repository.AvaliacaoRepository;
 
@@ -22,7 +21,7 @@ public class NovaAvaliacaoTest {
 
     @Test
     void testNovaAvaliacao() {
-        var novaAvaliacao = NovaAvaliacao.novaAvaliacao(NovoItemPedido.novoItemPedido(NovoPedido.novoPedido()));
+        var novaAvaliacao = NovaAvaliacao.novaAvaliacao(NovoPedido.novoPedido());
         avaliacaoRepository.save(novaAvaliacao);
         assertEquals(novaAvaliacao, avaliacaoRepository.findById(novaAvaliacao.getId()).get());
     }

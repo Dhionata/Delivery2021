@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,9 +43,14 @@ public class Pedido implements PedidoInterface {
     private Float desconto;
     private Boolean pago = false;
     private Boolean entregue = false;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_avaliacao")
+    private Avaliacao avaliacao;
     private Date data;
 
-    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
+    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue,
+            Avaliacao avaliacao) {
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
         setDesconto(desconto);
@@ -52,6 +58,7 @@ public class Pedido implements PedidoInterface {
         setEntregue(entregue);
         setItensPedido(new ArrayList<>());
         setData(new Date());
+        setAvaliacao(avaliacao);
     }
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto) {
@@ -105,6 +112,14 @@ public class Pedido implements PedidoInterface {
 
     public Integer getId() {
         return id;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public void setId(Integer id) {

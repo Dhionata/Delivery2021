@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import br.com.newObjects.model.entities.classes.NovoProduto;
 import br.com.newObjects.model.entities.classes.NovoProdutoFornecedor;
-import br.com.newObjects.model.entities.classes.telefone.NovoTelefone;
+import br.com.newObjects.model.entities.classes.NovoTelefone;
 import br.com.newObjects.model.entities.classes.usuario.NovoFornecedor;
 
 public class FornecedorTest {

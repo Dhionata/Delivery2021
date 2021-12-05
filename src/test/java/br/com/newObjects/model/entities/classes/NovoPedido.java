@@ -3,7 +3,6 @@ package br.com.newObjects.model.entities.classes;
 import java.util.Random;
 
 import br.com.model.entities.classes.FormaPagamento;
-import br.com.model.entities.classes.ItemPedido;
 import br.com.model.entities.classes.Pedido;
 import br.com.newObjects.model.entities.classes.usuario.NovoCliente;
 
@@ -17,11 +16,10 @@ public class NovoPedido {
 
         pedido.setItensPedido(
                 NovoItemPedido.novaListaItensPedido(pedido,
-                NovoProdutoFornecedor.novaListaProdutosFornecedor()));
+                        NovoProdutoFornecedor.novaListaProdutosFornecedor()));
 
-        for (ItemPedido i : pedido.getItensPedido()) {
-            i.setAvaliacao(NovaAvaliacao.novaAvaliacao(i));
-        }
+        pedido.setAvaliacao(NovaAvaliacao.novaAvaliacao(pedido));
+
         return pedido;
     }
 

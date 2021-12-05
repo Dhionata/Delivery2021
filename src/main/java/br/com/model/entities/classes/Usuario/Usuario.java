@@ -1,5 +1,6 @@
 package br.com.model.entities.classes.usuario;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,10 +16,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.encrypt.Criptografia;
 import br.com.model.entities.classes.Pedido;
+import br.com.model.entities.classes.Telefone;
+import br.com.model.entities.classes.endereco.Endereco;
+import br.com.model.entities.interfaces.UsuarioInterface;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario {
+public class Usuario implements UsuarioInterface {
     @Id
     @GeneratedValue
     private Integer id;
@@ -31,24 +35,39 @@ public class Usuario {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnore
+    private List<Endereco> enderecos;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Telefone> telefones;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Pedido> pedidos;
 
-    public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo) {
+    public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo,
+            List<Endereco> enderecos, List<Pedido> pedidos) {
         setId(id);
         setCnpjCpf(cnpjCpf);
         setData(data);
         setNome(nome);
         setSenha(Criptografia.argon(senha));
         setEmail(email);
+        setPedidos(pedidos);
+        setEnderecos(enderecos);
     }
 
-    public Usuario(String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo) {
+    public Usuario(String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo,
+            List<Endereco> enderecos,
+            List<Pedido> pedidos) {
         setCnpjCpf(cnpjCpf);
         setData(data);
         setNome(nome);
         setSenha(Criptografia.argon(senha));
         setEmail(email);
         setTipo(tipo);
+        setPedidos(pedidos);
+        setEnderecos(enderecos);
     }
 
     public Usuario(String cnpjCpf, String nome, String senha, String email, TipoUsuario tipo) {
@@ -58,6 +77,9 @@ public class Usuario {
         setSenha(Criptografia.argon(senha));
         setEmail(email);
         setTipo(tipo);
+        setEnderecos(new ArrayList<Endereco>());
+        setPedidos(new ArrayList<Pedido>());
+        setTelefones(new ArrayList<Telefone>());
     }
 
     public Usuario(String cnpjCpf, String nome, String senha, String email) {
@@ -66,6 +88,9 @@ public class Usuario {
         setNome(nome);
         setSenha(Criptografia.argon(senha));
         setEmail(email);
+        setEnderecos(new ArrayList<Endereco>());
+        setPedidos(new ArrayList<Pedido>());
+        setTelefones(new ArrayList<Telefone>());
     }
 
     public Usuario(Usuario usuario) {
@@ -76,6 +101,8 @@ public class Usuario {
         setSenha(Criptografia.argon(usuario.getSenha()));
         setEmail(usuario.getEmail());
         setTipo(usuario.getTipo());
+        setPedidos(usuario.getPedidos());
+        setEnderecos(usuario.getEnderecos());
     }
 
     public Usuario() {
@@ -88,10 +115,46 @@ public class Usuario {
                 + getCnpjCpf() + "\nData: " + getData() + "\nTipo de usuário: " + getTipo() + "\nSenha: " + getSenha();
     }
 
+    @Override
+    public void cadastrarEndereco(Endereco endereco) {
+        getEnderecos().add(endereco);
+    }
+
+    @Override
+    public void removerEndereco(Endereco endereco) {
+        getEnderecos().remove(endereco);
+    }
+
+    @Override
+    public void adicionarTelefone(Telefone telefone) {
+        getTelefones().add(telefone);
+    }
+
+    @Override
+    public void removerTelefone(Telefone telefone) {
+        getTelefones().remove(telefone);
+    }
+
     // Getters / Setters
 
     public List<Pedido> getPedidos() {
         return pedidos;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
     public void setPedidos(List<Pedido> pedidos) {
@@ -153,4 +216,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }

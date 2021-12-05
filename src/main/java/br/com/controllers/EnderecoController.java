@@ -1,4 +1,4 @@
-package br.com.controllers.telefone;
+package br.com.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -12,52 +12,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.services.GenericService;
-import br.com.model.entities.classes.telefone.Telefone;
-import br.com.repository.telefone.TelefoneRepository;
+import br.com.model.entities.classes.endereco.Endereco;
+import br.com.repository.EnderecoRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class TelefoneController extends GenericService<Telefone, TelefoneRepository> {
-    private final String URL = "/telefone";
+public class EnderecoController extends GenericService<Endereco, EnderecoRepository> {
+    private final String URL = "/endereco";
 
     @Autowired
-    private TelefoneController(CrudRepository<Telefone, Integer> repository) {
+    private EnderecoController(CrudRepository<Endereco, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    private Iterable<Telefone> procurarTodos() {
+    private Iterable<Endereco> procurarTodos() {
         return super.findAll();
     }
 
     @PostMapping(value = URL + "/Adicionar/")
-    private Telefone salvar(@RequestBody Telefone telefone) throws Exception {
-        return super.save(telefone);
+    private Endereco salvar(@RequestBody Endereco endereco) throws Exception {
+        return super.save(endereco);
     }
 
     @DeleteMapping(URL + "/Remover/")
-    private Object remover(@RequestBody Telefone telefone) {
-        return super.remove(telefone);
+    private Object remover(@RequestBody Endereco endereco) {
+        return super.remove(endereco);
     }
 
     @PatchMapping(URL + "/Atualizar/")
-    private Telefone atualizar(@RequestBody Telefone telefone) throws Exception {
-        return super.save(telefone);
+    private Endereco atualizar(@RequestBody Endereco endereco) throws Exception {
+        return super.save(endereco);
     }
 
     @GetMapping(URL + "/BuscarById/{id}")
-    private Telefone procurarPorID(@PathVariable Integer id) {
+    private Endereco procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
 
     @GetMapping(URL + "/Buscar/")
-    private Telefone find(@RequestBody Telefone telefone) {
-        return super.findById(telefone.getId());
+    private Endereco find(@RequestBody Endereco endereco) {
+        return super.findById(endereco.getId());
     }
 
     @Override
-    public void validate(Telefone entity) throws Exception {
+    public void validate(Endereco entity) throws Exception {
         // TODO Auto-generated method stub
         
     }

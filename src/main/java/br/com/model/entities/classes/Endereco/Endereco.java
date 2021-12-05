@@ -5,7 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.com.model.entities.classes.usuario.Usuario;
 import br.com.model.entities.interfaces.EnderecoInterface;
 
 @Entity
@@ -14,6 +19,12 @@ public class Endereco implements EnderecoInterface {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    @JsonIgnore
+    private Usuario usuario;
+
     private String logradouro;
     private String cidade;
     private String bairro;
@@ -23,7 +34,8 @@ public class Endereco implements EnderecoInterface {
     private float coordenadaX;
     private float coordenaxaY;
 
-    public Endereco(String logradouro, String cidade, String bairro, String complemento, String cep, String numero,
+    public Endereco(Usuario usuario, String logradouro, String cidade, String bairro, String complemento, String cep,
+            String numero,
             float coordenadaX, float coordenaxaY) {
         setLogradouro(logradouro);
         setCidade(cidade);
@@ -33,6 +45,8 @@ public class Endereco implements EnderecoInterface {
         setNumero(numero);
         setCoordenadaX(coordenadaX);
         setCoordenaxaY(coordenaxaY);
+        setUsuario(usuario);
+        getUsuario().cadastrarEndereco(this);
     }
 
     public Endereco(Endereco endereco) {
@@ -45,6 +59,8 @@ public class Endereco implements EnderecoInterface {
         setNumero(endereco.getNumero());
         setCoordenadaX(endereco.getCoordenadaX());
         setCoordenaxaY(endereco.getCoordenaxaY());
+        setUsuario(endereco.getUsuario());
+        getUsuario().cadastrarEndereco(this);
     }
 
     public Endereco() {
@@ -55,10 +71,18 @@ public class Endereco implements EnderecoInterface {
         return "\n\n-- Endereço--\nID: " + getId() + "\nBairro: " + getBairro() + "\nCep: " + getCep() + "\nCidade: "
                 + getCidade() + "\nComplemento: " + getComplemento() + "\nCoordenada-X:" + getCoordenadaX()
                 + "\nCoordenaxa-Y:" + getCoordenaxaY() + "\nLogradouro: " + getLogradouro() + "\nNumero: "
-                + getNumero();
+                + getNumero() + "\nUsuario: " + getUsuario().getNome();
     }
 
     // Getters / Setters
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Integer getId() {
         return id;

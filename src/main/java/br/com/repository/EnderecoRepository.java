@@ -1,4 +1,4 @@
-package br.com.repository.endereco;
+package br.com.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
