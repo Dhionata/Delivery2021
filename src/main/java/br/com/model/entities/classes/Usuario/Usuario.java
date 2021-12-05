@@ -15,9 +15,9 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.encrypt.Criptografia;
+import br.com.model.entities.classes.Endereco;
 import br.com.model.entities.classes.Pedido;
 import br.com.model.entities.classes.Telefone;
-import br.com.model.entities.classes.endereco.Endereco;
 import br.com.model.entities.interfaces.UsuarioInterface;
 
 @Entity

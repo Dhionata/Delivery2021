@@ -3,7 +3,7 @@ package br.com.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.model.entities.classes.endereco.Endereco;
+import br.com.model.entities.classes.Endereco;
 
 @Repository
 public interface EnderecoRepository extends CrudRepository<Endereco, Integer> {

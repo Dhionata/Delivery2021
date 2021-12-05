@@ -1,4 +1,4 @@
-package br.com.model.entities.classes.usuario;
+package br.com.model.entities.classes;
 
 import org.junit.jupiter.api.Test;
 
