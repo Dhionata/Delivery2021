@@ -12,10 +12,9 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.usuario.Fornecedor;
-import br.com.model.entities.interfaces.ProdutoFornecedorInterface;
 
 @Entity
-public class ProdutoFornecedor implements ProdutoFornecedorInterface {
+public class ProdutoFornecedor {
     @Id
     @GeneratedValue
     private Integer id;

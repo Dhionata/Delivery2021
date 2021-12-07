@@ -9,7 +9,7 @@ public interface FornecedorInterface {
 
     public boolean confirmarPedido(int idPedido);
 
-    public void removeProduto(ProdutoFornecedor produto);
+    public void removerProduto(ProdutoFornecedor produto);
 
     public void confirmarEntrega(int idPedido);
 

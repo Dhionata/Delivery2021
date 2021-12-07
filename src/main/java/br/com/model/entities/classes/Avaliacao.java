@@ -8,10 +8,8 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.interfaces.AvaliacaoInterface;
-
 @Entity
-public class Avaliacao implements AvaliacaoInterface {
+public class Avaliacao {
     @Id
     @GeneratedValue
     private Integer id;

@@ -9,12 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import br.com.model.entities.interfaces.ProdutoInterface;
-
 import java.util.ArrayList;
 
 @Entity
-public class Produto implements ProdutoInterface {
+public class Produto {
     @Id
     @GeneratedValue
     private Integer id;

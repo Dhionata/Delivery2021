@@ -66,7 +66,7 @@ public class Fornecedor extends Usuario implements FornecedorInterface {
     }
 
     @Override
-    public void removeProduto(ProdutoFornecedor produto) {
+    public void removerProduto(ProdutoFornecedor produto) {
         getListaProdutoFornecedor().remove(produto);
     }
 

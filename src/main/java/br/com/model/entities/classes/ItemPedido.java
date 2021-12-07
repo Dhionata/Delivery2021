@@ -7,10 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import br.com.model.entities.interfaces.ItemPedidoInterface;
-
 @Entity
-public class ItemPedido implements ItemPedidoInterface {
+public class ItemPedido {
     @Id
     @GeneratedValue
     private Integer id;

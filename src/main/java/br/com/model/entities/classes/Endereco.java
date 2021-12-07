@@ -11,11 +11,10 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.usuario.Usuario;
-import br.com.model.entities.interfaces.EnderecoInterface;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Endereco implements EnderecoInterface {
+public class Endereco {
     @Id
     @GeneratedValue
     private Integer id;
