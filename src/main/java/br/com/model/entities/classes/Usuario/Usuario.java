@@ -103,6 +103,7 @@ public class Usuario implements UsuarioInterface {
         setTipo(usuario.getTipo());
         setPedidos(usuario.getPedidos());
         setEnderecos(usuario.getEnderecos());
+        setTelefones(usuario.getTelefones());
     }
 
     public Usuario() {

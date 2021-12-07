@@ -18,7 +18,7 @@ public class FornecedorTest {
     @Test
     void testAdicionarTelefone() {
         var a = NovoFornecedor.novoFornecedor();
-        a.adicionarTelefone(NovoTelefone.novoTelefone(a));
+        NovoTelefone.novoTelefone(a);
         System.out.println(a.toString());
     }
 

@@ -17,10 +17,12 @@ public class Cliente extends Usuario implements ClienteInterface {
 
     public Cliente(String nome, String cnpjCpf, String senha, String email) {
         super(nome, cnpjCpf, senha, email);
+        setTipo(TipoUsuario.CLIENTE);
     }
 
     public Cliente() {
         super();
+        setTipo(TipoUsuario.CLIENTE);
     }
 
     @Override

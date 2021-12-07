@@ -13,8 +13,8 @@ public class NovoFornecedor {
                 "email@testeFornecedor.com.br");
 
         NovoEndereco.novaListaEndereco(fornecedor);
-
-        fornecedor.setTelefones(NovoTelefone.novaListaTelefones(fornecedor));
+        NovoTelefone.novaListaTelefones(fornecedor);
+        
         return fornecedor;
     }
 }
