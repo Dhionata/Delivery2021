@@ -5,7 +5,7 @@ import br.com.model.entities.classes.Pedido;
 
 public class NovaAvaliacao {
 
-    public static Avaliacao novaAvaliacao(Pedido pedido) {
-        return new Avaliacao(5, pedido, "teste de comentário");
+    public static void novaAvaliacao(Pedido pedido) {
+        new Avaliacao(5, pedido, "teste de comentário");
     }
 }

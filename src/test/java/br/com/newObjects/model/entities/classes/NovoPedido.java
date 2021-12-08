@@ -14,11 +14,10 @@ public class NovoPedido {
                 FormaPagamento.novaFormaPagamento(new Random().nextInt(5) + 1),
                 new Random().nextFloat(10));
 
-        pedido.setItensPedido(
-                NovoItemPedido.novaListaItensPedido(pedido,
-                        NovoProdutoFornecedor.novaListaProdutosFornecedor()));
+        NovoItemPedido.novaListaItensPedido(pedido,
+                NovoProdutoFornecedor.novaListaProdutosFornecedor());
 
-        pedido.setAvaliacao(NovaAvaliacao.novaAvaliacao(pedido));
+        NovaAvaliacao.novaAvaliacao(pedido);
 
         return pedido;
     }

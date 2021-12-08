@@ -9,12 +9,15 @@ import br.com.newObjects.model.entities.classes.NovoProdutoFornecedor;
 public class NovoItemPedidoTest {
     @Test
     void testNovaListaItensPedido() {
-        System.out.println(NovoItemPedido.novaListaItensPedido(NovoPedido.novoPedidoSimples(),
-                NovoProdutoFornecedor.novaListaProdutosFornecedor()));
+        var a = NovoPedido.novoPedido();
+        NovoItemPedido.novaListaItensPedido(a, NovoProdutoFornecedor.novaListaProdutosFornecedor());
+        System.out.println(a.getItensPedido());
     }
 
     @Test
     void testNovoItemPedido() {
-        System.out.println(NovoItemPedido.novoItemPedido(NovoPedido.novoPedidoSimples()));
+        var a = NovoPedido.novoPedido();
+        NovoItemPedido.novoItemPedido(a);
+        System.out.println(a.getItensPedido());
     }
 }

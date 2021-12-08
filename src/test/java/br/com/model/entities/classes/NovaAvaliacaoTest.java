@@ -21,8 +21,9 @@ public class NovaAvaliacaoTest {
 
     @Test
     void testNovaAvaliacao() {
-        var novaAvaliacao = NovaAvaliacao.novaAvaliacao(NovoPedido.novoPedido());
-        avaliacaoRepository.save(novaAvaliacao);
-        assertEquals(novaAvaliacao, avaliacaoRepository.findById(novaAvaliacao.getId()).get());
+        var a = NovoPedido.novoPedido();
+        NovaAvaliacao.novaAvaliacao(a);
+        avaliacaoRepository.save(a.getAvaliacao());
+        assertEquals(a.getAvaliacao(), avaliacaoRepository.findById(a.getAvaliacao().getId()).get());
     }
 }
