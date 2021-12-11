@@ -70,4 +70,9 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
         }
 
     }
+
+    @GetMapping(URL + "/ValorTotal/{id}")
+    private float valorTotal(@PathVariable Integer id) {
+        return super.findById(id).calculaValorTotal();
+    }
 }

@@ -84,13 +84,13 @@ public class Pedido implements PedidoInterface {
     public String toString() {
         return "\n\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + "\n\n-- FormaPagamento --\n" + getFormaPagamento()
-                + "\nPago: " + getPago() + getCliente() + "\nValor Total: " + calculaValorTotal(this);
+                + "\nPago: " + getPago() + getCliente() + "\nValor Total: " + calculaValorTotal();
     }
 
-    public Float calculaValorTotal(Pedido pedido) {
+    public Float calculaValorTotal() {
         Float total = 0F;
 
-        for (ItemPedido item : pedido.getItensPedido()) {
+        for (ItemPedido item : this.getItensPedido()) {
             for (ProdutoFornecedor produtoFornecedor : item.getProduto().getListaFornecedores()) {
                 if (produtoFornecedor.getProduto().equals(item.getProduto())) {
                     total += item.getQuantidade() * produtoFornecedor.getPreco();
