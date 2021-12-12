@@ -38,8 +38,9 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     }
 
     @DeleteMapping(URL + "/Remover/")
-    private Object remover(@RequestBody Fornecedor fornecedor) {
-        return super.remove(fornecedor);
+    private void remover(@RequestBody Fornecedor fornecedor) {
+        super.remove(fornecedor);
+        System.out.println("Fornecedor removido com sucesso!");
     }
 
     @PatchMapping(URL + "/Atualizar/")
@@ -60,7 +61,7 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     @Override
     public void validate(Fornecedor entity) throws Exception {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -19,7 +20,7 @@ import br.com.model.entities.interfaces.FornecedorInterface;
 public class Fornecedor extends Usuario implements FornecedorInterface {
     private String descricao;
 
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @JsonIgnore
     private List<ProdutoFornecedor> listaProdutos;
 

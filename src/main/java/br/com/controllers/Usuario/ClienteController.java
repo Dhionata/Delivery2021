@@ -38,8 +38,9 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     }
 
     @DeleteMapping(URL + "/Remover/")
-    private Object remover(@RequestBody Cliente cliente) {
-        return super.remove(cliente);
+    private void remover(@RequestBody Cliente cliente) {
+        super.remove(cliente);
+        System.out.println("Cliente removido com sucesso!");
     }
 
     @PatchMapping(URL + "/Atualizar/")
@@ -60,6 +61,6 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
     @Override
     public void validate(Cliente entity) throws Exception {
         // TODO Auto-generated method stub
-        
+
     }
 }

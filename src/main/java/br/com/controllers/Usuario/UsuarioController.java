@@ -45,7 +45,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         System.out.println("\n\n-- Usuário Salvo --\n\n" + usuarioTemp.toString());
 
         usuarioTemp.setSenha(null);
-        
+
         System.out.println("\n\n-- Usuário retornado! --\n\n" + usuarioTemp.toString());
         return usuarioTemp;
     }
@@ -54,13 +54,17 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     // TODO verificar retorno, não está funcionando quando Object ou String
     private void remover(@RequestBody Usuario usuario) throws Exception {
         super.remove(usuario);
-        System.out.println("Remoção feita com sucesso");
+        System.out.println("\n\nRemoção feita com sucesso\n\n");
     }
 
     @PatchMapping(URL + "/Atualizar/")
     private Usuario atualizar(@RequestBody Usuario usuario) throws Exception {
+        if (usuario.getId() == null) {
+            throw new Exception("\n\nId não pode ser nulo\n\n");
+        }
         System.out.println("\n\n-- Usuário Requisição -- Atualizar --\n\n" + usuario.toString());
         if (usuario.getSenha() != null) {
+            System.out.println("\n\nUsuário tem senha!!!");
             var usuarioTemp = new Usuario(usuario);
             System.out.println("\n\n-- Usuário a ser Atualizado --\n\n" + usuarioTemp.toString());
             super.save(usuarioTemp);
@@ -69,6 +73,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
             System.out.println("\n\n-- Usuário retornado! --\n\n" + usuarioTemp.toString());
             return usuarioTemp;
         } else {
+            System.out.println("\n\nUsuário não tem senha!!!");
             System.out.println("\n\n-- Usuário a ser Atualizado --\n\n" + usuario.toString());
             super.save(usuario);
             System.out.println("\n\n-- Usuário atualizado! --\n\n");
@@ -108,14 +113,14 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     @Override
     public void validate(Usuario entity) throws Exception {
         if (entity.getNome() == null || entity.getNome().isEmpty()) {
-            throw new Exception("Nome não pode ser vazio!");
+            throw new Exception("\n\nNome não pode ser vazio!");
         }
         if (entity.getEmail() == null || entity.getEmail().isEmpty()) {
-            throw new Exception("Email não pode ser vazio!");
+            throw new Exception("\n\nEmail não pode ser vazio!");
         }
 
         if (entity.getCnpjCpf() == null || entity.getCnpjCpf().isEmpty()) {
-            throw new Exception("CNPJ/CPF não pode ser vazio!");
+            throw new Exception("\n\nCNPJ/CPF não pode ser vazio!");
         }
     }
 }
