@@ -31,22 +31,29 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Endereco salvar(@RequestBody Endereco endereco) throws Exception {
         return super.save(endereco);
     }
 
-    @DeleteMapping(URL + "/Remover/")
-    private Object remover(@RequestBody Endereco endereco) {
-        return super.remove(endereco);
+    @DeleteMapping(URL)
+    private void remover(@RequestBody Endereco endereco) {
+        try {
+            System.out.println(endereco.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("\n\nRequisição de remoção de endereço recebida!\n\n");
+        super.remove(endereco);
+        System.out.println("\n\nEndereço removido com sucesso!\n\n");
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Endereco atualizar(@RequestBody Endereco endereco) throws Exception {
         return super.save(endereco);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Endereco procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
@@ -58,7 +65,16 @@ public class EnderecoController extends GenericService<Endereco, EnderecoReposit
 
     @Override
     public void validate(Endereco entity) throws Exception {
-        // TODO Auto-generated method stub
-        
+        if (entity.getCidade() == null || entity.getCidade().isEmpty()) {
+            throw new Exception("Cidade não pode ser vazia!");
+        }
+        if (entity.getBairro() == null || entity.getBairro().isEmpty()) {
+            throw new Exception("Bairro não pode ser vazio!");
+
+        }
+        if (entity.getLogradouro() == null || entity.getLogradouro().isEmpty()) {
+            throw new Exception("Logradouro não pode ser vazio!");
+
+        }
     }
 }

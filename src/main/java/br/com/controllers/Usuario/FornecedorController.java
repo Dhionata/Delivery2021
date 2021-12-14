@@ -32,23 +32,23 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Fornecedor salvar(@RequestBody Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     private void remover(@RequestBody Fornecedor fornecedor) {
         super.remove(fornecedor);
         System.out.println("Fornecedor removido com sucesso!");
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Fornecedor atualizar(@RequestBody Fornecedor fornecedor) throws Exception {
         return super.save(fornecedor);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Fornecedor procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }

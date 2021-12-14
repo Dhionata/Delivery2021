@@ -31,22 +31,22 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Telefone salvar(@RequestBody Telefone telefone) throws Exception {
         return super.save(telefone);
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     private Object remover(@RequestBody Telefone telefone) {
         return super.remove(telefone);
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Telefone atualizar(@RequestBody Telefone telefone) throws Exception {
         return super.save(telefone);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Telefone procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }

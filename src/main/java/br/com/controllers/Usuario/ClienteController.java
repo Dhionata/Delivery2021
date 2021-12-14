@@ -32,23 +32,23 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Cliente salvar(@RequestBody Cliente cliente) throws Exception {
         return super.save(cliente);
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     private void remover(@RequestBody Cliente cliente) {
         super.remove(cliente);
         System.out.println("Cliente removido com sucesso!");
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Cliente atualizar(@RequestBody Cliente cliente) throws Exception {
         return super.save(cliente);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Cliente procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }

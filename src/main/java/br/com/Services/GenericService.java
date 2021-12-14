@@ -39,11 +39,11 @@ public abstract class GenericService<T, R> {
 
     // Getters / Setters
 
-    private CrudRepository<T, Integer> getRepository() {
+    public CrudRepository<T, Integer> getRepository() {
         return repository;
     }
 
-    private void setRepository(CrudRepository<T, Integer> repository) {
+    public void setRepository(CrudRepository<T, Integer> repository) {
         this.repository = repository;
     }
 

@@ -32,22 +32,22 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Pedido salvar(@RequestBody Pedido pedido) throws Exception {
         return super.save(pedido);
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     private Object remover(@RequestBody Pedido pedido) {
         return super.remove(pedido);
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Pedido atualizar(@RequestBody Pedido pedido) throws Exception {
         return super.save(pedido);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Pedido procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }

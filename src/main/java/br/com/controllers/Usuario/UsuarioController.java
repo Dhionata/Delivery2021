@@ -24,9 +24,6 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     private final String URL = "/usuario";
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
     private UsuarioController(CrudRepository<Usuario, Integer> repository) {
         super(repository);
     }
@@ -39,7 +36,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         return todo;
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Usuario salvar(@RequestBody Usuario usuario) throws Exception {
         System.out.println("\n\n-- Usuário Requisição -- Salvar --\n\n" + usuario.toString());
         var usuarioTemp = new Usuario(usuario);
@@ -55,14 +52,14 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         return usuarioTemp;
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     // TODO verificar retorno, não está funcionando quando Object ou String
     private void remover(@RequestBody Usuario usuario) throws Exception {
         super.remove(usuario);
         System.out.println("\n\nRemoção feita com sucesso\n\n");
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Usuario atualizar(@RequestBody Usuario usuario) throws Exception {
         if (usuario.getId() == null) {
             throw new Exception("\n\nId não pode ser nulo\n\n");
@@ -88,7 +85,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         }
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Usuario procurarPorID(@PathVariable Integer id) {
         var usuarioSemSenha = super.findById(id);
         usuarioSemSenha.setSenha(null);
@@ -133,7 +130,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     public Usuario autenticaUsuario(@RequestBody Usuario usuario) {
         try {
             System.out.println("\n\n\n-- Usuário para Autenticar --\n\n\n" + usuario.toString() + "\n\n\n");
-            var a = usuarioRepository.findByEmail(usuario.getEmail());
+            var a = ((UsuarioRepository) super.getRepository()).findByEmail(usuario.getEmail());
             System.out.println("\n\nExiste um usuário com esse email!\n\n" + a.toString());
             if (Criptografia.verificar(a, usuario.getSenha())) {
                 System.out.println("\n\nAs senhas batem!");

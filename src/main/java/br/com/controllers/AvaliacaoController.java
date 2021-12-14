@@ -32,22 +32,22 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private Avaliacao salvar(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     private Object remover(@RequestBody Avaliacao avaliacao) {
         return super.remove(avaliacao);
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private Avaliacao atualizar(@RequestBody Avaliacao avaliacao) throws Exception {
         return super.save(avaliacao);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private Avaliacao procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
@@ -60,6 +60,6 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     @Override
     public void validate(Avaliacao entity) throws Exception {
         // TODO Auto-generated method stub
-        
+
     }
 }

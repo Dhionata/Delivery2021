@@ -31,11 +31,11 @@ public class Endereco {
     private String cep;
     private String numero;
     private float coordenadaX;
-    private float coordenaxaY;
+    private float coordenadaY;
 
     public Endereco(Usuario usuario, String logradouro, String cidade, String bairro, String complemento, String cep,
             String numero,
-            float coordenadaX, float coordenaxaY) {
+            float coordenadaX, float coordenadaY) {
         setLogradouro(logradouro);
         setCidade(cidade);
         setBairro(bairro);
@@ -43,7 +43,7 @@ public class Endereco {
         setCep(cep);
         setNumero(numero);
         setCoordenadaX(coordenadaX);
-        setCoordenaxaY(coordenaxaY);
+        setcoordenadaY(coordenadaY);
         setUsuario(usuario);
         getUsuario().cadastrarEndereco(this);
     }
@@ -57,7 +57,7 @@ public class Endereco {
         setCep(endereco.getCep());
         setNumero(endereco.getNumero());
         setCoordenadaX(endereco.getCoordenadaX());
-        setCoordenaxaY(endereco.getCoordenaxaY());
+        setcoordenadaY(endereco.getcoordenadaY());
         setUsuario(endereco.getUsuario());
         getUsuario().cadastrarEndereco(this);
     }
@@ -69,7 +69,7 @@ public class Endereco {
     public String toString() {
         return "\n\n-- Endereço--\nID: " + getId() + "\nBairro: " + getBairro() + "\nCep: " + getCep() + "\nCidade: "
                 + getCidade() + "\nComplemento: " + getComplemento() + "\nCoordenada-X:" + getCoordenadaX()
-                + "\nCoordenaxa-Y:" + getCoordenaxaY() + "\nLogradouro: " + getLogradouro() + "\nNumero: "
+                + "\nCoordenaxa-Y:" + getcoordenadaY() + "\nLogradouro: " + getLogradouro() + "\nNumero: "
                 + getNumero() + "\nUsuario: " + getUsuario().getNome();
     }
 
@@ -147,12 +147,12 @@ public class Endereco {
         this.coordenadaX = coordenadaX;
     }
 
-    public float getCoordenaxaY() {
-        return coordenaxaY;
+    public float getcoordenadaY() {
+        return coordenadaY;
     }
 
-    public void setCoordenaxaY(float coordenaxaY) {
-        this.coordenaxaY = coordenaxaY;
+    public void setcoordenadaY(float coordenadaY) {
+        this.coordenadaY = coordenadaY;
     }
 
 }

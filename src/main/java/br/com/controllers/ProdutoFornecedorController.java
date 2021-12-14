@@ -33,22 +33,22 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
         return super.findAll();
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
+    @PostMapping(value = URL)
     private ProdutoFornecedor salvar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
         return super.save(produtoFornecedor);
     }
 
-    @DeleteMapping(URL + "/Remover/")
+    @DeleteMapping(URL)
     private Object remover(@RequestBody ProdutoFornecedor produtoFornecedor) {
         return super.remove(produtoFornecedor);
     }
 
-    @PatchMapping(URL + "/Atualizar/")
+    @PatchMapping(URL)
     private ProdutoFornecedor atualizar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
         return super.save(produtoFornecedor);
     }
 
-    @GetMapping(URL + "/BuscarById/{id}")
+    @GetMapping(URL + "/{id}")
     private ProdutoFornecedor procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
@@ -61,6 +61,6 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     @Override
     public void validate(ProdutoFornecedor entity) throws Exception {
         // TODO Auto-generated method stub
-        
+
     }
 }
