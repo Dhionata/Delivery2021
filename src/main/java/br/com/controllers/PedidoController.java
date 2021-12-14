@@ -38,8 +38,8 @@ public class PedidoController extends GenericService<Pedido, PedidoRepository> {
     }
 
     @DeleteMapping(URL)
-    private Object remover(@RequestBody Pedido pedido) {
-        return super.remove(pedido);
+    private void remover(@RequestBody Pedido pedido) {
+        super.remove(pedido);
     }
 
     @PatchMapping(URL)

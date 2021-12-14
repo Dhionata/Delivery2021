@@ -37,8 +37,8 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
     }
 
     @DeleteMapping(URL)
-    private Object remover(@RequestBody Telefone telefone) {
-        return super.remove(telefone);
+    private void remover(@RequestBody Telefone telefone) {
+        super.remove(telefone);
     }
 
     @PatchMapping(URL)

@@ -38,8 +38,8 @@ public class ItemPedidoController extends GenericService<ItemPedido, ItemPedidoR
     }
 
     @DeleteMapping(URL)
-    private Object remover(@RequestBody ItemPedido itemPedido) {
-        return super.remove(itemPedido);
+    private void remover(@RequestBody ItemPedido itemPedido) {
+        super.remove(itemPedido);
     }
 
     @PatchMapping(URL)

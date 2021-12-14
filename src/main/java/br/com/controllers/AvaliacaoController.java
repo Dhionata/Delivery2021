@@ -38,8 +38,8 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     }
 
     @DeleteMapping(URL)
-    private Object remover(@RequestBody Avaliacao avaliacao) {
-        return super.remove(avaliacao);
+    private void remover(@RequestBody Avaliacao avaliacao) {
+        super.remove(avaliacao);
     }
 
     @PatchMapping(URL)

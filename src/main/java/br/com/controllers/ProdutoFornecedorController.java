@@ -39,8 +39,8 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
     }
 
     @DeleteMapping(URL)
-    private Object remover(@RequestBody ProdutoFornecedor produtoFornecedor) {
-        return super.remove(produtoFornecedor);
+    private void remover(@RequestBody ProdutoFornecedor produtoFornecedor) {
+        super.remove(produtoFornecedor);
     }
 
     @PatchMapping(URL)
