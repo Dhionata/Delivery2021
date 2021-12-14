@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import br.com.services.GenericService;
+import br.com.encrypt.Criptografia;
 import br.com.model.entities.classes.usuario.Usuario;
 import br.com.repository.usuario.UsuarioRepository;
 
@@ -20,6 +22,9 @@ import br.com.repository.usuario.UsuarioRepository;
 public class UsuarioController extends GenericService<Usuario, UsuarioRepository> {
 
     private final String URL = "/usuario";
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private UsuarioController(CrudRepository<Usuario, Integer> repository) {
@@ -121,6 +126,15 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
 
         if (entity.getCnpjCpf() == null || entity.getCnpjCpf().isEmpty()) {
             throw new Exception("\n\nCNPJ/CPF não pode ser vazio!");
+        }
+    }
+
+    public Usuario autenticaUsuario(@RequestBody Usuario usuario) {
+        var a = usuarioRepository.findByEmail(usuario.getEmail());
+        if (Criptografia.verificar(usuario, a.getSenha())) {
+            return a;
+        } else {
+            return null;
         }
     }
 }

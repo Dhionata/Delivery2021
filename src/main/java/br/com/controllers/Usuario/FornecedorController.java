@@ -60,8 +60,15 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
 
     @Override
     public void validate(Fornecedor entity) throws Exception {
-        // TODO Auto-generated method stub
-
+        if (entity.getNome() == null || entity.getNome().isEmpty()) {
+            throw new Exception("Nome não pode ser vazio!");
+        }
+        if (entity.getCnpjCpf() == null || entity.getCnpjCpf().isEmpty()) {
+            throw new Exception("CNPJ não pode ser vazio!");
+        }
+        if (entity.getEmail() == null || entity.getEmail().isEmpty()) {
+            throw new Exception("Email não pode ser vazio!");
+        }
     }
 
 }

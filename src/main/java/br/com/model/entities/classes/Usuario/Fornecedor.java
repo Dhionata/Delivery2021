@@ -20,9 +20,15 @@ import br.com.model.entities.interfaces.FornecedorInterface;
 public class Fornecedor extends Usuario implements FornecedorInterface {
     private String descricao;
 
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<ProdutoFornecedor> listaProdutos;
+
+    public Fornecedor(Fornecedor fornecedor) {
+        super(fornecedor);
+        setDescricao(fornecedor.getDescricao());
+        setListaProdutoFornecedor(fornecedor.getListaProdutoFornecedor());
+    }
 
     public Fornecedor(String nome, String descricao, String cnpjCpf,
             String senha, String email) {
