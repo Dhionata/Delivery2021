@@ -95,7 +95,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         return usuarioSemSenha;
     }
 
-    @GetMapping(URL + "/Buscar")
+    @GetMapping(URL + "/Buscar/")
     private Usuario find(@RequestBody Usuario usuario) {
         System.out.println("\n\n\n-- Usuário para Buscar --\n\n\n" + usuario.toString() + "\n\n\n");
         var a = buscar(usuario);
@@ -129,11 +129,23 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         }
     }
 
+    @GetMapping(URL + "/AutenticarUsuario/")
     public Usuario autenticaUsuario(@RequestBody Usuario usuario) {
-        var a = usuarioRepository.findByEmail(usuario.getEmail());
-        if (Criptografia.verificar(usuario, a.getSenha())) {
-            return a;
-        } else {
+        try {
+            System.out.println("\n\n\n-- Usuário para Autenticar --\n\n\n" + usuario.toString() + "\n\n\n");
+            var a = usuarioRepository.findByEmail(usuario.getEmail());
+            System.out.println("\n\nExiste um usuário com esse email!\n\n" + a.toString());
+            if (Criptografia.verificar(a, usuario.getSenha())) {
+                System.out.println("\n\nAs senhas batem!");
+                a.setSenha(null);
+                System.out.println("\n\nRetirada a senha para não ser transmitida pela rede!" + a.toString());
+                return a;
+            } else {
+                System.out.println("\n\nAs senhas não batem!\n\n");
+                return null;
+            }
+        } catch (Exception ex) {
+            System.out.println("\n\nDeu ruim..." + ex.getMessage());
             return null;
         }
     }
