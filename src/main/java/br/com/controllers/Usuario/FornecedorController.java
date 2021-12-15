@@ -34,7 +34,7 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
 
     @PostMapping(value = URL)
     private Fornecedor salvar(@RequestBody Fornecedor fornecedor) throws Exception {
-        return super.save(fornecedor);
+        return super.save(new Fornecedor(fornecedor));
     }
 
     @DeleteMapping(URL)

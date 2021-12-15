@@ -34,7 +34,7 @@ public class ClienteController extends GenericService<Cliente, ClienteRepository
 
     @PostMapping(value = URL)
     private Cliente salvar(@RequestBody Cliente cliente) throws Exception {
-        return super.save(cliente);
+        return super.save(new Cliente(cliente));
     }
 
     @DeleteMapping(URL)

@@ -126,12 +126,13 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         }
     }
 
-    @GetMapping(URL + "/AutenticarUsuario/")
+    @PostMapping(URL + "/AutenticarUsuario/")
     public Usuario autenticaUsuario(@RequestBody Usuario usuario) {
         try {
             System.out.println("\n\n\n-- Usuário para Autenticar --\n\n\n" + usuario.toString() + "\n\n\n");
             var a = ((UsuarioRepository) super.getRepository()).findByEmail(usuario.getEmail());
             System.out.println("\n\nExiste um usuário com esse email!\n\n" + a.toString());
+            System.out.println("\n\nSenha do usuário: " + a.getSenha() + "\n\n");
             if (Criptografia.verificar(a, usuario.getSenha())) {
                 System.out.println("\n\nAs senhas batem!");
                 a.setSenha(null);
