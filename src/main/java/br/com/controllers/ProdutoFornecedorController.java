@@ -35,7 +35,8 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @PostMapping(value = URL)
     private ProdutoFornecedor salvar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
-        return super.save(produtoFornecedor);
+        System.out.println("\n\nSalvando produtoFornecedor" + produtoFornecedor.toString());
+        return super.save(new ProdutoFornecedor(produtoFornecedor));
     }
 
     @DeleteMapping(URL)
@@ -45,7 +46,7 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @PatchMapping(URL)
     private ProdutoFornecedor atualizar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
-        return super.save(produtoFornecedor);
+        return super.save(new ProdutoFornecedor(produtoFornecedor));
     }
 
     @GetMapping(URL + "/{id}")
@@ -60,7 +61,17 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @Override
     public void validate(ProdutoFornecedor entity) throws Exception {
-        // TODO Auto-generated method stub
-
+        if (entity.getProduto() == null) {
+            throw new Exception("Produto não pode ser nulo");
+        }
+        if (entity.getFornecedor() == null) {
+            throw new Exception("Fornecedor não pode ser nulo");
+        }
+        if (entity.getPreco() == null) {
+            throw new Exception("Preço não pode ser nulo");
+        }
+        if (entity.getQuantidadeEmEstoque() == null) {
+            throw new Exception("Quantidade em estoque não pode ser nulo");
+        }
     }
 }

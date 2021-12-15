@@ -46,6 +46,16 @@ public class ProdutoFornecedor {
         getProduto().adicionarFornecedor(this);
     }
 
+    public ProdutoFornecedor(ProdutoFornecedor produtoFornecedor) {
+        setProduto(produtoFornecedor.getProduto());
+        setFornecedor(produtoFornecedor.getFornecedor());
+        setPreco(produtoFornecedor.getPreco());
+        setQuantidadeEmEstoque(produtoFornecedor.getQuantidadeEmEstoque());
+        setDataCadastro(new Date());
+       /*  getFornecedor().adicionarProduto(this);
+        getProduto().adicionarFornecedor(this); */
+    }
+
     public ProdutoFornecedor() {
 
     }

@@ -43,12 +43,16 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
 
     @PatchMapping(URL)
     private Telefone atualizar(@RequestBody Telefone telefone) throws Exception {
+        System.out.println("\n\nAtualizando telefone" + telefone.toString());
         return super.save(telefone);
     }
 
     @GetMapping(URL + "/{id}")
     private Telefone procurarPorID(@PathVariable Integer id) {
-        return super.findById(id);
+        System.out.println("\n\nProcurando telefone por ID: " + id);
+        var a = super.findById(id);
+        System.out.println("\n\nTelefone encontrado: " + a.toString());
+        return a;
     }
 
     @GetMapping(URL + "/Buscar/")
@@ -58,7 +62,8 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
 
     @Override
     public void validate(Telefone entity) throws Exception {
-        // TODO Auto-generated method stub
-
+        if (entity.getNumero().isEmpty()) {
+            throw new Exception("Número não pode ser nulo");
+        }
     }
 }
