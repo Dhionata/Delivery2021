@@ -41,8 +41,10 @@ public class Telefone {
 
     @Override
     public String toString() {
-        return "\n\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero(); /*+  "\nUsuário: "
-                + getUsuario().getNome(); */
+        return "\n\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero() + "\n\n"; /*
+                                                                                            * + "\nUsuário: "
+                                                                                            * + getUsuario().getNome();
+                                                                                            */
     }
 
     // Getters / Setters
