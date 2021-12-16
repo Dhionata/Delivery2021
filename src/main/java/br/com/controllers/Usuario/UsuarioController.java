@@ -92,10 +92,11 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         return usuarioSemSenha;
     }
 
-    @GetMapping(URL + "/Buscar/")
-    private Usuario find(@RequestBody Usuario usuario) {
-        System.out.println("\n\n\n-- Usuário para Buscar --\n\n\n" + usuario.toString() + "\n\n\n");
-        var a = buscar(usuario);
+    @GetMapping(URL + "/Buscar/{email}")
+    private Usuario find(@PathVariable String email) {
+        System.out.println("\n\n\n-- Usuário para Buscar --\n\n\n" + email + "\n\n\n");
+        var a = ((UsuarioRepository) super.getRepository()).findByEmail(email);
+        System.out.println("\n\n\n-- Usuário encontrado --\n\n\n" + a.toString() + "\n\n\n");
         return a;
     }
 
