@@ -39,6 +39,13 @@ public class Telefone {
     public Telefone() {
     }
 
+    public Telefone(Telefone telefone) {
+        setId(telefone.getId());
+        setNumero(telefone.getNumero());
+        setUsuario(telefone.getUsuario());
+        getUsuario().adicionarTelefone(this);
+    }
+
     @Override
     public String toString() {
         return "\n\n-- Telefone --\nID: " + getId() + "\nNúmero: " + getNumero() + "\n\n"; /*

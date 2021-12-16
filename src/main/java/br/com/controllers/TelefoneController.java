@@ -33,12 +33,15 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
 
     @PostMapping(value = URL)
     private Telefone salvar(@RequestBody Telefone telefone) throws Exception {
+        System.out.println("\n\nTelefone a ser salvo: " + telefone.toString());
         return super.save(telefone);
     }
 
     @DeleteMapping(URL)
     private void remover(@RequestBody Telefone telefone) {
-        super.remove(telefone);
+        System.out.println("\n\nRemovendo telefone: " + telefone.toString());
+        var a = super.remove(telefone);
+        System.out.println("\n\nResultado: " + a);
     }
 
     @PatchMapping(URL)
