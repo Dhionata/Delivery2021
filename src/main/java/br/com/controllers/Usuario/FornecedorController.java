@@ -29,12 +29,18 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
     @GetMapping(value = URL)
     @ResponseBody
     private Iterable<Fornecedor> procurarTodos() {
-        return super.findAll();
+        var a = super.findAll();
+        for (Fornecedor c : a) {
+            c.setSenha(null);
+        }
+        return a;
     }
 
     @PostMapping(value = URL)
     private Fornecedor salvar(@RequestBody Fornecedor fornecedor) throws Exception {
-        return super.save(new Fornecedor(fornecedor));
+        var a = super.save(new Fornecedor(fornecedor));
+        a.setSenha(null);
+        return a;
     }
 
     @DeleteMapping(URL)
@@ -45,17 +51,23 @@ public class FornecedorController extends GenericService<Fornecedor, FornecedorR
 
     @PatchMapping(URL)
     private Fornecedor atualizar(@RequestBody Fornecedor fornecedor) throws Exception {
-        return super.save(fornecedor);
+        var a = super.save(fornecedor);
+        a.setSenha(null);
+        return a;
     }
 
     @GetMapping(URL + "/{id}")
     private Fornecedor procurarPorID(@PathVariable Integer id) {
-        return super.findById(id);
+        var a = super.findById(id);
+        a.setSenha(null);
+        return a;
     }
 
     @GetMapping(URL + "/Buscar/")
     private Fornecedor procurar(@RequestBody Fornecedor fornecedor) {
-        return super.findById(fornecedor.getId());
+        var a = super.findById(fornecedor.getId());
+        a.setSenha(null);
+        return a;
     }
 
     @Override

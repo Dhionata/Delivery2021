@@ -32,7 +32,9 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
     @ResponseBody
     private Iterable<Usuario> procurarTodos() {
         var todo = super.findAll();
-        todo.forEach(action -> action.setSenha(null));
+        for (Usuario c : todo) {
+            c.setSenha(null);
+        }
         return todo;
     }
 
@@ -97,6 +99,7 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
         System.out.println("\n\n\n-- Usuário para Buscar --\n\n\n" + email + "\n\n\n");
         var a = ((UsuarioRepository) super.getRepository()).findByEmail(email);
         System.out.println("\n\n\n-- Usuário encontrado --\n\n\n" + a.toString() + "\n\n\n");
+        a.setSenha(null);
         return a;
     }
 

@@ -27,13 +27,13 @@ public abstract class GenericService<T, R> {
         return getRepository().save(entity);
     }
 
-    public String remove(T entity) {
+    public void remove(T entity) {
         try {
             validate(entity);
             getRepository().delete(entity);
-            return "Remoção feita com sucesso!";
+            System.out.println("Remoção feita com sucesso!");
         } catch (Exception e) {
-            return "Erro na remoção:\n" + e.getMessage();
+            System.out.println("Erro na remoção:\n" + e.getMessage());
         }
     }
 

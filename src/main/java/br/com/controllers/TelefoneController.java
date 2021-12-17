@@ -40,8 +40,8 @@ public class TelefoneController extends GenericService<Telefone, TelefoneReposit
     @DeleteMapping(URL)
     private void remover(@RequestBody Telefone telefone) {
         System.out.println("\n\nRemovendo telefone: " + telefone.toString());
-        var a = super.remove(telefone);
-        System.out.println("\n\nResultado: " + a);
+        super.remove(telefone);
+        System.out.println("Telefone removido com sucesso!");
     }
 
     @PatchMapping(URL)

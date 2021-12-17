@@ -35,7 +35,7 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @PostMapping(value = URL)
     private ProdutoFornecedor salvar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
-        System.out.println("\n\nSalvando produtoFornecedor" + produtoFornecedor.toString());
+        //System.out.println("\n\nSalvando produtoFornecedor" + produtoFornecedor.toString());
         return super.save(new ProdutoFornecedor(produtoFornecedor));
     }
 
@@ -61,7 +61,7 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @Override
     public void validate(ProdutoFornecedor entity) throws Exception {
-        if (entity.getProduto() == null) {
+        /* if (entity.getProduto() == null) {
             throw new Exception("Produto não pode ser nulo");
         }
         if (entity.getFornecedor() == null) {
@@ -72,6 +72,6 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
         }
         if (entity.getQuantidadeEmEstoque() == null) {
             throw new Exception("Quantidade em estoque não pode ser nulo");
-        }
+        } */
     }
 }
