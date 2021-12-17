@@ -144,11 +144,11 @@ public class UsuarioController extends GenericService<Usuario, UsuarioRepository
                 return a;
             } else {
                 System.out.println("\n\nAs senhas não batem!\n\n");
-                return null;
+                return new Usuario();
             }
         } catch (Exception ex) {
             System.out.println("\n\nDeu ruim..." + ex.getMessage());
-            return null;
+            return new Usuario();
         }
     }
 }

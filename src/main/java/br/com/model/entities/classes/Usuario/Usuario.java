@@ -107,13 +107,13 @@ public class Usuario implements UsuarioInterface {
     }
 
     public Usuario() {
-        setData(new Date());
     }
 
     @Override
     public String toString() {
         return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + getNome() + "\nEmail: " + getEmail() + "\nCNPJCPF: "
-                + getCnpjCpf() + "\nData: " + getData() + "\nTipo de usuário: " + getTipo() + "\nSenha: " + getSenha();
+                + getCnpjCpf() + "\nData: " + getData() + "\nTipo de usuário: " + getTipo().name() + "\nSenha: "
+                + getSenha();
     }
 
     @Override
