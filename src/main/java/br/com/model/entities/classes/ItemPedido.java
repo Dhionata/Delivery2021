@@ -6,18 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import br.com.model.entities.interfaces.ItemPedidoInterface;
 
 @Entity
-public class ItemPedido implements ItemPedidoInterface {
+public class ItemPedido {
     @Id
     @GeneratedValue
     private Integer id;
 
     @ManyToOne()
-    //@JsonIgnore
+    // @JsonIgnore
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 
@@ -26,9 +23,6 @@ public class ItemPedido implements ItemPedidoInterface {
     private Produto produto;
 
     private Integer quantidade;
-
-    @OneToOne(mappedBy = "itemPedido", cascade = CascadeType.ALL)
-    private Avaliacao avaliacao;
 
     public ItemPedido(Pedido pedido, Produto produto, Integer quantidade) {
         setPedido(pedido);
@@ -49,7 +43,7 @@ public class ItemPedido implements ItemPedidoInterface {
     @Override
     public String toString() {
         return "\n\n-- ItemPedido --\nID: " + getId() + "\nPedido: " + getPedido().getId() + getProduto()
-                + "\nQuantidade pedida: " + getQuantidade() + getAvaliacao();
+                + "\nQuantidade pedida: " + getQuantidade();
     }
 
     // Getters / Setters
@@ -84,14 +78,6 @@ public class ItemPedido implements ItemPedidoInterface {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public Avaliacao getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(Avaliacao avaliacao) {
-        this.avaliacao = avaliacao;
     }
 
 }

@@ -12,10 +12,9 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.model.entities.classes.usuario.Fornecedor;
-import br.com.model.entities.interfaces.ProdutoFornecedorInterface;
 
 @Entity
-public class ProdutoFornecedor implements ProdutoFornecedorInterface {
+public class ProdutoFornecedor {
     @Id
     @GeneratedValue
     private Integer id;
@@ -27,6 +26,7 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
+    @JsonIgnore
     private Fornecedor fornecedor;
 
     private Float preco;
@@ -34,7 +34,9 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     private Date dataCadastro;
     private Date dataAtualizacao;
 
-    public ProdutoFornecedor(Produto produto, Fornecedor fornecedor, Float preco, Integer quantidadeEmEstoque) {
+    public ProdutoFornecedor(Produto produto,
+            Fornecedor fornecedor,
+            Float preco, Integer quantidadeEmEstoque) {
         setProduto(produto);
         setFornecedor(fornecedor);
         setPreco(preco);
@@ -44,6 +46,16 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
         getProduto().adicionarFornecedor(this);
     }
 
+    public ProdutoFornecedor(ProdutoFornecedor produtoFornecedor) {
+        setProduto(produtoFornecedor.getProduto());
+        setFornecedor(produtoFornecedor.getFornecedor());
+        setPreco(produtoFornecedor.getPreco());
+        setQuantidadeEmEstoque(produtoFornecedor.getQuantidadeEmEstoque());
+        setDataCadastro(new Date());
+       /*  getFornecedor().adicionarProduto(this);
+        getProduto().adicionarFornecedor(this); */
+    }
+
     public ProdutoFornecedor() {
 
     }
@@ -51,9 +63,9 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     @Override
     public String toString() {
         return "\n\n-- ProdutoFornecedor --\nID: " + getId() + "\nData de atualização: " + getDataAtualizacao()
-                + "\nData de cadastro: " + getDataCadastro() + "\nFornecedor: " + getFornecedor() + "\nProduto: "
-                + getProduto().getNome() + "\nQuantidade em estoque: " + getQuantidadeEmEstoque() + "\nPreço: "
-                + getPreco();
+                + "\nData de cadastro: " + getDataCadastro() + "\nFornecedor: " + getFornecedor().getNome()
+                + "\nProduto: " + getProduto().getNome() + "\nQuantidade em estoque: " + getQuantidadeEmEstoque()
+                + "\nPreço: " + getPreco();
     }
 
     // Getters / Setters
@@ -119,5 +131,4 @@ public class ProdutoFornecedor implements ProdutoFornecedorInterface {
     public void setDataAtualizacao(Date dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
-
 }

@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,7 +23,7 @@ import br.com.model.entities.classes.usuario.Cliente;
 import br.com.model.entities.interfaces.PedidoInterface;
 
 @Entity
-public class Pedido implements PedidoInterface{
+public class Pedido implements PedidoInterface {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,9 +43,14 @@ public class Pedido implements PedidoInterface{
     private Float desconto;
     private Boolean pago = false;
     private Boolean entregue = false;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_avaliacao")
+    private Avaliacao avaliacao;
     private Date data;
 
-    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue) {
+    public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto, Boolean pago, Boolean entregue,
+            Avaliacao avaliacao) {
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
         setDesconto(desconto);
@@ -52,14 +58,13 @@ public class Pedido implements PedidoInterface{
         setEntregue(entregue);
         setItensPedido(new ArrayList<>());
         setData(new Date());
+        setAvaliacao(avaliacao);
     }
 
     public Pedido(Cliente cliente, FormaPagamento formaPagamento, Float desconto) {
         setCliente(cliente);
         setFormaPagamento(formaPagamento);
         setDesconto(desconto);
-        setPago(false);
-        setEntregue(false);
         setItensPedido(new ArrayList<>());
         setData(new Date());
     }
@@ -79,15 +84,15 @@ public class Pedido implements PedidoInterface{
     public String toString() {
         return "\n\n-- Pedido -- \nID: " + getId() + "\nData: " + getData() + "\nDesconto: " + getDesconto()
                 + "\nEntregue: " + getEntregue() + getItensPedido() + "\n\n-- FormaPagamento --\n" + getFormaPagamento()
-                + "\nPago: " + getPago() + getCliente()+"\nValor Total: "+ calculaValorTotal(this);
+                + "\nPago: " + getPago() + getCliente() + "\nValor Total: " + calculaValorTotal();
     }
 
-    public Float calculaValorTotal(Pedido pedido)  {
+    public Float calculaValorTotal() {
         Float total = 0F;
 
-        for(ItemPedido item: pedido.getItensPedido()){
-            for(ProdutoFornecedor produtoFornecedor: item.getProduto().getListaProdutoFornecedore()){
-                if(produtoFornecedor.getProduto().equals(item.getProduto())){
+        for (ItemPedido item : this.getItensPedido()) {
+            for (ProdutoFornecedor produtoFornecedor : item.getProduto().getListaFornecedores()) {
+                if (produtoFornecedor.getProduto().equals(item.getProduto())) {
                     total += item.getQuantidade() * produtoFornecedor.getPreco();
                 }
             }
@@ -107,6 +112,14 @@ public class Pedido implements PedidoInterface{
 
     public Integer getId() {
         return id;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public void setId(Integer id) {

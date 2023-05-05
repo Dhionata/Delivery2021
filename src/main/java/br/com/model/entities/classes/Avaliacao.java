@@ -8,10 +8,8 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.model.entities.interfaces.AvaliacaoInterface;
-
 @Entity
-public class Avaliacao implements AvaliacaoInterface {
+public class Avaliacao {
     @Id
     @GeneratedValue
     private Integer id;
@@ -19,17 +17,18 @@ public class Avaliacao implements AvaliacaoInterface {
     private Integer nota;
 
     @OneToOne
-    @JoinColumn(name = "id_item_pedido")
+    @JoinColumn(name = "id_pedido")
     @JsonIgnore
-    private ItemPedido itemPedido;
+    private Pedido pedido;
 
     private String comentario;
 
-    public Avaliacao(Integer nota, ItemPedido itemPedido, String comentario) {
+    public Avaliacao(Integer nota, Pedido pedido,
+            String comentario) {
         setNota(nota);
-        setItemPedido(itemPedido);
+        setPedido(pedido);
         setComentario(comentario);
-        getItemPedido().setAvaliacao(this);
+        getPedido().setAvaliacao(this);
     }
 
     public Avaliacao() {
@@ -39,13 +38,21 @@ public class Avaliacao implements AvaliacaoInterface {
     @Override
     public String toString() {
         return "\n\n-- Avaliacao --\nID: " + getId() + "\nComentário: " + getComentario() + "\nNota: " + getNota()
-                + "\nID do Pedido: " + getItemPedido().getId();
+                + "\nID do Pedido: " + getPedido().getId();
     }
 
     // Getters / Setters
 
     public Integer getId() {
         return id;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
     public void setId(Integer id) {
@@ -60,14 +67,6 @@ public class Avaliacao implements AvaliacaoInterface {
         this.nota = nota;
     }
 
-    public ItemPedido getItemPedido() {
-        return itemPedido;
-    }
-
-    public void setItemPedido(ItemPedido itemPedido) {
-        this.itemPedido = itemPedido;
-    }
-
     public String getComentario() {
         return comentario;
     }
@@ -76,5 +75,4 @@ public class Avaliacao implements AvaliacaoInterface {
         this.comentario = comentario;
     }
 
-    
 }

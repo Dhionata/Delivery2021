@@ -4,35 +4,39 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import br.com.model.entities.interfaces.ProdutoInterface;
-
 import java.util.ArrayList;
 
 @Entity
-public class Produto implements ProdutoInterface {
+public class Produto {
     @Id
     @GeneratedValue
     private Integer id;
 
     private String nome;
 
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
-    private List<ProdutoFornecedor> listaFornecedores;
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    private List<ProdutoFornecedor> listaFornecedores = new ArrayList<>();
 
     private boolean disponivel = true;
 
     public Produto(String nome) {
         setNome(nome);
-        setListaProdutoFornecedores(new ArrayList<ProdutoFornecedor>());
     }
 
     public Produto(String nome, List<ProdutoFornecedor> listaProdutoFornecedor) {
         setNome(nome);
-        setListaProdutoFornecedores(listaProdutoFornecedor);
+        setListaFornecedores(listaProdutoFornecedor);
+    }
+
+    public Produto(String nome, ProdutoFornecedor produtoFornecedor) {
+        setNome(nome);
+        adicionarFornecedor(produtoFornecedor);
     }
 
     public Produto() {
@@ -41,12 +45,12 @@ public class Produto implements ProdutoInterface {
     @Override
     public String toString() {
         return "\n\n--Produto--\nID: " + getId() + "\nNome: " + getNome() + "\nLista de Fornecedores: "
-                + getListaProdutoFornecedore() + "\nDisponibilidade: " + isDisponivel();
+                + getListaFornecedores() + "\nDisponibilidade: " + isDisponivel();
     }
 
     public void adicionarFornecedor(ProdutoFornecedor produtoFornecedor) {
         produtoFornecedor.setProduto(this);
-        getListaProdutoFornecedore().add(produtoFornecedor);
+        getListaFornecedores().add(produtoFornecedor);
     }
 
     // Getters / Setters
@@ -67,11 +71,11 @@ public class Produto implements ProdutoInterface {
         this.nome = nome;
     }
 
-    public List<ProdutoFornecedor> getListaProdutoFornecedore() {
+    public List<ProdutoFornecedor> getListaFornecedores() {
         return listaFornecedores;
     }
 
-    public void setListaProdutoFornecedores(List<ProdutoFornecedor> listaFornecedores) {
+    public void setListaFornecedores(List<ProdutoFornecedor> listaFornecedores) {
         this.listaFornecedores = listaFornecedores;
     }
 

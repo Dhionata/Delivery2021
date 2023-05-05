@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.services.GenericService;
 import br.com.model.entities.classes.Avaliacao;
 import br.com.repository.AvaliacaoRepository;
@@ -22,39 +22,44 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
     private final String URL = "/avaliacao";
 
     @Autowired
-    public AvaliacaoController(CrudRepository<Avaliacao, Integer> repository) {
+    private AvaliacaoController(CrudRepository<Avaliacao, Integer> repository) {
         super(repository);
     }
 
     @GetMapping(value = URL)
     @ResponseBody
-    public Iterable<Avaliacao> findAll() {
+    private Iterable<Avaliacao> todos() {
         return super.findAll();
     }
 
-    @GetMapping(URL + "/Buscar/")
-    public Avaliacao find(@RequestBody Avaliacao avaliacao) {
-        return super.findById(avaliacao.getId());
+    @PostMapping(value = URL)
+    private Avaliacao salvar(@RequestBody Avaliacao avaliacao) throws Exception {
+        return super.save(avaliacao);
     }
 
-    @GetMapping(URL + "/BuscarById/")
-    public Avaliacao findById(@RequestBody Integer id) {
+    @DeleteMapping(URL)
+    private void remover(@RequestBody Avaliacao avaliacao) {
+        super.remove(avaliacao);
+    }
+
+    @PatchMapping(URL)
+    private Avaliacao atualizar(@RequestBody Avaliacao avaliacao) throws Exception {
+        return super.save(avaliacao);
+    }
+
+    @GetMapping(URL + "/{id}")
+    private Avaliacao procurarPorID(@PathVariable Integer id) {
         return super.findById(id);
     }
 
-    @PostMapping(value = URL + "/Adicionar/")
-    public Avaliacao save(@RequestBody Avaliacao avaliacao) throws Exception {
-        return super.save(avaliacao);
+    @GetMapping(URL + "/Buscar/")
+    private Avaliacao find(@RequestBody Avaliacao avaliacao) {
+        return super.findById(avaliacao.getId());
     }
 
-    @DeleteMapping(URL + "/Remover/")
-    public Object remove(@RequestBody Avaliacao avaliacao) {
-        return super.remove(avaliacao);
-    }
+    @Override
+    public void validate(Avaliacao entity) throws Exception {
+        // TODO Auto-generated method stub
 
-    @PatchMapping(URL + "/Atualizar/")
-    public Object update(@RequestBody Avaliacao avaliacao) throws Exception {
-        return super.save(avaliacao);
     }
-
 }
