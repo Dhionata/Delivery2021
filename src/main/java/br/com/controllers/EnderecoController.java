@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.services.GenericService;
 import br.com.model.entities.classes.Endereco;
-import br.com.repository.EnderecoRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class EnderecoController extends GenericService<Endereco, EnderecoRepository> {
+public class EnderecoController extends GenericService<Endereco, Integer> {
     private final String URL = "/endereco";
 
     @Autowired

@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.services.GenericService;
 import br.com.model.entities.classes.Telefone;
-import br.com.repository.TelefoneRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class TelefoneController extends GenericService<Telefone, TelefoneRepository> {
+public class TelefoneController extends GenericService<Telefone, Integer> {
     private final String URL = "/telefone";
 
     @Autowired

@@ -40,7 +40,7 @@ public class Criptografia {
 
     public static boolean verificar(Usuario usuario, String senha) {
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, 16, 32);
-        System.out.println("\nSenha do usuario: " + usuario.getSenha() + "\nSenha a ser verificada: " + senha);
+        System.out.println("\nSenha do usuario:\n" + usuario.getSenha() + "\nSenha a ser verificada:\n" + senha);
         if (argon2.verify(usuario.getSenha(), senha.toCharArray())) {
             System.out.println("Tudo blz!");
             return true;

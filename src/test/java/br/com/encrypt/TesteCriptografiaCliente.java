@@ -20,7 +20,7 @@ public class TesteCriptografiaCliente {
 
     @Test
     void save() throws Exception {
-        var cliente = clienteController.save(NovoCliente.novoCliente());
-        assertTrue(Criptografia.verificar(cliente, "teste123456"));
+        var cliente = clienteController.salvar(NovoCliente.novoCliente());
+        assertTrue(Criptografia.verificar(cliente.getBody(), "teste123456"));
     }
 }

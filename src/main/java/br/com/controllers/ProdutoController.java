@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.services.GenericService;
 import br.com.model.entities.classes.Produto;
-import br.com.repository.ProdutoRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class ProdutoController extends GenericService<Produto, ProdutoRepository> {
+public class ProdutoController extends GenericService<Produto, Integer> {
 
     private final String URL = "/produto";
 

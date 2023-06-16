@@ -7,5 +7,7 @@ import br.com.model.entities.classes.usuario.Usuario;
 
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
-    Usuario findByEmail(String email);
+    public Usuario findByEmail(String email);
+
+    public Usuario findByCnpjCpf(String cnpjCpf);
 }

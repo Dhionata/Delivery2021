@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.services.GenericService;
 import br.com.model.entities.classes.Avaliacao;
-import br.com.repository.AvaliacaoRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepository> {
+public class AvaliacaoController extends GenericService<Avaliacao, Integer> {
 
     private final String URL = "/avaliacao";
 
@@ -59,7 +58,10 @@ public class AvaliacaoController extends GenericService<Avaliacao, AvaliacaoRepo
 
     @Override
     public void validate(Avaliacao entity) throws Exception {
-        // TODO Auto-generated method stub
-
+        if (entity.getNota() != null && entity.getPedido() != null) {
+            return;
+        } else {
+            throw new Exception("Avaliação não válida!");
+        }
     }
 }

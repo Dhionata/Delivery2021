@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,6 +27,7 @@ public class Usuario implements UsuarioInterface {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column(unique = true)
     private String cnpjCpf;
     private Date data;
     private String nome;
@@ -47,63 +49,63 @@ public class Usuario implements UsuarioInterface {
 
     public Usuario(Integer id, String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo,
             List<Endereco> enderecos, List<Pedido> pedidos) {
-        setId(id);
-        setCnpjCpf(cnpjCpf);
-        setData(data);
-        setNome(nome);
-        setSenha(Criptografia.argon(senha));
-        setEmail(email);
-        setPedidos(pedidos);
-        setEnderecos(enderecos);
+        this.id = id;
+        this.cnpjCpf = cnpjCpf;
+        this.data = data;
+        this.nome = nome;
+        this.senha = Criptografia.argon(senha);
+        this.email = email;
+        this.pedidos = pedidos;
+        this.enderecos = enderecos;
     }
 
     public Usuario(String cnpjCpf, Date data, String nome, String senha, String email, TipoUsuario tipo,
             List<Endereco> enderecos,
             List<Pedido> pedidos) {
-        setCnpjCpf(cnpjCpf);
-        setData(data);
-        setNome(nome);
-        setSenha(Criptografia.argon(senha));
-        setEmail(email);
-        setTipo(tipo);
-        setPedidos(pedidos);
-        setEnderecos(enderecos);
+        this.cnpjCpf = cnpjCpf;
+        this.data = data;
+        this.nome = nome;
+        this.senha = Criptografia.argon(senha);
+        this.email = email;
+        this.tipo = tipo;
+        this.pedidos = pedidos;
+        this.enderecos = enderecos;
     }
 
     public Usuario(String cnpjCpf, String nome, String senha, String email, TipoUsuario tipo) {
-        setCnpjCpf(cnpjCpf);
-        setData(new Date());
-        setNome(nome);
-        setSenha(Criptografia.argon(senha));
-        setEmail(email);
-        setTipo(tipo);
-        setEnderecos(new ArrayList<Endereco>());
-        setPedidos(new ArrayList<Pedido>());
-        setTelefones(new ArrayList<Telefone>());
+        this.cnpjCpf = cnpjCpf;
+        this.data = new Date();
+        this.nome = nome;
+        this.senha = Criptografia.argon(senha);
+        this.email = email;
+        this.tipo = tipo;
+        this.enderecos = new ArrayList<Endereco>();
+        this.pedidos = new ArrayList<Pedido>();
+        this.telefones = new ArrayList<Telefone>();
     }
 
     public Usuario(String cnpjCpf, String nome, String senha, String email) {
-        setCnpjCpf(cnpjCpf);
-        setData(new Date());
-        setNome(nome);
-        setSenha(Criptografia.argon(senha));
-        setEmail(email);
-        setEnderecos(new ArrayList<Endereco>());
-        setPedidos(new ArrayList<Pedido>());
-        setTelefones(new ArrayList<Telefone>());
+        this.cnpjCpf = cnpjCpf;
+        this.data = new Date();
+        this.nome = nome;
+        this.senha = Criptografia.argon(senha);
+        this.email = email;
+        this.enderecos = new ArrayList<Endereco>();
+        this.pedidos = new ArrayList<Pedido>();
+        this.telefones = new ArrayList<Telefone>();
     }
 
     public Usuario(Usuario usuario) {
-        setId(usuario.getId());
-        setCnpjCpf(usuario.getCnpjCpf());
-        setData(new Date());
-        setNome(usuario.getNome());
-        setSenha(Criptografia.argon(usuario.getSenha()));
-        setEmail(usuario.getEmail());
-        setTipo(usuario.getTipo());
-        setPedidos(usuario.getPedidos());
-        setEnderecos(usuario.getEnderecos());
-        setTelefones(usuario.getTelefones());
+        this.id = usuario.getId();
+        this.cnpjCpf = usuario.getCnpjCpf();
+        this.data = new Date();
+        this.nome = usuario.getNome();
+        this.senha = Criptografia.argon(usuario.getSenha());
+        this.email = usuario.getEmail();
+        this.tipo = usuario.getTipo();
+        this.pedidos = usuario.getPedidos();
+        this.enderecos = usuario.getEnderecos();
+        this.telefones = usuario.getTelefones();
     }
 
     public Usuario() {
@@ -112,7 +114,7 @@ public class Usuario implements UsuarioInterface {
     @Override
     public String toString() {
         return "\n\n-- Usuario --\nID: " + getId() + "\nNome: " + getNome() + "\nEmail: " + getEmail() + "\nCNPJCPF: "
-                + getCnpjCpf() + "\nData: " + getData() + "\nTipo de usuário: " + getTipo().name() + "\nSenha: "
+                + getCnpjCpf() + "\nData: " + getData() + "\nTipo de usuário: " + tipo.name() + "\nSenha: "
                 + getSenha();
     }
 
@@ -136,7 +138,7 @@ public class Usuario implements UsuarioInterface {
         getTelefones().remove(telefone);
     }
 
-    // Getters / Setters
+    // Getters / this.ters
 
     public List<Pedido> getPedidos() {
         return pedidos;

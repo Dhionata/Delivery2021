@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.services.GenericService;
 import br.com.model.entities.classes.ProdutoFornecedor;
-import br.com.repository.ProdutoFornecedorRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class ProdutoFornecedorController extends GenericService<ProdutoFornecedor, ProdutoFornecedorRepository> {
+public class ProdutoFornecedorController extends GenericService<ProdutoFornecedor, Integer> {
 
     private final String URL = "/produtoFornecedor";
 
@@ -35,7 +34,8 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @PostMapping(value = URL)
     private ProdutoFornecedor salvar(@RequestBody ProdutoFornecedor produtoFornecedor) throws Exception {
-        //System.out.println("\n\nSalvando produtoFornecedor" + produtoFornecedor.toString());
+        // System.out.println("\n\nSalvando produtoFornecedor" +
+        // produtoFornecedor.toString());
         return super.save(new ProdutoFornecedor(produtoFornecedor));
     }
 
@@ -61,17 +61,19 @@ public class ProdutoFornecedorController extends GenericService<ProdutoFornecedo
 
     @Override
     public void validate(ProdutoFornecedor entity) throws Exception {
-        /* if (entity.getProduto() == null) {
-            throw new Exception("Produto não pode ser nulo");
-        }
-        if (entity.getFornecedor() == null) {
-            throw new Exception("Fornecedor não pode ser nulo");
-        }
-        if (entity.getPreco() == null) {
-            throw new Exception("Preço não pode ser nulo");
-        }
-        if (entity.getQuantidadeEmEstoque() == null) {
-            throw new Exception("Quantidade em estoque não pode ser nulo");
-        } */
+        /*
+         * if (entity.getProduto() == null) {
+         * throw new Exception("Produto não pode ser nulo");
+         * }
+         * if (entity.getFornecedor() == null) {
+         * throw new Exception("Fornecedor não pode ser nulo");
+         * }
+         * if (entity.getPreco() == null) {
+         * throw new Exception("Preço não pode ser nulo");
+         * }
+         * if (entity.getQuantidadeEmEstoque() == null) {
+         * throw new Exception("Quantidade em estoque não pode ser nulo");
+         * }
+         */
     }
 }

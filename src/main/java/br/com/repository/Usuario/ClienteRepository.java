@@ -8,4 +8,6 @@ import br.com.model.entities.classes.usuario.Cliente;
 @Repository
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
     Cliente findByEmail(String email);
+
+    Cliente findByCnpjCpf(String cnpjCpf);
 }

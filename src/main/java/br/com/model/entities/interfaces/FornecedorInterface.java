@@ -15,7 +15,7 @@ public interface FornecedorInterface {
 
     public void atualizarStatusPedido(int idPedido);
 
-    // Verificar!
+    // TODO Verificar!
     public Fornecedor buscarFornecedor(String nome);
 
     public boolean confirmarEstoque(int quantidadePedida, Produto produto);
