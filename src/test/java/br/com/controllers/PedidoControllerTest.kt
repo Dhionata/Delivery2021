@@ -1,18 +1,17 @@
 package br.com.controllers
 
-import br.com.model.entities.classes.Pedido
-import br.com.newObjects.model.entities.classes.NovoPedido
+import br.com.model.Pedido
+import br.com.newObjects.model.NovoPedido
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.test.context.SpringBootTest
 
-@DataJpaTest
+@SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class PedidoControllerTest(@Autowired private val pedidoController: PedidoController) {
+open class PedidoControllerTest(@Autowired private val pedidoController: PedidoController) {
     @Test
-    @Throws(Exception::class)
     fun testFind() {
         var a: Pedido = NovoPedido.novoPedido()
         for (i in 0..4) {
@@ -25,7 +24,6 @@ class PedidoControllerTest(@Autowired private val pedidoController: PedidoContro
     }
 
     @Test
-    @Throws(Exception::class)
     fun testFindAll() {
         for (i in 0..4) {
             pedidoController.save(NovoPedido.novoPedido())
@@ -34,7 +32,6 @@ class PedidoControllerTest(@Autowired private val pedidoController: PedidoContro
     }
 
     @Test
-    @Throws(Exception::class)
     fun testFindById() {
         var a = NovoPedido.novoPedido()
         for (i in 0..4) {
@@ -47,21 +44,18 @@ class PedidoControllerTest(@Autowired private val pedidoController: PedidoContro
     }
 
     @Test
-    @Throws(Exception::class)
     fun testRemove() {
         val a = pedidoController.save(NovoPedido.novoPedido())
         pedidoController.remove(a)
     }
 
     @Test
-    @Throws(Exception::class)
     fun testSave() {
         val a = pedidoController.save(NovoPedido.novoPedido())
         assertEquals(a, pedidoController.findById(a.id!!))
     }
 
     @Test
-    @Throws(Exception::class)
     fun testUpdate() {
         val a = pedidoController.save(NovoPedido.novoPedido())
         a.pago = true

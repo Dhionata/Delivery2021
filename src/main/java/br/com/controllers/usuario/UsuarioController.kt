@@ -1,15 +1,16 @@
 package br.com.controllers.usuario
 
-import br.com.model.entities.classes.usuario.Usuario
 import br.com.repository.usuario.UsuarioRepository
 import br.com.services.classes.usuario.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import br.com.model.usuario.Usuario
 
 @RestController
 @CrossOrigin(origins = ["*"])
-class UsuarioController(@Autowired usuarioRepository: UsuarioRepository) : UsuarioService(usuarioRepository) {
+class UsuarioController(@Autowired private val usuarioRepository: UsuarioRepository) : UsuarioService
+    (usuarioRepository) {
 
     companion object {
         const val URL = "/usuario"

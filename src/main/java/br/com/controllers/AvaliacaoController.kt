@@ -1,56 +1,42 @@
 package br.com.controllers
 
-import br.com.model.entities.classes.Avaliacao
-import br.com.services.GenericService
-import org.springframework.beans.factory.annotation.Autowired
+import br.com.model.Avaliacao
+import br.com.services.AvaliacaoService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin(origins = ["*"])
-class AvaliacaoController(@Autowired private val genericService: GenericService<Avaliacao, Int>) {
+class AvaliacaoController(private val avaliacaoService: AvaliacaoService) {
     companion object {
         const val URL = "/avaliacao"
     }
 
     @GetMapping(value = [URL])
     @ResponseBody
-    private fun todos(): Iterable<Avaliacao> {
-        return genericService.findAll()
-    }
+    fun all() = avaliacaoService.findAll()
 
     @PostMapping(value = [URL])
-    @Throws(Exception::class)
-    private fun salvar(@RequestBody avaliacao: Avaliacao): Avaliacao {
-        return genericService.save(avaliacao)
+    fun save(@RequestBody avaliacao: Avaliacao): Avaliacao {
+        return avaliacaoService.save(avaliacao)
     }
 
     @DeleteMapping(URL)
-    private fun remover(@RequestBody avaliacao: Avaliacao) {
-        genericService.remove(avaliacao)
+    fun remover(@RequestBody avaliacao: Avaliacao) {
+        avaliacaoService.delete(avaliacao)
     }
 
     @PatchMapping(URL)
-    @Throws(Exception::class)
-    private fun atualizar(@RequestBody avaliacao: Avaliacao): Avaliacao {
-        return genericService.save(avaliacao)
+    fun patch(@RequestBody avaliacao: Avaliacao): Avaliacao {
+        return avaliacaoService.save(avaliacao)
     }
 
     @GetMapping("$URL/{id}")
-    private fun procurarPorID(@PathVariable id: Int): Avaliacao {
-        return genericService.findById(id)
+    fun findById(@PathVariable id: Int): Avaliacao {
+        return avaliacaoService.findById(id)
     }
 
     @GetMapping("$URL/Buscar/")
-    private fun find(@RequestBody avaliacao: Avaliacao): Avaliacao {
-        return genericService.findById(avaliacao.id!!)
-    }
-
-    @Throws(Exception::class)
-    fun validate(avaliacao: Avaliacao) {
-        if (avaliacao.nota == 0 && avaliacao.pedido.id != null) {
-            return
-        } else {
-            throw Exception("Avaliação não válida!")
-        }
+    fun find(@RequestBody avaliacao: Avaliacao): Avaliacao {
+        return avaliacaoService.findById(avaliacao.id!!)
     }
 }

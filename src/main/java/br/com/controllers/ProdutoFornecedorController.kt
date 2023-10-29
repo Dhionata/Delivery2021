@@ -1,13 +1,12 @@
 package br.com.controllers
 
-import br.com.model.entities.classes.ProdutoFornecedor
-import br.com.services.GenericService
-import org.springframework.beans.factory.annotation.Autowired
+import br.com.model.ProdutoFornecedor
+import br.com.services.ProdutoFornecedorService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = [""])
-class ProdutoFornecedorController(@Autowired private val genericService: GenericService<ProdutoFornecedor, Int>) {
+@CrossOrigin(origins = ["*"])
+class ProdutoFornecedorController(private val genericService: ProdutoFornecedorService) {
     companion object {
         private const val URL = "/produtoFornecedor"
     }
@@ -26,7 +25,7 @@ class ProdutoFornecedorController(@Autowired private val genericService: Generic
 
     @DeleteMapping(URL)
     private fun remove(@RequestBody produtoFornecedor: ProdutoFornecedor) {
-        genericService.remove(produtoFornecedor)
+        genericService.delete(produtoFornecedor)
     }
 
     @PatchMapping(URL)

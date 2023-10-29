@@ -1,33 +1,29 @@
 package br.com.encrypt
 
-import br.com.model.entities.classes.usuario.Usuario
+import br.com.model.usuario.Usuario
 import de.mkammerer.argon2.Argon2Factory
 import de.mkammerer.argon2.Argon2Helper
-import javax.swing.JOptionPane
 import kotlin.time.measureTime
 
 object Criptografia {
-    var argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id)
-    var parallelism = Runtime.getRuntime().availableProcessors()
-    var memoryFree = 65536
-    val iterations = Argon2Helper.findIterations(argon2, 500, memoryFree, parallelism)
+    private var argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id)
+    private var parallelism = Runtime.getRuntime().availableProcessors()
+    private const val MEMORYFREE = 65536
+    private val iterations = Argon2Helper.findIterations(argon2, 500, MEMORYFREE, parallelism).also {
+        println("Optimal number of iterations: $it")
+    }
 
     @JvmStatic
-    fun argon(senha: String): String? {
-        return try {
+    fun argon(senha: String): String {
+        return run {
             println("\nSenha: \n$senha\n")
             val hash: String
             println("Demorou: ${
                 measureTime {
-                    println("\nOptimal number of iterations: $iterations")
-                    hash = argon2.hash(iterations, memoryFree, parallelism, senha.toCharArray())
-                    println(hash)
+                    hash = argon2.hash(iterations, MEMORYFREE, parallelism, senha.toCharArray())
                 }
-            } para gerar o Hash.")
+            } para gerar o Hash.\nHash:\n$hash")
             hash
-        } catch (e: Exception) {
-            JOptionPane.showMessageDialog(null, e.message, "Error", JOptionPane.ERROR_MESSAGE)
-            e.message
         }
     }
 

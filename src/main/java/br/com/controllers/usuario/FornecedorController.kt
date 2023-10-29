@@ -1,10 +1,10 @@
 package br.com.controllers.usuario
 
-import br.com.model.entities.classes.usuario.Fornecedor
 import br.com.services.classes.usuario.FornecedorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import br.com.model.usuario.Fornecedor
 
 @RestController
 @CrossOrigin(origins = ["*"])
@@ -20,19 +20,19 @@ class FornecedorController(@Autowired private val fornecedorService: FornecedorS
 
     @PostMapping(URL)
     @Throws(Exception::class)
-    fun salvar(@RequestBody fornecedor: Fornecedor): ResponseEntity<Fornecedor>? {
+    fun salvar(@RequestBody fornecedor: Fornecedor): ResponseEntity<Fornecedor> {
         return fornecedorService.salvar(fornecedor)
     }
 
     @DeleteMapping(URL)
     @Throws(Exception::class)
-    fun remover(@RequestBody fornecedor: Fornecedor): ResponseEntity<String>? {
+    fun remover(@RequestBody fornecedor: Fornecedor): ResponseEntity<String> {
         return fornecedorService.remover(fornecedor)
     }
 
     @PatchMapping(URL)
     @Throws(Exception::class)
-    fun atualizar(@RequestBody fornecedor: Fornecedor): ResponseEntity<Fornecedor>? {
+    fun atualizar(@RequestBody fornecedor: Fornecedor): ResponseEntity<Fornecedor> {
         return fornecedorService.atualizar(fornecedor)
     }
 

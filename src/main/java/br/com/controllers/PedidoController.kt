@@ -1,13 +1,13 @@
 package br.com.controllers
 
-import br.com.model.entities.classes.Pedido
-import br.com.services.GenericService
+import br.com.model.Pedido
+import br.com.services.PedidoService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin(origins = ["*"])
-class PedidoController(@Autowired private val genericService: GenericService<Pedido, Int>) {
+open class PedidoController(@field:Autowired private val pedidoService: PedidoService) {
 
     companion object {
         private const val URL = "/pedido"
@@ -15,52 +15,41 @@ class PedidoController(@Autowired private val genericService: GenericService<Ped
 
     @GetMapping(value = [URL])
     @ResponseBody
-    fun findAll(): Iterable<Pedido> {
-        return genericService.findAll()
-    }
+    fun findAll() = pedidoService.findAll()
 
     @PostMapping(value = [URL])
-    @Throws(Exception::class)
     fun save(@RequestBody pedido: Pedido): Pedido {
-        return genericService.save(pedido)
+        return pedidoService.save(pedido)
     }
 
     @DeleteMapping(URL)
     fun remove(@RequestBody pedido: Pedido) {
-        genericService.remove(pedido)
+        pedidoService.delete(pedido)
     }
 
     @PatchMapping(URL)
-    @Throws(Exception::class)
     private fun patch(@RequestBody pedido: Pedido): Pedido {
-        return genericService.save(pedido)
+        return pedidoService.save(pedido)
     }
 
     @GetMapping("$URL/{id}")
     fun findById(@PathVariable id: Int): Pedido {
-        return genericService.findById(id)
+        return pedidoService.findById(id)
     }
 
     @GetMapping("$URL/Buscar/")
     private fun find(@RequestBody pedido: Pedido): Pedido {
-        return genericService.findById(pedido.id!!)
+        return pedidoService.findById(pedido.id!!)
     }
 
-    @Throws(Exception::class)
     private fun validate(entity: Pedido) {
-        if (entity.itensPedido!!.isEmpty()) {
+        if (entity.itensPedido.isEmpty()) {
             throw Exception("Pedido não pode ser salvo sem itens")
-        }
-        if (entity.cliente == null) {
-            throw Exception("Pedido não pode ser salvo sem cliente")
-        }
-        if (entity.formaPagamento == null) {
-            throw Exception("Pedido não pode ser salvo sem forma de pagamento")
         }
     }
 
     @GetMapping("$URL/ValorTotal/{id}")
     private fun valorTotal(@PathVariable id: Int): Float {
-        return genericService.findById(id).calculaValorTotal()
+        return pedidoService.findById(id).calculaValorTotal()
     }
 }

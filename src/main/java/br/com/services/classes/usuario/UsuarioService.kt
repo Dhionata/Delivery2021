@@ -1,28 +1,27 @@
 package br.com.services.classes.usuario
 
+import br.com.encrypt.Criptografia
 import br.com.encrypt.Criptografia.verificar
-import br.com.model.entities.classes.usuario.Usuario
+import br.com.model.usuario.Usuario
 import br.com.repository.usuario.UsuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.RequestParam
 
 @Service
-open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepository) {
+open class UsuarioService(private val usuarioRepository: UsuarioRepository) {
 
-    @Throws(Exception::class)
-    protected open fun salvar(@RequestParam usuario: Usuario): ResponseEntity<Usuario> {
+    protected open fun salvar(usuario: Usuario): ResponseEntity<Usuario> {
         println("-- Usuário Requisição -- Salvar --$usuario")
-        val usuarioTemp = Usuario(usuario)
+        usuario.senha = Criptografia.argon(usuario.senha)
 
-        println("\n\n-- Usuário a ser Salvo --\n\n$usuarioTemp")
+        println("\n\n-- Usuário a ser Salvo --\n\n$usuario")
 
-        usuarioRepository.save(usuarioTemp)
+        usuarioRepository.save(usuario)
 
-        usuarioTemp.senha = null
+        usuario.senha = ""
 
-        return ResponseEntity.ok(usuarioTemp)
+        return ResponseEntity.ok(usuario)
     }
 
     protected open fun procurarTodos(): ResponseEntity<MutableIterable<Usuario>> {
@@ -30,8 +29,7 @@ open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepos
         return ResponseEntity.ok(todos)
     }
 
-    @Throws(Exception::class)
-    protected open fun remover(@RequestParam usuario: Usuario): ResponseEntity<String> {
+    protected open fun remover(usuario: Usuario): ResponseEntity<String> {
         return try {
             validate(usuario)
 
@@ -46,34 +44,34 @@ open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepos
         }
     }
 
-    @Throws(Exception::class)
-    protected open fun atualizar(@RequestParam usuario: Usuario): ResponseEntity<Usuario> {
+    protected open fun atualizar(usuario: Usuario): ResponseEntity<Usuario> {
         if (usuario.id == null) {
             throw Exception("\n\nId não pode ser nulo\n\n")
         }
         println("\n\n-- Usuário Requisição -- Atualizar --\n\n$usuario")
-        val usuarioOldTemp = if (usuario.senha != null) Usuario(usuario) else usuario
 
-        println("\n\n-- Usuário a ser Atualizado --\n\n$usuarioOldTemp")
-        usuarioRepository.save(usuarioOldTemp)
+        usuario.senha = Criptografia.argon(usuario.senha)
+
+        println("\n\n-- Usuário a ser Atualizado --\n\n$usuario")
+        usuarioRepository.save(usuario)
 
         println("\n\n-- Usuário atualizado! --\n\n")
-        usuarioOldTemp.senha = null
+        usuario.senha = ""
 
-        println("\n\n-- Usuário retornado! --\n\n$usuarioOldTemp")
-        return ResponseEntity.ok(usuarioOldTemp)
+        println("\n\n-- Usuário retornado! --\n\n$usuario")
+        return ResponseEntity.ok(usuario)
     }
 
-    protected open fun procurarPorID(@RequestParam id: Int): ResponseEntity<Usuario> {
+    protected open fun procurarPorID(id: Int): ResponseEntity<Usuario> {
         println("\n\n-- ProcurarPorID --")
         val usuarioSemSenha = usuarioRepository.findById(id).get()
 
-        usuarioSemSenha.senha = null
+        usuarioSemSenha.senha = ""
 
         return ResponseEntity.ok(usuarioSemSenha)
     }
 
-    protected open fun buscar(@RequestParam cnpjCpf: String): ResponseEntity<Usuario> {
+    protected open fun buscar(cnpjCpf: String): ResponseEntity<Usuario> {
         println("\n\n\n-- Usuário para Buscar --\n\n\n$cnpjCpf\n\n\n")
         val a = usuarioRepository.findByCnpjCpf(cnpjCpf)
 
@@ -81,7 +79,7 @@ open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepos
             println("\n\nAchou algo no banco de dados!")
             if (a.cnpjCpf == cnpjCpf) {
                 println("\n\nEra igual!")
-                a.senha = null
+                a.senha = ""
                 ResponseEntity.ok(a)
             } else {
                 println("\n\nNÃO Era igual!")
@@ -90,7 +88,7 @@ open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepos
         }
     }
 
-    protected open fun autenticaUsuario(@RequestParam usuario: Usuario): Usuario? {
+    protected open fun autenticaUsuario(usuario: Usuario): Usuario? {
         return try {
             println("-- Usuário para Autenticar --$usuario\n\n\n")
             val a = usuarioRepository.findByEmail(usuario.email)
@@ -98,9 +96,9 @@ open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepos
             println("Existe um usuário com esse email!$a")
             println("Senha do usuário: ${a.senha}\n\n")
 
-            if (verificar(a, usuario.senha!!)) {
+            if (verificar(a, usuario.senha)) {
                 println("\n\nAs senhas batem!")
-                a.senha = null
+                a.senha = ""
                 println("Retirada a senha para não ser transmitida pela rede!$a")
                 a
             } else {
@@ -113,7 +111,6 @@ open class UsuarioService(@Autowired private val usuarioRepository: UsuarioRepos
         }
     }
 
-    @Throws(Exception::class)
     fun validate(usuario: Usuario) {
         if (usuario.nome.isBlank()) {
             throw Exception("\n\nNome não pode ser vazio!")

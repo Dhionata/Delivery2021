@@ -1,13 +1,12 @@
 package br.com.controllers
 
-import br.com.model.entities.classes.Endereco
-import br.com.services.GenericService
-import org.springframework.beans.factory.annotation.Autowired
+import br.com.model.Endereco
+import br.com.services.EnderecoService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin(origins = ["*"])
-class EnderecoController(@Autowired private val genericService: GenericService<Endereco, Int>) {
+class EnderecoController(private val enderecoService: EnderecoService) {
     companion object {
         private const val URL = "/endereco"
     }
@@ -15,13 +14,12 @@ class EnderecoController(@Autowired private val genericService: GenericService<E
     @GetMapping(value = [URL])
     @ResponseBody
     private fun procurarTodos(): Iterable<Endereco> {
-        return genericService.findAll()
+        return enderecoService.findAll()
     }
 
     @PostMapping(value = [URL])
-    @Throws(Exception::class)
     private fun salvar(@RequestBody endereco: Endereco): Endereco {
-        return genericService.save(endereco)
+        return enderecoService.save(endereco)
     }
 
     @DeleteMapping(URL)
@@ -32,35 +30,33 @@ class EnderecoController(@Autowired private val genericService: GenericService<E
             println(e.message)
         }
         println("\n\nRequisição de remoção de endereço recebida!\n\n")
-        genericService.remove(endereco)
+        enderecoService.delete(endereco)
         println("\n\nEndereço removido com sucesso!\n\n")
     }
 
     @PatchMapping(URL)
-    @Throws(Exception::class)
     private fun atualizar(@RequestBody endereco: Endereco): Endereco {
-        return genericService.save(endereco)
+        return enderecoService.save(endereco)
     }
 
     @GetMapping("$URL/{id}")
     private fun procurarPorID(@PathVariable id: Int): Endereco {
-        return genericService.findById(id)
+        return enderecoService.findById(id)
     }
 
     @GetMapping("$URL/Buscar/")
     private fun find(@RequestBody endereco: Endereco): Endereco {
-        return genericService.findById(endereco.id!!)
+        return enderecoService.findById(endereco.id!!)
     }
 
-    @Throws(Exception::class)
     fun validate(entity: Endereco) {
-        if (entity.cidade == null || entity.cidade!!.isEmpty()) {
+        if (entity.cidade.isEmpty()) {
             throw Exception("Cidade não pode ser vazia!")
         }
-        if (entity.bairro == null || entity.bairro!!.isEmpty()) {
+        if (entity.bairro.isEmpty()) {
             throw Exception("Bairro não pode ser vazio!")
         }
-        if (entity.logradouro == null || entity.logradouro!!.isEmpty()) {
+        if (entity.logradouro.isEmpty()) {
             throw Exception("Logradouro não pode ser vazio!")
         }
     }

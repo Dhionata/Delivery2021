@@ -1,6 +1,6 @@
 package br.com.controllers.usuario
 
-import br.com.model.entities.classes.usuario.Cliente
+import br.com.model.usuario.Cliente
 import br.com.services.classes.usuario.ClienteService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -15,30 +15,30 @@ class ClienteController(@Autowired private val clienteService: ClienteService) {
     }
 
     @GetMapping(value = [URL])
-    fun procurarTodos(): ResponseEntity<Iterable<Cliente?>>? {
+    fun procurarTodos(): ResponseEntity<Iterable<Cliente>> {
         return clienteService.procurarTodos()
     }
 
     @PostMapping(value = [URL])
     @Throws(Exception::class)
-    fun salvar(@RequestBody cliente: Cliente): ResponseEntity<Cliente>? {
+    fun salvar(@RequestBody cliente: Cliente): ResponseEntity<Cliente> {
         return clienteService.salvar(cliente)
     }
 
     @DeleteMapping(URL)
     @Throws(Exception::class)
-    fun remover(@RequestBody cliente: Cliente): ResponseEntity<String>? {
+    fun remover(@RequestBody cliente: Cliente): ResponseEntity<String> {
         return clienteService.remover(cliente)
     }
 
     @PatchMapping(URL)
     @Throws(Exception::class)
-    fun atualizar(@RequestBody cliente: Cliente): ResponseEntity<Cliente>? {
+    fun atualizar(@RequestBody cliente: Cliente): ResponseEntity<Cliente> {
         return clienteService.atualizar(cliente)
     }
 
     @GetMapping("$URL/{id}")
-    fun procurarPorID(@PathVariable id: Int?): ResponseEntity<Cliente>? {
+    fun procurarPorID(@PathVariable id: Int?): ResponseEntity<Cliente> {
         return clienteService.procurarPorID(id!!)
     }
 

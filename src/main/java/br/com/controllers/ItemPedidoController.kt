@@ -1,13 +1,12 @@
 package br.com.controllers
 
-import br.com.model.entities.classes.ItemPedido
-import br.com.services.GenericService
-import org.springframework.beans.factory.annotation.Autowired
+import br.com.model.ItemPedido
+import br.com.services.ItemPedidoService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin(origins = ["*"])
-class ItemPedidoController(@Autowired private val genericService: GenericService<ItemPedido, Int>) {
+class ItemPedidoController(private val itemPedidoService: ItemPedidoService) {
 
     companion object {
         private const val URL = "/itemPedido"
@@ -16,38 +15,33 @@ class ItemPedidoController(@Autowired private val genericService: GenericService
     @GetMapping(value = [URL])
     @ResponseBody
     private fun procurarTodos(): Iterable<ItemPedido> {
-        return genericService.findAll()
+        return itemPedidoService.findAll()
     }
 
     @PostMapping(value = [URL])
     @Throws(Exception::class)
     private fun salvar(@RequestBody itemPedido: ItemPedido): ItemPedido {
-        return genericService.save(itemPedido)
+        return itemPedidoService.save(itemPedido)
     }
 
     @DeleteMapping(URL)
     private fun remover(@RequestBody itemPedido: ItemPedido) {
-        genericService.remove(itemPedido)
+        itemPedidoService.delete(itemPedido)
     }
 
     @PatchMapping(URL)
     @Throws(Exception::class)
     private fun atualizar(@RequestBody itemPedido: ItemPedido): ItemPedido {
-        return genericService.save(itemPedido)
+        return itemPedidoService.save(itemPedido)
     }
 
     @GetMapping("$URL/{id}")
     private fun procurarPorID(@PathVariable id: Int): ItemPedido {
-        return genericService.findById(id)
+        return itemPedidoService.findById(id)
     }
 
     @GetMapping("$URL/Buscar/")
     private fun find(@RequestBody itemPedido: ItemPedido): ItemPedido {
-        return genericService.findById(itemPedido.id!!)
-    }
-
-    @Throws(Exception::class)
-    fun validate(entity: ItemPedido) {
-        // TODO Auto-generated method stub
+        return itemPedidoService.findById(itemPedido.id!!)
     }
 }

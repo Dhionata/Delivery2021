@@ -1,6 +1,6 @@
 package br.com.controllers
 
-import br.com.newObjects.model.entities.classes.NovoProdutoFornecedor.novoProdutoFornecedor
+import br.com.newObjects.model.NovoProdutoFornecedor.novoProdutoFornecedor
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
